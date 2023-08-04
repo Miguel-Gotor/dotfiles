@@ -1,0 +1,271 @@
+# I3 CONFIG
+
+set $mod Mod4
+
+for_window [class="^.*"] border pixel 0
+
+gaps inner 12
+gaps outer 6
+
+# Set wallpaper
+
+# Execute custom script to monitor updates in currently playing media if it's not already running
+# exec_always --no-startup-id pgrep -x "inotify-mpris" || inotify-mpris
+exec_always --no-startup-id pgrep "playerctl-follo" || playerctl-follow.sh
+
+# exec_always --no-startup-id feh --bg-center --no-fehbg ~/Pictures/Wallpapers/mountain_peak_bw_156929_1920x1080.jpg
+# exec_always --no-startup-id feh --bg-center --no-fehbg "$HOME/Pictures/Wallpapers/subway_railway_rails_1003616_1920x1080.jpg"
+
+# Start the polkit agent to allow GUI editors to modify system-wide config files
+exec --no-startup-id polkit-dumb-agent
+
+# Set keyboard rate
+exec_always --no-startup-id xset r rate 200 60
+
+# Font for window titles. Default bar font.
+# font pango:monospace 8
+font pango:DejaVu Sans Mono 17
+# This font is widely installed, provides lots of unicode glyphs, right-to-left
+# text rendering and scalability on retina/hidpi displays (thanks to pango).
+# font pango:DejaVu Sans Mono 8
+
+# The combination of xss-lock, nm-applet and pactl is a popular choice, so
+# they are included here as an example. Modify as you see fit.
+# xss-lock grabs a logind suspend inhibit lock and will use i3lock to lock the
+# screen before suspend. Use loginctl lock-session to lock your screen.
+# exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
+
+# NetworkManager is the most popular way to manage wireless networks on Linux,
+# and nm-applet is a desktop environment-independent system tray GUI for it.
+# exec --no-startup-id nm-appleti
+
+exec_always --no-startup-id picom
+
+# Use Mouse+$mod to drag floating windows to their wanted position
+floating_modifier $mod
+
+# Launch terminal
+bindsym $mod+Return exec $TERMINAL
+
+# Kill focused window
+bindsym $mod+Shift+q kill
+
+# Launch i3-dmenu-desktop (shows only programs with .desktop file)
+bindsym $mod+d exec --no-startup-id i3-dmenu-desktop --dmenu="dmenu -i -b -fn 'Dejavu Sans Book:size=11' -nb '#000000' -nf '#FFFFFF' -sb '#FFFFFF' -sf '#000000'"
+
+# Change focus
+bindsym $mod+Left focus left
+bindsym $mod+Down focus down
+bindsym $mod+Up focus up
+bindsym $mod+Right focus right
+
+# Move window
+bindsym $mod+Shift+Left move left
+bindsym $mod+Shift+Down move down
+bindsym $mod+Shift+Up move up
+bindsym $mod+Shift+Right move right
+
+# Split horizontally
+bindsym $mod+h split h
+
+# Split vertically
+bindsym $mod+v split v
+
+# Fullscreen focused window
+bindsym $mod+f fullscreen toggle
+
+# Change container layout (stacked, tabbed, toggle split)
+# bindsym $mod+s layout stacking
+# bindsym $mod+w layout tabbed
+bindsym $mod+e layout toggle split
+
+# Toggle tiling / floating
+bindsym $mod+Shift+space floating toggle
+
+# Change focus between tiling / floating windows
+bindsym $mod+space focus mode_toggle
+
+# Focus the parent container
+# bindsym $mod+a focus parent
+# focus the child container
+#bindsym $mod+d focus child
+
+# WORKSPACES #
+
+# Return to previous workspace by pressing the same key
+workspace_auto_back_and_forth yes
+
+# Define names for default workspaces for which we configure key bindings later on.
+# We use variables to avoid repeating the names in multiple places.
+set $ws1 "1"
+set $ws2 "2"
+set $ws3 "3"
+set $ws4 "4"
+set $ws5 "5"
+set $ws6 "6"
+set $ws7 "7"
+set $ws8 "8"
+set $ws9 "9"
+set $ws10 "10"
+
+# Switch to workspace
+bindsym $mod+1 workspace number $ws1
+bindsym $mod+2 workspace number $ws2
+bindsym $mod+3 workspace number $ws3
+bindsym $mod+4 workspace number $ws4
+bindsym $mod+5 workspace number $ws5
+bindsym $mod+6 workspace number $ws6
+bindsym $mod+7 workspace number $ws7
+bindsym $mod+8 workspace number $ws8
+bindsym $mod+9 workspace number $ws9
+bindsym $mod+0 workspace number $ws10
+
+# Move focused container to workspace
+bindsym $mod+Shift+1 move container to workspace number $ws1
+bindsym $mod+Shift+2 move container to workspace number $ws2
+bindsym $mod+Shift+3 move container to workspace number $ws3
+bindsym $mod+Shift+4 move container to workspace number $ws4
+bindsym $mod+Shift+5 move container to workspace number $ws5
+bindsym $mod+Shift+6 move container to workspace number $ws6
+bindsym $mod+Shift+7 move container to workspace number $ws7
+bindsym $mod+Shift+8 move container to workspace number $ws8
+bindsym $mod+Shift+9 move container to workspace number $ws9
+bindsym $mod+Shift+0 move container to workspace number $ws10
+
+# Reload the configuration file
+bindsym $mod+Shift+c reload
+# Restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
+bindsym $mod+Shift+r restart
+# Exit i3 (logs you out of your X session)
+bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
+
+# Resize window (you can also use the mouse for that)
+mode "RESIZE" {
+        # These bindings trigger as soon as you enter the resize mode
+
+        # Pressing left will shrink the window’s width.
+        # Pressing right will grow the window’s width.
+        # Pressing up will shrink the window’s height.
+        # Pressing down will grow the window’s height.
+
+        bindsym Left resize shrink width 10 px or 10 ppt
+        bindsym Down resize grow height 10 px or 10 ppt
+        bindsym Up resize shrink height 10 px or 10 ppt
+        bindsym Right resize grow width 10 px or 10 ppt
+
+        # back to normal: Enter or Escape or $mod+r
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+        bindsym $mod+r mode "default"
+}
+
+bindsym $mod+r mode "RESIZE"
+
+bindsym $mod+Control+Left workspace prev
+bindsym $mod+Control+Right workspace next
+
+## MY BYNDSYMS #
+
+# AUDIO
+# Use pactl to adjust volume in PulseAudio.
+set $refresh_i3status killall -SIGUSR1 i3status
+
+# 1) Using XF86 keyboard symbols + one-line cmds
+
+# bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +1% && $refresh_i3status
+# bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -1% && $refresh_i3status
+# bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && $refresh_i3status
+# bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && $refresh_i3status
+
+# 2) Keyboard-agnostic + POSIX-compliant scripts in $HOME/bin
+
+## PAPLAY
+# Decrease vol.
+bindsym $mod+KP_Add exec --no-startup-id change-volume.sh -1
+# Increase vol.
+bindsym $mod+KP_Subtract exec --no-startup-id change-volume.sh +1
+# Mute
+bindsym $mod+m  --release exec --no-startup-id mute-audio.sh
+
+## MPRIS
+# Play/Pause
+bindsym $mod+space --release exec --no-startup-id mpris-play-pause.sh
+# Next
+bindsym $mod+period --release exec --no-startup-id playerctl next
+# Previous
+bindsym $mod+comma --release exec --no-startup-id playerctl previous
+
+## OTHER
+bindsym $mod+y exec --no-startup-id browse-yt-playlists.sh
+# dmenu immediately gains focus and captures input so no need for --release
+bindsym $mod+s exec dmenu-search.sh
+# Lock session
+bindsym $mod+l  --release exec --no-startup-id "i3lock -c 000000"
+# Calendar with current date highlighted
+bindsym $mod+c  --release exec --no-startup-id calendar.sh
+
+# XRANDR
+# Night mode
+bindsym $mod+n  --release exec --no-startup-id night-light.sh
+# Adjust brightness (not the best way to to this. Should use xbacklight)
+bindsym $mod+KP_Multiply exec --no-startup-id adjust-brightness.sh 0.1
+bindsym $mod+KP_Divide  exec --no-startup-id adjust-brightness.sh -0.1
+
+# IMAGE
+# scrot is generally faster than maim for taking screenshots, especially when capturing the entire screen
+bindsym Print --release exec --no-startup-id full-screenshot.sh
+# but scrot glitches when selection mode is used with refreshing windows, so maim is preferable
+# bindsym $mod+Shift+s exec "maim -s | xclip -selection clipboard -t image/png; dunstify 'Snippet copied to clipboard' && paplay /usr/share/sounds/freedesktop/stereo/message.oga"
+bindsym $mod+Shift+s exec --no-startup-id area-screenshot.sh
+
+# Specific window configs
+for_window [class="Tk" instance="tk"] floating enable
+for_window [class="Matplotlib" instance="matplotlib"] floating enable
+for_window [class="MATLAB R2022b - academic use" instance="sun-awt-X11-XFramePeer"] floating enable
+for_window [class="MATLABWindow" instance="MATLABWindow"] floating enable
+
+# Auto Switch to new (urgent) workspaces
+focus_on_window_activation focus
+
+assign [class="MATLAB R2022b - academic use" instance="sun-awt-X11-XFramePeer"] MATLAB
+assign [class="MATLAB R2022b" instance="Matlab-GLEE"] SIMULINK
+
+# i3bar
+# i3status generates status bar to use with i3bar
+bar {
+    status_command i3status --config ~/.config/i3status/conf
+    
+    # status_command i3blocks
+    # status_command prepend-i3status.sh
+
+    # font pango: Mono 11
+    # font pango: Mono Bold 11
+
+    font pango: JetBrains Mono Bold 11
+
+    # font pango: Hack Bold 11
+    # font pango: Hack 11
+    
+    # font pango: IPAPGothic 12
+
+    # font pango: IPAPGothic Bold 12
+    
+    # font pango: Lato Bold 12
+
+    # font pango: DejaVu Sans Book 11
+    # font pango: Sans Bold 11
+    # font pango: DejaVu Sans Mono 11
+    
+    position top
+	separator_symbol "|"
+	colors{
+		separator #00FFFF
+        statusline #FFFFFF
+		background #000000
+        focused_workspace #FFFFFF #FFFFFF #000000
+        inactive_workspace #FFFFFF #000000 #FFFFFF
+        urgent_workspace   #F0000F #000000 #FFFFFF  
+	}
+}
+
+

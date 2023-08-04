@@ -1,0 +1,70 @@
+# i3status configuration file.
+# see "man i3status" for documentation.
+
+# It is important that this file is edited as UTF-8.
+# The following line should contain a sharp s:
+# ß
+# If the above line is not correctly displayed, fix your editor first!
+
+general {
+        colors = true
+        interval = 1
+}
+
+order += "volume_master"
+order += "cpu_temperature 0"
+order += "cpu_temperature 1"
+order += "cpu_usage"
+order += "memory"
+order += "disk /"
+#order += "load"e
+order += "ethernet _first_"
+order += "tztime local"
+
+cpu_temperature 0 {
+    format = "GPU: %degrees °C"
+    path = "/sys/class/hwmon/hwmon0/temp1_input"
+}
+
+# CPU | k10temp (Not the REAL cpu temp, but the best we cant get https://bbs.archlinux.org/viewtopic.php?id=160006)
+cpu_temperature 1 {
+    format = "CPU: %degrees °C"
+    path = "/sys/class/hwmon/hwmon1/temp1_input"
+}
+
+volume master {
+    format = "Vol: %volume"
+    format_muted = "MUTED"
+    device = "default"
+    mixer = "Master"
+    mixer_idx = 0
+}
+
+cpu_usage {
+    format = "CPU: %usage"
+}
+
+ethernet _first_ {
+        format_up = "E: %ip (%speed)"
+        format_down = "E: down"
+}
+
+
+disk "/" {
+        format = "SSD: %avail / %total"
+}
+
+#load {
+#        format = "%1min"
+#}			
+
+memory {
+        format = "RAM: %used / %total"
+        threshold_degraded = "1G"
+        format_degraded = "MEMORY < %available"
+}
+
+tztime local {
+        format = "%d/%m/%Y || %H:%M:%S"
+}
+

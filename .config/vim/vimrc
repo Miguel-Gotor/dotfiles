@@ -1,0 +1,177 @@
+" Display command line tab complete options as a menu.
+set wildmenu
+
+" Enable type file detection. Vim will be able to try to detect the type of file in use.
+filetype on
+
+" Enable plugins and load plugin for the detected file type.
+filetype plugin on
+
+" Load an indent file for the detected file type.
+filetype indent on
+
+" Inherit indentation from pervious line when starting writing in a new line.
+set autoindent
+
+" Turn syntax highlighting on.
+syntax on
+
+" Add numbers to each line on the left-hand side.
+set number
+
+" Show relative line numbers
+set relativenumber
+
+" Set shift width to 4 spaces.
+set shiftwidth=4
+
+" Set tab width to 4 columns.
+set tabstop=4
+
+" Use space characters instead of tabs.
+set expandtab
+
+" Do not save backup files.
+set nobackup
+
+" Do not let cursor scroll below or above N number of lines when scrolling.
+set scrolloff=10
+
+" Avoid breaking/wrapping lines in the middle of the words.
+set linebreak
+
+" While searching though a file incrementally highlight matching characters as you type.
+set incsearch
+
+" Make searches case INsensitive
+set ignorecase
+
+" Override the ignorecase option if searching for capital letters.
+" This will allow you to search specifically for capital letters.
+set smartcase
+
+" Show partial command you type in the last line of the screen.
+set showcmd
+
+" Show the mode you are on the last line.
+set showmode
+
+" Show matching words during a search.
+set showmatch
+
+" Use highlighting when doing a search.
+set hlsearch
+
+" Have vim use 256-color schemes
+" set term=xterm-256color
+" set t_Co=256
+set background=dark
+
+" Automatically reload files when modified by an external source
+set autoread
+
+" Enable spellchecking.
+" set spell spelllang=en_us
+
+" Mappings --------------------------------------------------------------------
+
+" Paste with the mouse wheel
+noremap! <s-insert> <middlemouse>
+
+" Press F5 to run Python script
+map <F5> <Esc>:w<CR>:!clear;python %<CR>
+
+" Compile and run C
+map <F8> :w <CR> :!clear;gcc -Wall -Wextra % -o %< && ./%< <CR>
+"map <F7> :w <CR> :!clear;gcc -Wall -Wextra % -o %< <CR>
+"map <F6> :w <CR> :!clear;gcc -Wall -Wextra % -o /dev/null <CR>
+
+" Status line -----------------------------------------------------------------
+
+" Always display the status bar.
+set laststatus =2
+
+function! Capitalize(string)
+    let result = substitute(a:string,'\(\<\w\+\>\)', '\u\1', 'g')
+    return result
+endfunction
+
+function! GitBranch()
+  return system("git rev-parse --abbrev-ref HEAD 2>/dev/null | tr -d '\r\n'")
+endfunction
+
+function! GitBranchName()
+  let l:branchname = GitBranch()
+  return strlen(l:branchname) > 0?' | '.l:branchname.':':' | '
+endfunction
+
+set statusline =
+
+" Buffer number.
+set statusline +=\ Buffer\ #%n
+" Current Git branch.
+" set statusline +=%{GitBranchName()}
+" Path to the file in the buffer, as typed or relative to current directory.
+set statusline +=%f
+" Flag for modified file.
+set statusline +=%m
+
+" Padding, empty space in the middle.
+set statusline+=%=
+
+" File type, encoding and end of line format
+set statusline +=\ %Y
+set statusline +=\ \|\ %{toupper(&fileencoding?&fileencoding:&encoding)}
+set statusline +=\ \|\ %{Capitalize(&fileformat)}
+" Current line and column number.
+set statusline +=\ \|\ %l:%c
+" Total lines in file.
+set statusline +=\ \|\ Lines:\ %L
+" Time and date.
+set statusline +=\ \|\ %{strftime('%a\ %d\ %b,\ %H:%M:%S')}
+" Final space on the right side of the screen.
+set statusline +=\ 
+
+" Ignore files matching these patterns when opening files based on a glob pattern.
+set wildignore +=*.pyc  " Python bytecode
+set wildignore +=*.swp  " Vim swap files
+set wildignore +=*.bak  " Generic backup files
+set wildignore +=*.class  " Java bytecode
+set wildignore +=.DS_Store  " macOS folder metadata
+
+" Whitespace characters display -----------------------------------------------
+
+" Show soft wraping of the line with this string to indicate
+" a visual continuation on the next line.
+" Note: a space is the last character in the string.
+
+set showbreak =↪\
+
+" Show whitespace characters with the following characters instead.
+" set list
+" set listchars =
+" set listchars +=tab:⇥\ 
+" set listchars +=extends:›
+" set listchars +=precedes:‹
+" set listchars +=nbsp:␣
+" set listchars +=trail:•
+" set listchars +=eol:↲
+
+" Follow the XDG base directory specification ---------------------------------
+
+set runtimepath^=$XDG_CONFIG_HOME/vim
+set runtimepath+=$XDG_DATA_HOME/vim
+set runtimepath+=$XDG_CONFIG_HOME/vim/after
+
+set packpath^=$XDG_DATA_HOME/vim,$XDG_CONFIG_HOME/vim
+set packpath+=$XDG_CONFIG_HOME/vim/after,$XDG_DATA_HOME/vim/after
+
+let g:netrw_home = "$XDG_DATA_HOME/vim"
+call mkdir(expand("$XDG_DATA_HOME/vim/spell"), 'p')
+
+set backupdir=$XDG_STATE_HOME/vim/backup | call mkdir(&backupdir, 'p')
+set directory=$XDG_STATE_HOME/vim/swap   | call mkdir(&directory, 'p')
+set undodir=$XDG_STATE_HOME/vim/undo     | call mkdir(&undodir,   'p')
+set viewdir=$XDG_STATE_HOME/vim/view     | call mkdir(&viewdir,   'p')
+
+if !has('nvim') | set viminfofile=$XDG_STATE_HOME/vim/viminfo | endif

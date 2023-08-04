@@ -1,0 +1,30 @@
+!*.font: xft:Monospace:style=Regular:size=11
+!*.font: xft:'Noto Mono for Powerline':style=Regular:size=11
+!*.font: xft:'Monospace':style=Regular:size=11
+*refreshPeriod: 10
+URxvt*font:  xft:inconsolata:size=11:antialias=true, xft:DejaVu Sans:size=11:antialias=true,xft:Sauce Code Powerline:antialias=true:hinting=true:size=11
+
+URxvt.scrollBar:                false
+!*.scrollBar: false
+
+! special
+*.foreground:   #ffffff
+*.background:   #000000
+*.cursorColor:  #ff00ff
+
+*.color4: #0ff
+*.color12: #2ff924
+
+! Setting transparency and background                                                                                                                                       
+
+URxvt*depth:      32                                                                                                                                                        
+URxvt.background: [80]#000000
+
+*TkTheme: Adapta
+
+URxvt.cursorBlink: true
+URxvt.iso14755: false
+URxvt.internalBorder: 12
+URxvt.urgentOnBell: true
+
+

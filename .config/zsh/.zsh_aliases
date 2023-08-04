@@ -1,0 +1,56 @@
+#.zsh_aliases
+
+# Open this file
+alias ali='$EDITOR $ZDOTDIR/.zsh_aliases'
+alias log='$EDITOR $HOME/Documents/Linux/Notes/arch.txt'
+alias open='xdg-open'
+
+alias r='ranger'
+alias p='sudo pacman'
+
+# Quicky edit config files
+alias piconf='$EDITOR $XDG_CONFIG_HOME/picom/picom.conf'
+alias i3conf='$EDITOR $XDG_CONFIG_HOME/i3/config'
+alias viconf='$EDITOR $XDG_CONFIG_HOME/vim/vimrc'
+alias ldmconf='sudo $EDITOR /etc/lightdm/lightdm-gtk-greeter.conf'
+alias duconf='$EDITOR $XDG_CONFIG_HOME/dunst/dunstrc'
+alias zconf='$EDITOR $XDG_CONFIG_HOME/zsh/.zshrc'
+alias prof='$EDITOR $HOME/.profile'
+
+# Firefox dict and css files
+alias dict='$EDITOR $XDG_CONFIG_HOME/cspell/shared-dict.txt'
+# Firefox dictionary "persdict.dat" is a symlink pointing to the shared dictionary with the VSCode extension cspell
+# alias ffdict='vim $(locate persdict.dat)'
+alias ffcss='vim $(locate userChrome)' # One file per profile
+
+# Actually clear the terminal so I don't see previous commands output
+alias c='printf "\033c"'
+
+alias e='exit'
+alias o='nohup pcmanfm . &> /dev/null & disown'
+alias k='kitty +kitten icat $1'
+
+alias xt='xterm -fa 'Hack' -fs 11 zsh &> /dev/null &disown'
+
+# Add verbosity
+alias mkd='mkdir -pv'
+alias rmd='rmdir -v'
+# Add interactive flag - Ask for confirmation when deleting or overwriting stuff
+alias mv='mv -i'
+alias cp='cp -iv'
+alias rm='rm -i --preserve-root'      	
+
+alias hl='highlight --out-format=ansi'
+alias et='rm -rf ~/.local/share/Trash/*' # Empty user trash
+alias fp='ps -e | grep $1'               # Find Proccess
+alias hs='history | grep $@'
+
+# Mount and switch to other volumes
+alias win='sudo mount /dev/sda2 /mnt/Windows10 && cd /mnt/Windows10'
+# alias arc='sudo mount /dev/sdb2 /mnt/Arch && cd /mnt/Arch'
+alias ubu='sudo mount /dev/sda5 /mnt/Ubuntu && cd /mnt/Ubuntu'
+
+alias fort='fortune | cowsay | lolcat'
+
+# Highlight current date in calendar
+# alias cal="cal | grep --color -EC6 \"\b\$(date +%e | sed 's/ //g')\b\""

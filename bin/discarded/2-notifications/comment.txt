@@ -1,0 +1,2 @@
+Discarded because the 2 notifications are not completely simultaneous, as one can imagine.
+The slight delay between them makes the whole thing look glitchy, as the 2nd one immediately pushes the previous, shown in the original position a split-second.

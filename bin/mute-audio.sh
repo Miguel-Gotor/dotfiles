@@ -1,0 +1,16 @@
+#!/usr/bin/sh
+# mute-audio.sh
+# Mute and unmute audio using PulseAudio Control
+
+# Unique identifier (name of the script for example)
+msg_tag=$0
+
+pactl set-sink-mute @DEFAULT_SINK@ toggle
+
+if pactl list sinks | grep -q 'Mute: yes'; then 
+    dunstify -i notification-audio-volume-muted "Audio muted" -h "string:x-dunst-stack-tag:$msg_tag"
+else 
+    dunstify -i notification-audio-volume-high "Audio unmuted" -h "string:x-dunst-stack-tag:$msg_tag"
+fi
+
+paplay /usr/share/sounds/Yaru/stereo/message.oga
