@@ -14,7 +14,7 @@ gaps outer 6
 exec_always --no-startup-id pgrep "playerctl-follo" || playerctl-follow.sh
 
 # exec_always --no-startup-id feh --bg-center --no-fehbg ~/Pictures/Wallpapers/mountain_peak_bw_156929_1920x1080.jpg
-# exec_always --no-startup-id feh --bg-center --no-fehbg "$HOME/Pictures/Wallpapers/subway_railway_rails_1003616_1920x1080.jpg"
+exec_always --no-startup-id feh --bg-fill --no-fehbg "$HOME/Pictures/Wallpapers/Paintings/oliver-wetter-abandoned-millenium-falcon-at-sierra-nevada.jpg"
 
 # Start the polkit agent to allow GUI editors to modify system-wide config files
 exec --no-startup-id polkit-dumb-agent

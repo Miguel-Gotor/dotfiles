@@ -30,6 +30,10 @@ export XDG_STATE_HOME="$HOME/.local/state"
 # Dont store "less" history
 export LESSHISTFILE=/dev/null
 
+# Override OMZ defaults
+export HISTSIZE=100000
+export SAVEHIST=$HISTSIZE
+
 # Clean up according to XDG BDS
 export HISTFILE="$XDG_STATE_HOME/zsh/history"
 export ZDOTDIR="$HOME/.config/zsh"

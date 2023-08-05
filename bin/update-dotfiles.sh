@@ -1,7 +1,9 @@
 #!/bin/sh
-
-# Ensures the script is executed from the correct location
+# Ensure the script is executed from $HOME
 cd "$HOME" || exit
+
+# Use relative paths to prevent the "--parents" option from copying unnnecesary
+# parent directories (/home/user/...) while preserving directory structure:
 
 cp --parents -u "./.config/Code - OSS/User/settings.json" "./dotfiles"
 cp --parents -ru "./.config/cava" "./dotfiles"

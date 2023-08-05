@@ -10,14 +10,13 @@
   border-radius: 5px;
 }
 
-
 * {
     animation-delay: 0ms !important;
     animation-duration: 0ms !important;
-    transition: none !important;
+    /*transition: none !important;*/
 }
+*/
 
-/*
 .notransition {
   -webkit-transition: none !important;
   -moz-transition: none !important;
@@ -25,3 +24,4 @@
   transition: none !important;
 }
 */
+
