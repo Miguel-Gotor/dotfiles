@@ -47,7 +47,6 @@ set incsearch
 set ignorecase
 
 " Override the ignorecase option if searching for capital letters.
-" This will allow you to search specifically for capital letters.
 set smartcase
 
 " Show partial command you type in the last line of the screen.
@@ -86,9 +85,8 @@ map <F8> :w <CR> :!clear;gcc -Wall -Wextra % -o %< && ./%< <CR>
 "map <F7> :w <CR> :!clear;gcc -Wall -Wextra % -o %< <CR>
 "map <F6> :w <CR> :!clear;gcc -Wall -Wextra % -o /dev/null <CR>
 
-" Status line -----------------------------------------------------------------
-
-" Always display the status bar.
+" Status line From Matjaž (https://github.com/TheMatjaz) ---------------------
+" Always display the status bar
 set laststatus =2
 
 function! Capitalize(string)
@@ -116,23 +114,24 @@ set statusline +=%f
 " Flag for modified file.
 set statusline +=%m
 
-" Padding, empty space in the middle.
+" Padding, empty space in the miiddle
 set statusline+=%=
 
 " File type, encoding and end of line format
 set statusline +=\ %Y
 set statusline +=\ \|\ %{toupper(&fileencoding?&fileencoding:&encoding)}
 set statusline +=\ \|\ %{Capitalize(&fileformat)}
-" Current line and column number.
+" Current line and column number
 set statusline +=\ \|\ %l:%c
-" Total lines in file.
+" Total lines in file
 set statusline +=\ \|\ Lines:\ %L
-" Time and date.
+" Time and date
 set statusline +=\ \|\ %{strftime('%a\ %d\ %b,\ %H:%M:%S')}
-" Final space on the right side of the screen.
+" Final space on the right side of the screen
 set statusline +=\ 
 
-" Ignore files matching these patterns when opening files based on a glob pattern.
+" Ignore files matching these patterns when opening files based on a glob 
+" pattern
 set wildignore +=*.pyc  " Python bytecode
 set wildignore +=*.swp  " Vim swap files
 set wildignore +=*.bak  " Generic backup files

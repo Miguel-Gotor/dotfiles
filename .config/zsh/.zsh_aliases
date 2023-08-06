@@ -5,7 +5,6 @@ alias ali='$EDITOR $ZDOTDIR/.zsh_aliases'
 alias log='$EDITOR $HOME/Documents/Linux/Notes/arch.txt'
 alias open='xdg-open'
 
-alias r='ranger'
 alias p='sudo pacman'
 
 # Quicky edit config files

@@ -1,7 +1,7 @@
 # ~/.profile
 # Executed by the command interpreter for login shells.
 # Sourced by LightDM by default, even when the login shell is ZSH
-# However a ZSH login shell will source ~/.zprofile (symlinked to this this file)
+# However the ZSH login shell sources ~/.zprofile (symlinked to this this file)
 
 # Setting all these here makes them available to ttys
 
@@ -57,3 +57,4 @@ export EDITOR="vim"
 export BROWSER="firefox-developer-edition"
 export TERMINAL="kitty"
 export READER="zathura"
+export OPENER='rifle'

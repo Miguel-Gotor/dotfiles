@@ -13,8 +13,7 @@ gaps outer 6
 # exec_always --no-startup-id pgrep -x "inotify-mpris" || inotify-mpris
 exec_always --no-startup-id pgrep "playerctl-follo" || playerctl-follow.sh
 
-# exec_always --no-startup-id feh --bg-center --no-fehbg ~/Pictures/Wallpapers/mountain_peak_bw_156929_1920x1080.jpg
-exec_always --no-startup-id feh --bg-fill --no-fehbg "$HOME/Pictures/Wallpapers/Paintings/oliver-wetter-abandoned-millenium-falcon-at-sierra-nevada.jpg"
+exec_always --no-startup-id feh --bg-center --no-fehbg ~/Pictures/Wallpapers/BW/subway_railway_rails_1003616_1920x1080.jpg
 
 # Start the polkit agent to allow GUI editors to modify system-wide config files
 exec --no-startup-id polkit-dumb-agent
@@ -164,7 +163,7 @@ bindsym $mod+r mode "RESIZE"
 bindsym $mod+Control+Left workspace prev
 bindsym $mod+Control+Right workspace next
 
-## MY BYNDSYMS #
+# MY BYNDSYMS -----------------------------------------------------------------
 
 # AUDIO
 # Use pactl to adjust volume in PulseAudio.
@@ -179,7 +178,7 @@ set $refresh_i3status killall -SIGUSR1 i3status
 
 # 2) Keyboard-agnostic + POSIX-compliant scripts in $HOME/bin
 
-## PAPLAY
+# PAPLAY
 # Decrease vol.
 bindsym $mod+KP_Add exec --no-startup-id change-volume.sh -1
 # Increase vol.
@@ -187,7 +186,7 @@ bindsym $mod+KP_Subtract exec --no-startup-id change-volume.sh +1
 # Mute
 bindsym $mod+m  --release exec --no-startup-id mute-audio.sh
 
-## MPRIS
+# MPRIS
 # Play/Pause
 bindsym $mod+space --release exec --no-startup-id mpris-play-pause.sh
 # Next
@@ -195,18 +194,20 @@ bindsym $mod+period --release exec --no-startup-id playerctl next
 # Previous
 bindsym $mod+comma --release exec --no-startup-id playerctl previous
 
-## OTHER
+# OTHER
 bindsym $mod+y exec --no-startup-id browse-yt-playlists.sh
 # dmenu immediately gains focus and captures input so no need for --release
 bindsym $mod+s exec dmenu-search.sh
 # Lock session
-bindsym $mod+l  --release exec --no-startup-id "i3lock -c 000000"
+bindsym $mod+l --release exec --no-startup-id "i3lock -c 000000"
 # Calendar with current date highlighted
-bindsym $mod+c  --release exec --no-startup-id calendar.sh
+bindsym $mod+c --release exec --no-startup-id calendar.sh
+# Open a new workspace
+bindsym $mod+t exec --no-startup-id new-workspace.sh
 
 # XRANDR
 # Night mode
-bindsym $mod+n  --release exec --no-startup-id night-light.sh
+bindsym $mod+n --release exec --no-startup-id night-light.sh
 # Adjust brightness (not the best way to to this. Should use xbacklight)
 bindsym $mod+KP_Multiply exec --no-startup-id adjust-brightness.sh 0.1
 bindsym $mod+KP_Divide  exec --no-startup-id adjust-brightness.sh -0.1
@@ -229,6 +230,7 @@ focus_on_window_activation focus
 
 assign [class="MATLAB R2022b - academic use" instance="sun-awt-X11-XFramePeer"] MATLAB
 assign [class="MATLAB R2022b" instance="Matlab-GLEE"] SIMULINK
+assign [class="feh" instance="feh"] IMG
 
 # i3bar
 # i3status generates status bar to use with i3bar
