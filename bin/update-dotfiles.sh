@@ -1,4 +1,5 @@
 #!/bin/sh
+# Update local git repo by copying those files that have changed
 # Ensure the script is executed from $HOME
 cd "$HOME" || exit
 
@@ -29,3 +30,4 @@ cp --parents -ru "./bin" "./dotfiles"
 cp --parents -ru "./Pictures/Wallpapers" "./dotfiles"
 cp --parents -ru "./.profile" "./dotfiles"
 cp --parents -ru "./.mozilla/firefox/hl9gcn50.default-release/chrome/userChrome.css" "./dotfiles"
+echo "dotfiles updated"
