@@ -13,7 +13,7 @@ gaps outer 6
 # exec_always --no-startup-id pgrep -x "inotify-mpris" || inotify-mpris
 exec_always --no-startup-id pgrep "playerctl-follo" || playerctl-follow.sh
 
-exec_always --no-startup-id feh --bg-center --no-fehbg ~/Pictures/Wallpapers/BW/subway_railway_rails_1003616_1920x1080.jpg
+exec_always --no-startup-id xwallpaper --zoom $HOME/Pictures/current-wallpaper
 
 # Start the polkit agent to allow GUI editors to modify system-wide config files
 exec --no-startup-id polkit-dumb-agent
@@ -21,22 +21,8 @@ exec --no-startup-id polkit-dumb-agent
 # Set keyboard rate
 exec_always --no-startup-id xset r rate 200 60
 
-# Font for window titles. Default bar font.
-# font pango:monospace 8
-font pango:DejaVu Sans Mono 17
-# This font is widely installed, provides lots of unicode glyphs, right-to-left
-# text rendering and scalability on retina/hidpi displays (thanks to pango).
-# font pango:DejaVu Sans Mono 8
-
-# The combination of xss-lock, nm-applet and pactl is a popular choice, so
-# they are included here as an example. Modify as you see fit.
-# xss-lock grabs a logind suspend inhibit lock and will use i3lock to lock the
-# screen before suspend. Use loginctl lock-session to lock your screen.
-# exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
-
-# NetworkManager is the most popular way to manage wireless networks on Linux,
-# and nm-applet is a desktop environment-independent system tray GUI for it.
-# exec --no-startup-id nm-appleti
+font pango:monospace 8
+# font pango:DejaVu Sans Mono 17
 
 exec_always --no-startup-id picom
 
@@ -89,7 +75,7 @@ bindsym $mod+space focus mode_toggle
 # focus the child container
 #bindsym $mod+d focus child
 
-# WORKSPACES #
+# WORKSPACES ------------------------------------------------------------------
 
 # Return to previous workspace by pressing the same key
 workspace_auto_back_and_forth yes
@@ -232,10 +218,10 @@ assign [class="MATLAB R2022b - academic use" instance="sun-awt-X11-XFramePeer"] 
 assign [class="MATLAB R2022b" instance="Matlab-GLEE"] SIMULINK
 assign [class="feh" instance="feh"] IMG
 
-# i3bar
+# I3BAR -----------------------------------------------------------------------
 # i3status generates status bar to use with i3bar
 bar {
-    status_command i3status --config ~/.config/i3status/conf
+    status_command i3status --config "$XDG_CONFIG_HOME/i3status/conf"
     
     # status_command i3blocks
     # status_command prepend-i3status.sh
@@ -269,5 +255,3 @@ bar {
         urgent_workspace   #F0000F #000000 #FFFFFF  
 	}
 }
-
-
