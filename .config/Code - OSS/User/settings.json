@@ -46,5 +46,6 @@
     "window.restoreWindows": "none",
     "terminal.integrated.enablePersistentSessions": false,
     "terminal.integrated.persistentSessionReviveProcess": "never",
-    "workbench.startupEditor": "none"
+    "workbench.startupEditor": "none",
+    "explorer.confirmDelete": false
 }
