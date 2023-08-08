@@ -12,13 +12,14 @@ PATH="$HOME/.local/bin:$PATH"
 # PATH="/usr/local/texlive/2023/bin/x86_64-linux:$PATH"
 
 # XDG Base Directory Specification
-export XDG_CONFIG_HOME="$HOME/.config"
-export XDG_CACHE_HOME="$HOME/.cache"
-export XDG_DATA_HOME="$HOME/.local/share"
-export XDG_STATE_HOME="$HOME/.local/state"
-
-# This one is already defined in Arch. Trying to overwrite, even with the same value, causes a infinite login loop on LightDM.
-# export XDG_RUNTIME_DIR="/run/user/$UID"
+# Moved to: "etc/security/pam_env.conf" to make them available to the LightDM
+# xsession wrapper script. This way we can manually config the display manager
+# to honor de default XDG dirs, forcing to check XDG_CONFIG_HOME.
+# 
+# export XDG_CONFIG_HOME="$HOME/.config"
+# export XDG_CACHE_HOME="$HOME/.cache"
+# export XDG_DATA_HOME="$HOME/.local/share"
+# export XDG_STATE_HOME="$HOME/.local/state"
 
 # Dont store "less" history
 export LESSHISTFILE=/dev/null
