@@ -1,0 +1,20 @@
+#!/bin/sh
+
+# Set keyboard rate
+xset r rate 200 60
+
+# Start compositor
+picom &
+
+# Execute custom script to monitor updates in currently playing media if it's not already running
+# pgrep -x "inotify-mpris" || inotify-mpris
+
+# Execute custom script to follow playerctl changes
+pgrep "playerctl-follo" || playerctl-follow.sh
+
+# Set wallpaper
+xwallpaper --zoom $HOME/Pictures/current-wallpaper
+
+# Start the polkit agent to allow GUI editors to modify system-wide config files
+polkit-dumb-agent &
+
