@@ -7,24 +7,8 @@ for_window [class="^.*"] border pixel 0
 gaps inner 12
 gaps outer 6
 
-# Set wallpaper
-
-# Execute custom script to monitor updates in currently playing media if it's not already running
-# exec_always --no-startup-id pgrep -x "inotify-mpris" || inotify-mpris
-exec_always --no-startup-id pgrep "playerctl-follo" || playerctl-follow.sh
-
-exec_always --no-startup-id xwallpaper --zoom $HOME/Pictures/current-wallpaper
-
-# Start the polkit agent to allow GUI editors to modify system-wide config files
-exec --no-startup-id polkit-dumb-agent
-
-# Set keyboard rate
-exec_always --no-startup-id xset r rate 200 60
-
 font pango:monospace 8
 # font pango:DejaVu Sans Mono 17
-
-exec_always --no-startup-id picom
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
