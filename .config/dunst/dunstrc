@@ -132,6 +132,7 @@
     font = IPAPGothic 13
     # font = Cantarell 12
     # font = IPAexGothic 12
+    # font = Iosevka Bold Extended 13
 
     # The spacing between lines.  If the height is smaller than the
     # font height, it will get raised to the font height.
@@ -184,7 +185,7 @@
     # Show age of message if message is older than show_age_threshold
     # seconds.
     # Set to -1 to disable.
-    show_age_threshold = 60
+    show_age_threshold = -1
 
     # Specify where to make an ellipsis in long lines.
     # Possible values are "start", "middle" and "end".
@@ -200,7 +201,7 @@
     hide_duplicate_count = false
 
     # Display indicators for URLs (U) and actions (A).
-    show_indicators = yes
+    show_indicators = no
 
     ### Icons ###
 
@@ -232,7 +233,7 @@
 
     # Should a notification popped up from history be sticky or timeout
     # as if it would normally do.
-    sticky_history = yes
+    sticky_history = no
 
     # Maximum amount of notifications kept in history
     history_length = 20
@@ -240,8 +241,10 @@
     ### Misc/Advanced ###
 
     # dmenu path.
-    dmenu = /usr/bin/dmenu -p dunst:
-
+    # dmenu = /usr/bin/dmenu -p dunst -i -b -fn 'Dejavu Sans Book:size=11'
+    # dmenu = /usr/bin/dmenu -p dunst -i -b -fn 'Dejavu Sans Book:size=11' -nb '#000000'
+    dmenu = /usr/bin/dmenu -i -p "Choose a playlist:" -b -fn 'Dejavu Sans Book:size=11' 
+    
     # Browser for opening urls in context menu.
     browser = /usr/bin/xdg-open
 
@@ -304,9 +307,12 @@
     # * context_all: Open context menu for all notifications.
     # These values can be strung together for each mouse event, and
     # will be executed in sequence.
-    mouse_left_click = close_current
-    mouse_middle_click = do_action, close_current
-    mouse_right_click = close_all
+    mouse_left_click = do_action, open_url
+    mouse_middle_click = none
+    mouse_right_click = none
+ 
+    # history = "Mod4+h"
+    # close = ctrl+shift+period
 
 # Experimental features that may or may not work correctly. Do not expect them
 # to have a consistent behaviour across releases.
@@ -432,10 +438,9 @@
 #    summary = "foobar"
 #    skip_display = true
 
-#[history-ignore]
-#    # This notification will not be saved in history
-#    summary = "foobar"
-#    history_ignore = yes
+[history-ignore]
+summary = "foobar"
+history_ignore = yes
 
 #[skip-display]
 #    # This notification will not be displayed, but will be included in the history
@@ -465,7 +470,6 @@
 #[stack-volumes]
 #    appname = "some_volume_notifiers"
 #    set_stack_tag = "volume"
-
 
 #
 # vim: ft=cfg
