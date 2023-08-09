@@ -1,6 +1,11 @@
 #!/bin/sh
 # mpris-play-pause.sh
-# Play and resume player using playerctl, and notify the current status along basic metadata
+# Play and resume player using playerctl
+# Share tag with other MPRIS notifications since they all carry the same info
+# Notify the current status along basic metadata
+# Lazy eval:
+# If it was "Playing", it has been paused: dull color
+# If it was "Paused", it is now playing: bright color
 
 msg_tag="mpris"
 
@@ -11,17 +16,11 @@ if playerctl_status="$(playerctl status 2>/dev/null)"; then
     # Retrieve metadata
     artist="$(playerctl metadata artist)"
     title="$(playerctl metadata title)"
-    
-    # Album cover art thumbnail
     icon="$(playerctl metadata mpris:artUrl)"
 
-    # Lazy evaluation
     [ "$playerctl_status" = "Playing" ] &&
-        # If "Playing," execute the 1st cmd, and skip the 2nd
         # Light gray
-        body="<span  color='#A6A6A6' font='18px'>"$title"</span>" \
-        ||
-        # If "Paused" skip the 1st cmd, execute the 2nd.
+        body="<span  color='#A6A6A6' font='18px'>"$title"</span>" ||
         # Yellow
         body="<span  color='#0FFFFF' font='18px'>"$title"</span>"
 
