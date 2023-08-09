@@ -1,9 +1,8 @@
 #!/bin/sh
 # Update local git repo by copying those files that have changed
-# Ensure the script is executed from $HOME
+# Ensure the script is executed from $HOME, and exits on any error
 set -e
 cd "$HOME" || exit
-
 
 dotfiles_dir="./dotfiles"
 
@@ -36,11 +35,8 @@ cp --parents -ru "./.profile" $dotfiles_dir
 cp --parents -ru "./.mozilla/firefox/hl9gcn50.default-release/chrome/userChrome.css" $dotfiles_dir
 
 # System-wide config files worth tracking.
-# Not dotfiles per se, but modified to make LightDM XDG BDS compliant
+# Not dotfiles per se, but modified to make LightDM XDG-BDS compliant
 cp --parents -ru "/etc/lightdm/Xsession" $dotfiles_dir
 cp --parents -ru "/etc/security/pam_env.conf" $dotfiles_dir
 
 echo "dotfiles updated"
-$TERMINAL --working-directory $dotfiles_dir
-
-
