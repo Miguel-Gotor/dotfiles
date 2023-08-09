@@ -163,6 +163,9 @@ bindsym $mod+space --release exec --no-startup-id mpris-play-pause.sh
 bindsym $mod+period --release exec --no-startup-id playerctl next
 # Previous
 bindsym $mod+comma --release exec --no-startup-id playerctl previous
+bindsym $mod+minus --release exec --no-startup-id notify-metadata-simple.sh
+bindsym $mod+p --release exec --no-startup-id dbus-focus-player.sh
+
 
 # OTHER
 bindsym $mod+y exec --no-startup-id browse-yt-playlists.sh
