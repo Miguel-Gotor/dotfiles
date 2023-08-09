@@ -194,7 +194,6 @@ gradient_color_1 = '#cc0099' # Purple
 # DEPRECATED as of 0.8.0, use noise_reduction instead
 ; gravity = 100
 
-
 # In bar height, bars that would have been lower that this will not be drawn.
 # DEPRECATED as of 0.8.0
 ; ignore = 0
