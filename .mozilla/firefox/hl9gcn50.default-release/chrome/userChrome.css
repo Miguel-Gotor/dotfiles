@@ -18,33 +18,10 @@
 }
 */
 
-/* Disable tab opening animation */
-@-moz-document url("about:blank") {
-  .tabbrowser-tab[pending] {
-    transform: scale(1) !important;
-    animation: none !important;
-  }
-}
-
-/* Disable tab closing animation */
-@-moz-document url("about:blank") {
-  .tabbrowser-tab[fadein] {
-    animation: none !important;
-    opacity: 1 !important;
-  }
-
-  .tabbrowser-tab[fadeout] {
-    animation: none !important;
-    opacity: 0 !important;
-  }
-}
-
-/*
+/* Disable Fullscreen Transition */
 .notransition {
   -webkit-transition: none !important;
   -moz-transition: none !important;
   -o-transition: none !important;
   transition: none !important;
 }
-*/
-
