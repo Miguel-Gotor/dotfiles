@@ -8,11 +8,10 @@
 # If it was "Paused", it is now playing: bright color
 
 msg_tag="mpris"
-
+playerctl play-paus
 if playerctl_status="$(playerctl status 2>/dev/null)"; then
 
-    playerctl play-pause
-
+    pkill -SIGRTMIN+2 i3blocks
     # Retrieve metadata
     artist="$(playerctl metadata artist)"
     title="$(playerctl metadata title)"
