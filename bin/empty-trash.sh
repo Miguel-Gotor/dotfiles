@@ -1,0 +1,16 @@
+#!/bin/sh
+# empty-trash.sh
+# Empty trash if any
+
+# Unique identifier (name of the script for example)
+msg_tag=$(basename $0)
+
+trash_dir="$XDG_DATA_HOME/Trash"
+files=$(ls -A1 $trash_dir/files  2>/dev/null) && \
+   (rm -rf $trash_dir/* & \
+   paplay /usr/share/sounds/freedesktop/stereo/trash-empty.oga & \
+   dunstify -i /usr/share/icons/ePapirus-Dark/24x24/actions/trash-empty.svg "Deleting files:" "\n$files") || \
+   (dunstify -i /usr/share/icons/ePapirus-Dark/24x24/actions/trash-empty.svg \
+   -h "string:x-dunst-stack-tag:$msg_tag" "Trash is already empty" \
+   & paplay /usr/share/sounds/Yaru/stereo/dialog-warning.oga)
+  
