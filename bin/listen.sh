@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+# By Jonathan Hartley
+# https://stackoverflow.com/users/10176/jonathan-hartley
+# Directs audio input (e.g. mic) to audio output (e.g. speakers),
+# then sleeps forever. Stops audio redirection when it is killed.
+
+set -e
+module=$(pactl load-module module-loopback latency_msec=10)
+
+function cleanup {
+  pactl unload-module $module
+}
+
+trap cleanup EXIT
+sleep infinity
