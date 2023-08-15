@@ -5,8 +5,6 @@ alias ali='$EDITOR $ZDOTDIR/.zsh_aliases'
 alias log='$EDITOR $HOME/Documents/Linux/Notes/arch.txt'
 alias open='xdg-open'
 
-alias p='sudo pacman'
-
 # Quicky edit config files
 alias piconf='$EDITOR $XDG_CONFIG_HOME/picom/picom.conf'
 alias i3conf='$EDITOR $XDG_CONFIG_HOME/i3/config'
@@ -28,7 +26,10 @@ alias c='printf "\033c"'
 alias e='exit'
 alias o='nohup pcmanfm . &> /dev/null & disown'
 alias k='kitty +kitten icat $1'
+alias v='vim'
+alias p='sudo pacman'
 
+# Customize xterm look
 alias xt='xterm -fa 'Hack' -fs 11 zsh &> /dev/null &disown'
 
 # Add verbosity
@@ -40,9 +41,14 @@ alias cp='cp -iv'
 alias rm='rm -i --preserve-root'      	
 
 alias hl='highlight --out-format=ansi'
-alias et='rm -rf ~/.local/share/Trash/*' # Empty user trash
 alias fp='ps -e | grep $1'               # Find Proccess
 alias hs='history | grep $@'
+
+alias ga='git add -v'
+alias gs='git status'
+alias gp='git push'
+alias gc='git commit -v'
+alias gd='git diff'
 
 # Mount and switch to other volumes
 alias win='sudo mount /dev/sda2 /mnt/Windows10 && cd /mnt/Windows10'
