@@ -77,6 +77,9 @@ set autoread
 " Paste with the mouse wheel
 noremap! <s-insert> <middlemouse>
 
+" Run shell script
+map <F6> :w <CR> :!clear;% <CR>
+
 " Press F5 to run Python script
 map <F5> <Esc>:w<CR>:!clear;python %<CR>
 
