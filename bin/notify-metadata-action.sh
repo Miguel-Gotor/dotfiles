@@ -2,8 +2,8 @@
 # notify-metadata-action.sh
 # Should be called on player metadata update
 # Share tag with other MPRIS notifications since they all carry the same info
-# Click notification to "raise" (focus) the current player
-# Lazy eval: If notification is clicked, send dbus method call
+# Click notification to "raise" (focus) the current player via dbus method call
+# Lazy eval: If notification is clicked, do the thing
 # Else, exit with 0 code.
 
 [  "$(dunstify -A 0,OPEN \

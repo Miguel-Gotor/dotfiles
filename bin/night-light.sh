@@ -2,7 +2,8 @@
 # night-light.sh
 # Reduce blue gamma for nightly usage using xrandr
 # Unique identifier (name of the script for example)
-msg_tag=$0
+
+msg_tag=$(basename $0)
 current_gamma=$(xrandr --verbose | awk '/Gamma/ {print $2}')
 blue_gamma=${current_gamma##*:}
 
