@@ -1,5 +1,6 @@
 # I3 CONFIG
 
+# Windows Key
 set $mod Mod4
 
 for_window [class="^.*"] border pixel 0
@@ -7,14 +8,20 @@ for_window [class="^.*"] border pixel 0
 gaps inner 12
 gaps outer 6
 
-font pango:monospace 8
-# font pango:DejaVu Sans Mono 17
+#font pango:monospace 8
+font pango:DejaVu Sans Mono 17
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 
+bindsym $mod+plus gaps inner current plus 5
+bindsym $mod+dead_grave gaps inner current minus 5
+
 # Launch terminal
-bindsym $mod+Return exec $TERMINAL
+bindsym $mod+Return --release exec $TERMINAL
+
+# Launch browser
+bindsym $mod+b exec $BROWSER 
 
 # Kill focused window
 bindsym $mod+Shift+q kill
@@ -41,7 +48,7 @@ bindsym $mod+h split h
 bindsym $mod+v split v
 
 # Fullscreen focused window
-bindsym $mod+f fullscreen toggle
+bindsym F11 fullscreen toggle
 
 # Change container layout (stacked, tabbed, toggle split)
 # bindsym $mod+s layout stacking
@@ -89,51 +96,37 @@ bindsym $mod+8 workspace number $ws8
 bindsym $mod+9 workspace number $ws9
 bindsym $mod+0 workspace number $ws10
 
-# Move focused container to workspace
-bindsym $mod+Shift+1 move container to workspace number $ws1
-bindsym $mod+Shift+2 move container to workspace number $ws2
-bindsym $mod+Shift+3 move container to workspace number $ws3
-bindsym $mod+Shift+4 move container to workspace number $ws4
-bindsym $mod+Shift+5 move container to workspace number $ws5
-bindsym $mod+Shift+6 move container to workspace number $ws6
-bindsym $mod+Shift+7 move container to workspace number $ws7
-bindsym $mod+Shift+8 move container to workspace number $ws8
-bindsym $mod+Shift+9 move container to workspace number $ws9
-bindsym $mod+Shift+0 move container to workspace number $ws10
+# Move focused container to workspace & immediately follow it
+bindsym $mod+Shift+1 move container to workspace number $ws1; workspace number $ws1;
+bindsym $mod+Shift+2 move container to workspace number $ws2; workspace number $ws2;
+bindsym $mod+Shift+3 move container to workspace number $ws3; workspace number $ws3;
+bindsym $mod+Shift+4 move container to workspace number $ws4; workspace number $ws4;
+bindsym $mod+Shift+5 move container to workspace number $ws5; workspace number $ws5;
+bindsym $mod+Shift+6 move container to workspace number $ws6; workspace number $ws6;
+bindsym $mod+Shift+7 move container to workspace number $ws7; workspace number $ws7;
+bindsym $mod+Shift+8 move container to workspace number $ws8; workspace number $ws8;
+bindsym $mod+Shift+9 move container to workspace number $ws9; workspace number $ws9;
+bindsym $mod+Shift+0 move container to workspace number $ws10; workspace number $ws10;
 
 # Reload the configuration file
 bindsym $mod+Shift+c reload
 # Restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod+Shift+r restart
 # Exit i3 (logs you out of your X session)
-bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
-
-# Resize window (you can also use the mouse for that)
-mode "RESIZE" {
-        # These bindings trigger as soon as you enter the resize mode
-
-        # Pressing left will shrink the window's width.
-        # Pressing right will grow the window's width.
-        # Pressing up will shrink the window's height.
-        # Pressing down will grow the window's height.
-
-        bindsym Left resize shrink width 10 px or 10 ppt
-        bindsym Down resize grow height 10 px or 10 ppt
-        bindsym Up resize shrink height 10 px or 10 ppt
-        bindsym Right resize grow width 10 px or 10 ppt
-
-        # back to normal: Enter or Escape or $mod+r
-        bindsym Return mode "default"
-        bindsym Escape mode "default"
-        bindsym $mod+r mode "default"
-}
-
-bindsym $mod+r mode "RESIZE"
-
-bindsym $mod+Control+Left workspace prev
-bindsym $mod+Control+Right workspace next
+bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes' 'i3-msg exit'"
 
 # MY BYNDSYMS -----------------------------------------------------------------
+
+bindsym $mod+v --release exec $TERMINAL -e cava
+bindsym $mod+q --release exec $TERMINAL -e qalc
+
+
+# Reset default gap sizes
+bindsym $mod+r gaps inner all set 12; gaps outer all set 6;
+
+# Switch to adjacent workspaces
+bindsym $mod+Control+Left workspace prev
+bindsym $mod+Control+Right workspace next
 
 # AUDIO
 # Use pactl to adjust volume in PulseAudio.
@@ -163,22 +156,27 @@ bindsym $mod+space --release exec --no-startup-id mpris-play-pause.sh
 bindsym $mod+period --release exec --no-startup-id playerctl next
 # Previous
 bindsym $mod+comma --release exec --no-startup-id playerctl previous
-bindsym $mod+minus --release exec --no-startup-id notify-metadata-simple.sh
+# Notify metadata
+bindsym $mod+minus --release exec --no-startup-id notify-metadata.sh
+# Focus current player
 bindsym $mod+p --release exec --no-startup-id dbus-focus-player.sh
-
 
 # OTHER
 bindsym $mod+y exec --no-startup-id browse-yt-playlists.sh
 # dmenu immediately gains focus and captures input so no need for --release
 bindsym $mod+s exec dmenu-search.sh
 # Lock session
-bindsym $mod+l --release exec --no-startup-id "i3lock -c 000000"
-# Calendar with current date highlighted
+bindsym $mod+l --release exec --no-startup-id lock-screen.sh
+# Show current date highlighted
 bindsym $mod+c --release exec --no-startup-id calendar.sh
 # Open a new workspace
 bindsym $mod+t exec --no-startup-id new-workspace.sh
+# Empty trash
+bindsym $mod+Shift+t --release exec --no-startup-id empty-trash.sh
+# Update i3blocks Caps Lock blocklet
+bindsym --release Caps_Lock exec pkill -SIGRTMIN+1 i3blocks
 
-# XRANDR
+# XRANDR ----------------------------------------------------------------------
 # Night mode
 bindsym $mod+n --release exec --no-startup-id night-light.sh
 # Adjust brightness (not the best way to to this. Should use xbacklight)
@@ -186,53 +184,53 @@ bindsym $mod+KP_Multiply exec --no-startup-id adjust-brightness.sh 0.1
 bindsym $mod+KP_Divide  exec --no-startup-id adjust-brightness.sh -0.1
 
 # IMAGE
-# scrot is generally faster than maim for taking screenshots, especially when capturing the entire screen
 bindsym Print --release exec --no-startup-id full-screenshot.sh
-# but scrot glitches when selection mode is used with refreshing windows, so maim is preferable
-# bindsym $mod+Shift+s exec "maim -s | xclip -selection clipboard -t image/png; dunstify 'Snippet copied to clipboard' && paplay /usr/share/sounds/freedesktop/stereo/message.oga"
-bindsym $mod+Shift+s exec --no-startup-id area-screenshot.sh
+bindsym $mod+Shift+s --release exec --no-startup-id area-screenshot.sh
+
+# MORE CONFIGS ----------------------------------------------------------------
 
 # Specific window configs
-for_window [class="Tk" instance="tk"] floating enable
-for_window [class="Matplotlib" instance="matplotlib"] floating enable
-for_window [class="MATLAB R2022b - academic use" instance="sun-awt-X11-XFramePeer"] floating enable
-for_window [class="MATLABWindow" instance="MATLABWindow"] floating enable
+# for_window [class="Tk" instance="tk"] floating enable
+# for_window [class="Matplotlib" instance="matplotlib"] floating enable
+# for_window [class="MATLAB R2022b - academic use" instance="sun-awt-X11-XFramePeer"] floating enable
+# for_window [class="MATLABWindow" instance="MATLABWindow"] floating enable
 
-# Auto Switch to new (urgent) workspaces
+# Assign programs to specific workspaces
+assign [class="firefoxdeveloperedition" instance="Navigator"] " Browse"
+assign [class="code-oss" instance="code-oss"] " Code"
+
+# assign [class="MATLAB R2022b - academic use" instance="sun-awt-X11-XFramePeer"] MATLAB
+# assign [class="MATLAB R2022b" instance="Matlab-GLEE"] SIMULINK
+
+# Focus newly created workspaces
 focus_on_window_activation focus
-
-assign [class="MATLAB R2022b - academic use" instance="sun-awt-X11-XFramePeer"] MATLAB
-assign [class="MATLAB R2022b" instance="Matlab-GLEE"] SIMULINK
-assign [class="feh" instance="feh"] IMG
+# Focus urgent workspaces
+for_window [urgent="latest"] focus
 
 # I3BAR -----------------------------------------------------------------------
 # i3status generates status bar to use with i3bar
 bar {
-    status_command i3status --config "$XDG_CONFIG_HOME/i3status/conf"
-    
-    # status_command i3blocks
+    # 3 options:
+    # status_command i3status --config "$XDG_CONFIG_HOME/i3status/conf" 
+    status_command i3blocks
     # status_command prepend-i3status.sh
+
+    font pango: JetBrains Mono Bold 11
+    # font pango: Iosevka Bold Extended 12
 
     # font pango: Mono 11
     # font pango: Mono Bold 11
 
-    font pango: JetBrains Mono Bold 11
-
     # font pango: Hack Bold 11
     # font pango: Hack 11
-    
-    # font pango: IPAPGothic 12
-
-    # font pango: IPAPGothic Bold 12
-    
-    # font pango: Lato Bold 12
 
     # font pango: DejaVu Sans Book 11
     # font pango: Sans Bold 11
-    # font pango: DejaVu Sans Mono 11
+    # font pango: DejaVu Sans Bold 11
     
     position top
-	separator_symbol "|"
+    # position bottom
+	separator_symbol "  "
 	colors{
 		separator #00FFFF
         statusline #FFFFFF
