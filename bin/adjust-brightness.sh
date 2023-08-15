@@ -2,12 +2,12 @@
 # adjust-brightness.sh
 # Change monitor brightness to an extent (50% - 150%)
 # TODO: There is room for improvement regarding the responsivity. Too many arithmetic operations, prob can be simplified.
+# Only one instance of the xrandr command for adjusting brightness is executed at a time to avoid race conditions.
 
-# Only one instance of the xrandr command for adjusting brightness is executed at a time. Avoids race conditions.
 pgrep -x xrandr && exit
 
 # Unique identifier (name of the script for example)
-msg_tag=$0
+msg_tag=$(basename $0)
 display="HDMI-1"
 increment="$1"
 
@@ -37,8 +37,5 @@ else
     icon=/usr/share/icons/Papirus-Dark/symbolic/status/display-brightness-off-symbolic.svg
 fi
 
-# Notification
 dunstify -a "adjustBrightness" -i "$icon" -h "string:x-dunst-stack-tag:$msg_tag" \
     -h "int:value:$(($pct_brightness - 50))" "Brightness: $pct_brightness%"
-
-# pkill -SIGRTMIN+8 i3blocks
