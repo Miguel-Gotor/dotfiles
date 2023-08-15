@@ -9,6 +9,7 @@ dotfiles_dir="./dotfiles"
 # Use relative paths to prevent the "--parents" option from copying unnnecesary
 # parent directories (/home/user/...) while preserving directory structure:
 
+
 cp --parents -u "./.config/Code - OSS/User/settings.json" $dotfiles_dir
 cp --parents -ru "./.config/cava" $dotfiles_dir
 cp --parents -ru "./.config/dunst" $dotfiles_dir
@@ -29,6 +30,7 @@ cp --parents -ru "./.config/vim" $dotfiles_dir
 cp --parents -ru "./.config/X11" $dotfiles_dir
 cp --parents -ru "./.config/zsh" $dotfiles_dir
 cp --parents -ru "./.config/wgetrc" $dotfiles_dir
+cp --parents -ru "./.config/lf" $dotfiles_dir
 cp --parents -ru "./bin" $dotfiles_dir
 cp --parents -ru "./Pictures/Wallpapers" $dotfiles_dir
 cp --parents -ru "./.profile" $dotfiles_dir
