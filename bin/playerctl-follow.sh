@@ -8,5 +8,5 @@
 # curl -s $url -o "$temp_file"
 
 playerctl -F metadata mpris:artUrl | while read -r thumbnail; do \
-[ -z "$thumbnail" ] ||  dunstify -i $thumbnail -h "string:x-dunst-stack-tag:"mpris"" \
-"$(playerctl metadata artist)" "\n<span  color='#0FFFFF' font='18px'>$(playerctl metadata title)</span>"; done
+[ -z "$thumbnail" ] || (dunstify -i $thumbnail -h "string:x-dunst-stack-tag:"mpris"" \
+"$(playerctl metadata artist)" "\n<span  color='#0FFFFF' font='18px'>$(playerctl metadata title)</span>" & pkill -SIGRTMIN+3 i3blocks); done
