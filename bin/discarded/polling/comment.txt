@@ -1,1 +1,0 @@
-Discarded because the polling mechanism is inefficient and it will get the script executing indefinitely when no new icon becomes available.
