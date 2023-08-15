@@ -1,13 +1,10 @@
 #!/bin/sh
 # change-volume.sh
 # Change volume using PulseAudio
+
 # Unique identifier (name of the script for example)
-msg_tag=$0
+msg_tag=$(basename $0)
 
-# pactl list sinks | grep '^[[:space:]]Volume:' | \
-#     head -n $(( $SINK + 1 )) | tail -n 1 | sed -e 's,.* \([0-9][0-9]*\)%.*,\1,'
-
-# Shorter alternative:
 curr_volume=$(pactl list sinks | awk '$1 == "Volume:" {gsub(/%/, ""); print $5}')
 new_volume=$((curr_volume + $1))
 
@@ -28,5 +25,7 @@ fi
 
 # Notification
 pactl set-sink-volume @DEFAULT_SINK@ "$new_volume%"
-dunstify -a "changeVolume" -i "$icon" -h "string:x-dunst-stack-tag:$msg_tag" \
+dunstify -i "$icon" -h "string:x-dunst-stack-tag:$msg_tag" \
     -h "int:value:$new_volume" "Volume: ${new_volume}%"
+
+# pkill -SIGRTMIN+9 i3blocks
