@@ -17,3 +17,5 @@ xwallpaper --zoom $HOME/Pictures/current-wallpaper
 
 # Start the polkit agent to allow GUI editors to modify system-wide config files
 polkit-dumb-agent &
+
+unclutter &
