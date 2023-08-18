@@ -118,7 +118,7 @@ bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcu
 # MY BYNDSYMS -----------------------------------------------------------------
 
 bindsym $mod+v --release exec $TERMINAL -e cava
-bindsym $mod+q --release exec $TERMINAL -e qalc
+bindsym $mod+k --release exec $TERMINAL -e qalc
 
 
 # Reset default gap sizes
@@ -174,7 +174,12 @@ bindsym $mod+t exec --no-startup-id new-workspace.sh
 # Empty trash
 bindsym $mod+Shift+t --release exec --no-startup-id empty-trash.sh
 # Update i3blocks Caps Lock blocklet
-bindsym --release Caps_Lock exec pkill -SIGRTMIN+1 i3blocks
+bindsym Caps_Lock --release exec pkill -SIGRTMIN+1 i3blocks
+
+# Set a random wallpaper
+bindsym $mod+w --release exec --no-startup-id xwallpaper --zoom $(find ~/Pictures/Wallpapers -type f | shuf | head -n1)
+# Pick a wallpaper
+bindsym $mod+Shift+w --release exec --no-startup-id find ~/Pictures/Wallpapers -type f | shuf | sxiv - -t
 
 # XRANDR ----------------------------------------------------------------------
 # Night mode
@@ -211,8 +216,8 @@ for_window [urgent="latest"] focus
 # i3status generates status bar to use with i3bar
 bar {
     # 3 options:
-    # status_command i3status --config "$XDG_CONFIG_HOME/i3status/conf" 
-    status_command i3blocks
+    status_command i3status --config "$XDG_CONFIG_HOME/i3status/conf" 
+    # status_command i3blocks
     # status_command prepend-i3status.sh
 
     font pango: JetBrains Mono Bold 11
