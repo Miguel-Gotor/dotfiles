@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Discord
+Exec=xdg-open https://discord.com/channels/@me
+Type=Application
+Icon=discord
+Categories=Network;
+
+# Using Type=Application to make it appear in i3-dmenu-desktop.
+# i3-dmenu-desktop ignores desktop entries with the type "Link,"
+# making them unusable. Executing the URL is a workaround.

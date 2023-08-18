@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=DeepL Translator
+GenericName=Translator
+Icon=translator
+Type=Application
+Exec=xdg-open https://www.deepl.com/translator
+Categories=Translation;Languages;WebBrowser;Network;
+
+# Using Type=Application to make it appear in i3-dmenu-desktop, since
+# i3-dmenu-desktop ignores desktop entries with the type "Link".
+# Executing the URL is a workaround.
