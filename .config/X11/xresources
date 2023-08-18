@@ -1,30 +1,32 @@
-!*.font: xft:Monospace:style=Regular:size=11
-!*.font: xft:'Noto Mono for Powerline':style=Regular:size=11
-!*.font: xft:'Monospace':style=Regular:size=11
-*refreshPeriod: 10
-URxvt*font:  xft:inconsolata:size=11:antialias=true, xft:DejaVu Sans:size=11:antialias=true,xft:Sauce Code Powerline:antialias=true:hinting=true:size=11
-
-URxvt.scrollBar:                false
-!*.scrollBar: false
-
-! special
 *.foreground:   #ffffff
-*.background:   #000000
 *.cursorColor:  #ff00ff
+*.alpha:        0.75
+*.background:   #000000
+*.color4:       #0FFFFF
+*.color5:       #FF00FF
+*.color6:       #FFFF00
 
-*.color4: #0ff
-*.color12: #2ff924
+!! st
+st.font: Hack:size=11:antialias=true:autohint=true
+!! st.font: Hack:size=11:antialias=true:autohint=true:style=Bold
+!! st.font: JetBrainsMono:pixelsize=14:antialias=true:autohint=true:style=Medium
+!! st.font: JetBrainsMono:size=11:antialias=true:autohint=true:style=Bold
 
-! Setting transparency and background                                                                                                                                       
+st.termname: st-256color
+st.borderpx: 10
+st.borderpy: 10
+st.cursorBlink: true
 
-URxvt*depth:      32                                                                                                                                                        
+!! urxvt
+!! 16 ms (~ 60 Hz)
+URxvt.buffered: false
+URxvt.refreshPeriod: 16
+URxvt.font: xft:Monospace:style=Regular:size=11
+URxvt.scrollBar: false
+URxvt.depth:      32                                                                                                                                                        
 URxvt.background: [80]#000000
-
-*TkTheme: Adapta
-
 URxvt.cursorBlink: true
 URxvt.iso14755: false
 URxvt.internalBorder: 12
 URxvt.urgentOnBell: true
-
 
