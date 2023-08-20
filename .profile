@@ -9,7 +9,7 @@
 PATH="$HOME/bin:$PATH"
 PATH="$HOME/.local/bin:$PATH"
 # Add TeX Live 2023 installation path
-# PATH="/usr/local/texlive/2023/bin/x86_64-linux:$PATH"
+PATH="/usr/local/texlive/2023/bin/x86_64-linux:$PATH"
 
 # XDG Base Directory Specification
 # Moved to: "etc/security/pam_env.conf" to make them available to the LightDM
@@ -21,14 +21,20 @@ PATH="$HOME/.local/bin:$PATH"
 # export XDG_DATA_HOME="$HOME/.local/share"
 # export XDG_STATE_HOME="$HOME/.local/state"
 
-# Dont store "less" history
-export LESSHISTFILE=/dev/null
+# History files ---------------------------------------------------------------
 
+# Disable "less" history
+export LESSHISTFILE=/dev/null
+# export PYTHONHISTFILE=/dev/null
 # Override OMZ defaults
 export HISTSIZE=100000
 export SAVEHIST=$HISTSIZE
 
-# Clean up according to XDG BDS
+# Disable Python history
+export PYTHONSTARTUP=$XDG_CONFIG_HOME/python/.pythonrc.py
+
+# Clean up according to XDG BDS -----------------------------------------------
+
 export HISTFILE="$XDG_STATE_HOME/zsh/history"
 export ZDOTDIR="$HOME/.config/zsh"
 export _JAVA_OPTIONS=-Djava.util.prefs.userRoot="$XDG_CONFIG_HOME"/java
@@ -38,7 +44,8 @@ export WGETRC="$XDG_CONFIG_HOME/wgetrc"
 export XINITRC="$XDG_CONFIG_HOME/X11/xinitrc"
 export GTK2_RC_FILES="$XDG_CONFIG_HOME/gtk-2.0/gtkrc"
 
-# Place xauthority file in a runtime directory with restricted access permissions and automatically cleaned up upon session termination
+# Place xauthority file in a runtime directory with restricted access
+# permissions and automatically cleaned up upon session termination
 # This also causes infinite login loop on LightDM, which just won't honor custom XAUTHORITY
 # export XAUTHORITY="$XDG_RUNTIME_DIR/Xauthority"
 # Instead, this has to be add to lightm.conf:
