@@ -4,6 +4,7 @@
 alias ali='$EDITOR $ZDOTDIR/.zsh_aliases'
 alias log='$EDITOR $HOME/Documents/Linux/Notes/arch.txt'
 alias open='xdg-open'
+alias install='install -Dv /dev/null'
 
 # Quicky edit config files
 alias piconf='$EDITOR $XDG_CONFIG_HOME/picom/picom.conf'
@@ -47,7 +48,7 @@ alias hs='history | grep $@'
 alias ga='git add -v'
 alias gs='git status'
 alias gp='git push'
-alias gc='git commit -v'
+alias gc='git commit -v -m'
 alias gd='git diff'
 
 # Mount and switch to other volumes
