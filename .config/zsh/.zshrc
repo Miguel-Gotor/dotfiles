@@ -11,13 +11,13 @@ export ZSH="$XDG_DATA_HOME/oh-my-zsh"
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
 
 # ZSH_THEME="gnzh"
-ZSH_THEME="agnoster"
+# ZSH_THEME="agnoster"
 # ZSH_THEME="miloshadzic"
 # ZSH_THEME="robbyrussell"
 # ZSH_THEME="half-life"
 # ZSH_THEME="kardan"
 
-# ZSH_THEME='mine'
+ZSH_THEME='mine'
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
