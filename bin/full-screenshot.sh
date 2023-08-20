@@ -15,11 +15,12 @@ dunstify \
     -h "string:x-dunst-stack-tag:img" \
     "Taking screenshot..." &
 
-maim -o $file"
+maim -o "$path"
+# scrot "$path"
 
 # Notification
 dunstify \
-    -i $directory/$filename \
+    -i $path \
     -h "string:x-dunst-stack-tag:$msg_tag" \
     "Screenshot saved as:" "$body" \
     "<a href=\"file://$path\"></a>"
