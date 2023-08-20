@@ -1,0 +1,1 @@
+inoremap ;sec \section{}<Left>

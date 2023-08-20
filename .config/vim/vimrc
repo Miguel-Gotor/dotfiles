@@ -72,10 +72,20 @@ set autoread
 " Enable spellchecking.
 " set spell spelllang=en_us
 
+
 " Mappings --------------------------------------------------------------------
+inoremap <C-s> <C-o>:w<CR>
+
+" Reload vimrc
+map <F10> :source $MYVIMRC<CR>:echo "Vimrc reloaded"<CR>
+" Open vimrc
+map <F9> <Esc>:w <CR> :e $MYVIMRC<CR>
 
 " Paste with the mouse wheel
-noremap! <s-insert> <middlemouse>
+" noremap! <s-insert> <middlemouse>
+
+" Compile tex file to PDF using pdflatex
+map <F7> :w <CR> :!clear;pdflatex % <CR>
 
 " Run shell script
 map <F6> :w <CR> :!clear;% <CR>
@@ -159,7 +169,7 @@ set showbreak =↪\
 " set listchars +=trail:•
 " set listchars +=eol:↲
 
-" Follow the XDG base directory specification ---------------------------------
+" XDG base directory specification  -------------------------------------------
 
 set runtimepath^=$XDG_CONFIG_HOME/vim
 set runtimepath+=$XDG_DATA_HOME/vim
