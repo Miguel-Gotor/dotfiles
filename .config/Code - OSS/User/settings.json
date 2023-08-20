@@ -41,7 +41,6 @@
     ],
     "explorer.confirmDragAndDrop": false,
     "debug.terminal.clearBeforeReusing": true,
-    "files.autoSave": "afterDelay",
     "files.autoSaveDelay": 1000,
     "window.restoreWindows": "none",
     "terminal.integrated.enablePersistentSessions": false,
@@ -53,5 +52,8 @@
     "editor.fontLigatures": true,
     "cSpell.ignoreWords": [
         "estart"
-    ]
+    ],
+    "workbench.editorAssociations": {
+        "*.pdf": "latex-workshop-pdf-hook"
+    }
 }
