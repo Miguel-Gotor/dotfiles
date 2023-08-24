@@ -6,7 +6,7 @@ alias log='$EDITOR $HOME/Documents/Linux/Notes/arch.txt'
 alias open='xdg-open'
 alias install='install -Dv /dev/null'
 
-# Quicky edit config files
+# Quickly edit config files
 alias piconf='$EDITOR $XDG_CONFIG_HOME/picom/picom.conf'
 alias i3conf='$EDITOR $XDG_CONFIG_HOME/i3/config'
 alias viconf='$EDITOR $XDG_CONFIG_HOME/vim/vimrc'
@@ -42,7 +42,7 @@ alias cp='cp -iv'
 alias rm='rm -i --preserve-root'      	
 
 alias hl='highlight --out-format=ansi'
-alias fp='ps -e | grep $1'               # Find Proccess
+alias fp='ps -e | grep $1'               # Find Process
 alias hs='history | grep $@'
 
 alias ga='git add -v'
@@ -58,5 +58,5 @@ alias ubu='sudo mount /dev/sda5 /mnt/Ubuntu && cd /mnt/Ubuntu'
 
 alias fort='fortune | cowsay | lolcat'
 
-# Highlight current date in calendar
+# Highlight current date in calendar 
 # alias cal="cal | grep --color -EC6 \"\b\$(date +%e | sed 's/ //g')\b\""
