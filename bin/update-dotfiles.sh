@@ -32,6 +32,7 @@ cp --parents -ru "./.config/wgetrc" $dotfiles_dir
 cp --parents -ru "./.config/lf" $dotfiles_dir
 cp --parents -ru "./bin" $dotfiles_dir
 cp --parents -ru "./Pictures/Wallpapers" $dotfiles_dir
+cp --parents -ru "./Pictures/Screenshots/Ricing" $dotfiles_dir
 cp --parents -ru "./.profile" $dotfiles_dir
 cp --parents -ru "./.mozilla/firefox/hl9gcn50.default-release/chrome/userChrome.css" $dotfiles_dir
 cp --parents -ru "./.local/share/applications" $dotfiles_dir
