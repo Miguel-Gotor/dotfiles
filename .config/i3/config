@@ -21,7 +21,7 @@ bindsym $mod+dead_grave gaps inner current minus 5
 bindsym $mod+Return --release exec $TERMINAL
 
 # Launch browser
-bindsym $mod+b  --release exec $BROWSER 
+bindsym $mod+b --release workspace "<span foreground='#0059FF' size='x-large'></span>"; exec $BROWSER 
 
 # Kill focused window
 bindsym $mod+q kill
@@ -117,10 +117,11 @@ bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcu
 
 # MY BYNDSYMS -----------------------------------------------------------------
 
-bindsym $mod+v --release workspace "<span foreground='#FF00FF' size='x-large'></span>"; exec $TERMINAL -e cava
-# bindsym $mod+v --release workspace " <span size='xx-large'></span> Music"; exec $TERMINAL -e cava
+# bindsym $mod+v --release workspace "<span foreground='#FF00FF' size='x-large'></span>"; exec $TERMINAL -e cava
+bindsym $mod+v --release workspace "<span size='xx-large'></span>"; exec $TERMINAL -e cava
 bindsym $mod+k --release workspace "<span size='x-large' ></span>"; exec $TERMINAL -e qalc
 bindsym $mod+y --release workspace "<span size='x-large' foreground='#FF0000' ></span>"; exec $BROWSER --new-window https://www.youtube.com/
+bindsym $mod+Shift+y --release workspace "<span size='x-large' foreground='#FF0000' ></span>"; exec $BROWSER --private-window https://www.youtube.com/
 bindsym $mod+s --release workspace "<span size='x-large' foreground='#FF6500' ></span>"; exec $BROWSER --new-window https://soundcloud.com/you/likes
 
 
@@ -205,8 +206,8 @@ bindsym $mod+Shift+s --release exec --no-startup-id area-screenshot.sh
 # for_window [class="MATLABWindow" instance="MATLABWindow"] floating enable
 
 # Assign programs to specific workspaces
-assign [class="firefoxdeveloperedition" instance="Navigator"] "<span size='x-large' foreground='#0059FF'></span>"
-assign [class="code-oss" instance="code-oss"] ""
+# assign [class="firefoxdeveloperedition" instance="Navigator"] "<span size='x-large' foreground='#0059FF'></span>"
+# assign [class="code-oss" instance="code-oss"] ""
 
 # assign [class="MATLAB R2022b - academic use" instance="sun-awt-X11-XFramePeer"] MATLAB
 # assign [class="MATLAB R2022b" instance="Matlab-GLEE"] SIMULINK
