@@ -1,4 +1,5 @@
 # ~/.profile
+# -----------------------------------------------------------------------------
 # Executed by the command interpreter for login shells.
 # Sourced by LightDM by default, even when the login shell is ZSH
 # However the Zsh login shell sources ~/.zprofile (symlinked to this this file)
@@ -6,12 +7,14 @@
 # Those wont be changing that frequently, so having Zsh load all of these of
 # every instance is a bit overkill;
 
+# PATH ------------------------------------------------------------------------
 PATH="$HOME/bin:$PATH"
 PATH="$HOME/.local/bin:$PATH"
 # Add TeX Live 2023 installation path
 PATH="/usr/local/texlive/2023/bin/x86_64-linux:$PATH"
 
-# XDG Base Directory Specification
+# XDG Base Directory Specification --------------------------------------------
+#
 # Moved to: "etc/security/pam_env.conf" to make them available to the LightDM
 # xsession wrapper script. This way we can manually config the display manager
 # to honor de default XDG dirs, forcing to check XDG_CONFIG_HOME.
@@ -25,12 +28,12 @@ PATH="/usr/local/texlive/2023/bin/x86_64-linux:$PATH"
 
 # Disable "less" history
 export LESSHISTFILE=/dev/null
-# export PYTHONHISTFILE=/dev/null
+
 # Override OMZ defaults
 export HISTSIZE=100000
 export SAVEHIST=$HISTSIZE
 
-# Disable Python history
+# Disable Python history by loading custom startup script
 export PYTHONSTARTUP=$XDG_CONFIG_HOME/python/.pythonrc.py
 
 # Clean up according to XDG BDS -----------------------------------------------
@@ -44,6 +47,7 @@ export WGETRC="$XDG_CONFIG_HOME/wgetrc"
 export XINITRC="$XDG_CONFIG_HOME/X11/xinitrc"
 export GTK2_RC_FILES="$XDG_CONFIG_HOME/gtk-2.0/gtkrc"
 
+# Xauthority ------------------------------------------------------------------
 # Place xauthority file in a runtime directory with restricted access
 # permissions and automatically cleaned up upon session termination
 # This also causes infinite login loop on LightDM, which just won't honor custom XAUTHORITY
@@ -53,9 +57,9 @@ export GTK2_RC_FILES="$XDG_CONFIG_HOME/gtk-2.0/gtkrc"
 # user-authority-in-system-dir=true
 # greeter-show-manual-login=true
 
-# Default programs
+# Default programs ------------------------------------------------------------
+#
 export EDITOR="vim"
 export BROWSER="firefox-developer-edition"
 export TERMINAL="kitty"
 export READER="zathura"
-# export OPENER='rifle'
