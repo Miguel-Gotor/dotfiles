@@ -1,104 +1,80 @@
-" Display command line tab complete options as a menu.
+" vimrc
+" Display command line tab complete options as a menu
 set wildmenu
 
-" Enable type file detection. Vim will be able to try to detect the type of file in use.
+" Enable type file detection
 filetype on
 
-" Enable plugins and load plugin for the detected file type.
+" Enable plugins and load plugin for the detected file type
 filetype plugin on
 
-" Load an indent file for the detected file type.
+" Load an indent file for the detected file type
 filetype indent on
 
-" Inherit indentation from pervious line when starting writing in a new line.
+" Inherit indentation from pervious line when starting writing in a new line
 set autoindent
 
-" Turn syntax highlighting on.
+" Turn syntax highlighting on
 syntax on
 
-" Add numbers to each line on the left-hand side.
+" Add numbers to each line on the left-hand side
 set number
 
 " Show relative line numbers
 set relativenumber
 
-" Set shift width to 4 spaces.
+" Set shift width to 4 spaces
 set shiftwidth=4
 
-" Set tab width to 4 columns.
+" Set tab width to 4 columns
 set tabstop=4
 
-" Use space characters instead of tabs.
+" Use space characters instead of tabs
 set expandtab
 
-" Do not save backup files.
+" Do not save backup files
 set nobackup
 
-" Do not let cursor scroll below or above N number of lines when scrolling.
+" Do not let cursor scroll below or above N number of lines when scrolling
 set scrolloff=10
 
-" Avoid breaking/wrapping lines in the middle of the words.
+" Avoid breaking/wrapping lines in the middle of the words
 set linebreak
 
-" While searching though a file incrementally highlight matching characters as you type.
+" While searching though a file incrementally highlight matching characters as you type
 set incsearch
 
-" Make searches case INsensitive
+" Make searches case insensitive
 set ignorecase
 
-" Override the ignorecase option if searching for capital letters.
+" Override the ignorecase option if searching for capital letters
 set smartcase
 
-" Show partial command you type in the last line of the screen.
+" Show partial command you type in the last line of the screen
 set showcmd
 
-" Show the mode you are on the last line.
+" Show the mode you are on the last line
 set showmode
 
-" Show matching words during a search.
+" Show matching words during a search
 set showmatch
 
-" Use highlighting when doing a search.
+" Use highlighting when doing a search
 set hlsearch
 
 " Have vim use 256-color schemes
-" set term=xterm-256color
-" set t_Co=256
+" Turns out the following option suffices. No need to override $TERM
 set background=dark
 
 " Automatically reload files when modified by an external source
 set autoread
 
-" Enable spellchecking.
+" Enable spellchecking
 " set spell spelllang=en_us
 
+" Status line From Matjaž (https://github.com/TheMatjaz)
+" -----------------------------------------------------------------------------
 
-" Mappings --------------------------------------------------------------------
-inoremap <C-s> <C-o>:w<CR>
-
-" Reload vimrc
-map <F10> :source $MYVIMRC<CR>:echo "Vimrc reloaded"<CR>
-" Open vimrc
-map <F9> <Esc>:w <CR> :e $MYVIMRC<CR>
-
-" Paste with the mouse wheel
-" noremap! <s-insert> <middlemouse>
-
-" Compile tex file to PDF using pdflatex
-map <F7> :w <CR> :!clear;pdflatex % <CR>
-
-" Run shell script
-map <F6> :w <CR> :!clear;% <CR>
-
-" Press F5 to run Python script
-map <F5> <Esc>:w<CR>:!clear;python %<CR>
-
-" Compile and run C
-map <F8> :w <CR> :!clear;gcc -Wall -Wextra % -o %< && ./%< <CR>
-"map <F7> :w <CR> :!clear;gcc -Wall -Wextra % -o %< <CR>
-"map <F6> :w <CR> :!clear;gcc -Wall -Wextra % -o /dev/null <CR>
-
-" Status line From Matjaž (https://github.com/TheMatjaz) ---------------------
 " Always display the status bar
 set laststatus =2
 
@@ -107,27 +83,16 @@ function! Capitalize(string)
     return result
 endfunction
 
-function! GitBranch()
-  return system("git rev-parse --abbrev-ref HEAD 2>/dev/null | tr -d '\r\n'")
-endfunction
-
-function! GitBranchName()
-  let l:branchname = GitBranch()
-  return strlen(l:branchname) > 0?' | '.l:branchname.':':' | '
-endfunction
-
 set statusline =
 
 " Buffer number.
 set statusline +=\ Buffer\ #%n
-" Current Git branch.
-" set statusline +=%{GitBranchName()}
 " Path to the file in the buffer, as typed or relative to current directory.
 set statusline +=%f
 " Flag for modified file.
 set statusline +=%m
 
-" Padding, empty space in the miiddle
+" Padding, empty space in the middle
 set statusline+=%=
 
 " File type, encoding and end of line format
@@ -187,3 +152,14 @@ set undodir=$XDG_STATE_HOME/vim/undo     | call mkdir(&undodir,   'p')
 set viewdir=$XDG_STATE_HOME/vim/view     | call mkdir(&viewdir,   'p')
 
 if !has('nvim') | set viminfofile=$XDG_STATE_HOME/vim/viminfo | endif
+
+" Mappings --------------------------------------------------------------------
+
+" Reload vimrc
+map <F10> :source $MYVIMRC<CR>:echo "Vimrc reloaded"<CR>
+
+" Open vimrc
+map <F9> <Esc>:w <CR> :e $MYVIMRC<CR>
+
+" Toggle spellchecking
+nnoremap <F8> :setlocal spell! spell?<CR>
