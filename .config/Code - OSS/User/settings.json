@@ -55,5 +55,6 @@
     ],
     "workbench.editorAssociations": {
         "*.pdf": "latex-workshop-pdf-hook"
-    }
+    },
+    "files.autoSave": "afterDelay"
 }
