@@ -2,11 +2,17 @@
 " Display command line tab complete options as a menu
 set wildmenu
 
+" set colorcolumn=81
+highlight ColorColumn ctermbg=LightGray guibg=Gray
+"
 " Enable type file detection
 filetype on
 
 " Enable plugins and load plugin for the detected file type
 filetype plugin on
+
+" Auto-complete with Omni completion
+set omnifunc=syntaxcomplete#Complete
 
 " Load an indent file for the detected file type
 filetype indent on
@@ -33,7 +39,7 @@ set tabstop=4
 set expandtab
 
 " Do not save backup files
-set nobackup
+" set nobackup
 
 " Do not let cursor scroll below or above N number of lines when scrolling
 set scrolloff=10
@@ -41,7 +47,8 @@ set scrolloff=10
 " Avoid breaking/wrapping lines in the middle of the words
 set linebreak
 
-" While searching though a file incrementally highlight matching characters as you type
+" While searching though a file incrementally highlight matching characters as
+" you type
 set incsearch
 
 " Make searches case insensitive
@@ -73,7 +80,7 @@ set autoread
 " set spell spelllang=en_us
 
 " Status line From Matjaž (https://github.com/TheMatjaz)
-" -----------------------------------------------------------------------------
+" ------------------------------------------------------------------------------
 
 " Always display the status bar
 set laststatus =2
@@ -85,11 +92,11 @@ endfunction
 
 set statusline =
 
-" Buffer number.
+" Buffer number
 set statusline +=\ Buffer\ #%n
-" Path to the file in the buffer, as typed or relative to current directory.
+" Path to the file in the buffer, as typed or relative to current directory
 set statusline +=%f
-" Flag for modified file.
+" Flag for modified file
 set statusline +=%m
 
 " Padding, empty space in the middle
@@ -116,7 +123,7 @@ set wildignore +=*.bak  " Generic backup files
 set wildignore +=*.class  " Java bytecode
 set wildignore +=.DS_Store  " macOS folder metadata
 
-" Whitespace characters display -----------------------------------------------
+" Whitespace characters display ------------------------------------------------
 
 " Show soft wraping of the line with this string to indicate
 " a visual continuation on the next line.
@@ -134,7 +141,7 @@ set showbreak =↪\
 " set listchars +=trail:•
 " set listchars +=eol:↲
 
-" XDG base directory specification  -------------------------------------------
+" XDG base directory specification  --------------------------------------------
 
 set runtimepath^=$XDG_CONFIG_HOME/vim
 set runtimepath+=$XDG_DATA_HOME/vim
@@ -153,13 +160,35 @@ set viewdir=$XDG_STATE_HOME/vim/view     | call mkdir(&viewdir,   'p')
 
 if !has('nvim') | set viminfofile=$XDG_STATE_HOME/vim/viminfo | endif
 
-" Mappings --------------------------------------------------------------------
+" Mappings ---------------------------------------------------------------------
 
 " Reload vimrc
-map <F10> :source $MYVIMRC<CR>:echo "Vimrc reloaded"<CR>
+nnoremap <F7> :source $MYVIMRC<CR>:echo "Vimrc reloaded"<CR>
 
 " Open vimrc
-map <F9> <Esc>:w <CR> :e $MYVIMRC<CR>
+nnoremap <F8> <Esc>:w <CR> :e $MYVIMRC<CR>
+
+" Useful toggles for various settings that are not needed permanently but come 
+" in handy at times.
 
 " Toggle spellchecking
-nnoremap <F8> :setlocal spell! spell?<CR>
+nnoremap <F9> :setlocal spell! spell?<CR>
+
+" Toggle column highlighting
+nnoremap <F10> :if &colorcolumn == '' \| setlocal colorcolumn=81 \| else \| setlocal colorcolumn= \| endif<CR>
+
+"(<F11> is used to toggle fullscreen in i3wm bindsym)
+
+" Toggle line numbering
+nnoremap <F12> :if &number == 0 \| setlocal number relativenumber \| else \| setlocal nonumber norelativenumber \| endif<CR>
+
+" inoremap \- <Esc>:call InsertHyphens()<CR>:startinsert<CR>
+
+" Separator - Fill with hyphens up to the 80th column
+function InsertHyphens()
+    let current_column = col('.')
+    let hyphens_to_insert = 79 - current_column
+    let hyphens = repeat('-', hyphens_to_insert)
+    execute "normal! a" . hyphens
+endfunction
+
