@@ -1,12 +1,12 @@
 #.zsh_aliases
 
-# Open this file
-alias ali='$EDITOR $ZDOTDIR/.zsh_aliases'
-alias log='$EDITOR $HOME/Documents/Linux/Notes/arch.txt'
 alias open='xdg-open'
 alias install='install -Dv /dev/null'
 
-# Quickly edit config files
+# Quickly edit plain text files
+alias ali='$EDITOR $ZDOTDIR/.zsh_aliases'
+alias log='$EDITOR $HOME/Documents/Linux/Notes/arch.txt'
+# Config files
 alias piconf='$EDITOR $XDG_CONFIG_HOME/picom/picom.conf'
 alias i3conf='$EDITOR $XDG_CONFIG_HOME/i3/config'
 alias viconf='$EDITOR $XDG_CONFIG_HOME/vim/vimrc'
@@ -24,10 +24,12 @@ alias ffcss='vim $(locate userChrome)' # One file per profile
 # Actually clear the terminal so I don't see previous commands output
 alias c='printf "\033c"'
 
+# Frequently used commands
 alias e='exit'
 alias o='nohup pcmanfm . &> /dev/null & disown'
 alias k='kitty +kitten icat $1'
 alias v='vim'
+alias z='zathura'
 alias p='sudo pacman'
 
 # Customize xterm look
@@ -42,8 +44,9 @@ alias cp='cp -iv'
 alias rm='rm -i --preserve-root'      	
 
 alias hl='highlight --out-format=ansi'
-alias fp='ps -e | grep $1'               # Find Process
-alias hs='history | grep $@'
+# Searching
+alias fp='ps -e | grep $1'    # Find Process
+alias hs='history | grep $1'  # Find command
 
 alias ga='git add -v'
 alias gs='git status'
