@@ -5,7 +5,7 @@
 # However the Zsh login shell sources ~/.zprofile (symlinked to this this file)
 # Setting all these here makes them available to ttys aswell
 # Those wont be changing that frequently, so having Zsh load all of these of
-# every instance is a bit overkill;
+# every instance is a bit overkill
 
 # PATH ------------------------------------------------------------------------
 PATH="$HOME/bin:$PATH"
