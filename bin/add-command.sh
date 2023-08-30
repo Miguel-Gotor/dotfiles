@@ -5,7 +5,7 @@
 # Appends the "whatis" description for the specified command to a file if it 
 # has not been added yet
 
-cmds_file=$HOME/Documents/Linux/commands.txt
+cmds_file=$HOME/Documents/Linux/Commands/commands.txt
 
 if grep -w ^$1 $cmds_file
 then
