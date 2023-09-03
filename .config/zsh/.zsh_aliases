@@ -6,7 +6,9 @@ alias install='install -Dv /dev/null'
 # Quickly edit plain text files
 alias ali='$EDITOR $ZDOTDIR/.zsh_aliases'
 alias log='$EDITOR $HOME/Documents/Linux/Notes/arch.txt'
+
 # Config files
+alias xconf='$EDITOR $XDG_CONFIG_HOME/X11/xresources'
 alias piconf='$EDITOR $XDG_CONFIG_HOME/picom/picom.conf'
 alias i3conf='$EDITOR $XDG_CONFIG_HOME/i3/config'
 alias viconf='$EDITOR $XDG_CONFIG_HOME/vim/vimrc'
@@ -17,7 +19,8 @@ alias prof='$EDITOR $HOME/.profile'
 
 # Firefox dict and css files
 alias dict='$EDITOR $XDG_CONFIG_HOME/cspell/shared-dict.txt'
-# Firefox dictionary "persdict.dat" is a symlink pointing to the shared dictionary with the VSCode extension cspell
+# Firefox dictionary "persdict.dat" is a symlink pointing to the shared
+# dictionary with the VSCode extension cspell
 # alias ffdict='vim $(locate persdict.dat)'
 alias ffcss='vim $(locate userChrome)' # One file per profile
 
@@ -32,7 +35,7 @@ alias v='vim'
 alias z='zathura'
 alias p='sudo pacman'
 
-# Customize xterm look
+# Customize xterm
 alias xt='xterm -fa 'Hack' -fs 11 zsh &> /dev/null &disown'
 
 # Add verbosity
