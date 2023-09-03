@@ -19,10 +19,7 @@ cp --parents -ru "./.config/i3" $dotfiles_dir
 cp --parents -ru "./.config/i3blocks" $dotfiles_dir
 cp --parents -ru "./.config/i3status" $dotfiles_dir
 cp --parents -ru "./.config/kitty" $dotfiles_dir
-cp --parents -ru "./.config/leafpad" $dotfiles_dir
-cp --parents -ru "./.config/libfm" $dotfiles_dir
 cp --parents -ru "./.config/mpv" $dotfiles_dir
-cp --parents -ru "./.config/pcmanfm" $dotfiles_dir
 cp --parents -ru "./.config/picom" $dotfiles_dir
 cp --parents -ru "./.config/ranger" $dotfiles_dir
 cp --parents -ru "./.config/vim" $dotfiles_dir
