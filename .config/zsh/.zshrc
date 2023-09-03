@@ -2,22 +2,36 @@
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-# export ZSH="$HOME/.oh-my-zsh"
 export ZSH="$XDG_DATA_HOME/oh-my-zsh"
+
+# HISTFILE defined in "~/.profile".
 # export HISTFILE="$XDG_STATE_HOME/zsh/history"
+
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
 
+# Reminder: themes location: $ZSH_CUSTOM/themes
+
 # ZSH_THEME="gnzh"
-# ZSH_THEME="agnoster"
+ZSH_THEME="agnoster"
 # ZSH_THEME="miloshadzic"
 # ZSH_THEME="robbyrussell"
 # ZSH_THEME="half-life"
 # ZSH_THEME="kardan"
 
-ZSH_THEME='mine'
+# ZSH_THEME='rainbow'
+# ZSH_THEME='my-theme'
+# ZSH_THEME='simple'
+# ZSH_THEME='arch'
+
+# ZSH_THEME='blinks'
+# ZSH_THEME='eastwood'
+# ZSH_THEME='random'
+# ZSH_THEME='frisk'
+# ZSH_THEME='trapd00r'
+# ZSH_THEME='cypher'
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
