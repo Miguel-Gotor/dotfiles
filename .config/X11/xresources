@@ -2,17 +2,36 @@
 *.cursorColor:  #ff00ff
 *.alpha:        0.75
 *.background:   #000000
+
+*.color0:       #000000
+*.color1:       #FF0000
+*.color2:       #FFFF00
+*.color3:       #FFFF00
+
+!! The prompt powerline
 *.color4:       #0FFFFF
+
 *.color5:       #FF00FF
 *.color6:       #FFFF00
+*.color7:       #FFFF00
+*.color8:       #FFFF00
+*.color9:       #FFFF00
+*.color10:       #FFFF00
+*.color11:       #FFFF00
+*.color12:       #FFFF00
 
 !! st
-st.font: Hack:size=11:antialias=true:autohint=true
+!!st.font: Hack:size=11:antialias=true:autohint=true
 !! st.font: Hack:size=11:antialias=true:autohint=true:style=Bold
 !! st.font: JetBrainsMono:pixelsize=14:antialias=true:autohint=true:style=Medium
-!! st.font: JetBrainsMono:size=11:antialias=true:autohint=true:style=Bold
+st.font: JetBrainsMono:size=11:antialias=true:autohint=true:style=Bold
 
-st.termname: st-256color
+
+!! Pictures
+st.color13:      #FF00FF
+
+
+!!st.termname: st-256color
 st.borderpx: 10
 st.borderpy: 10
 st.cursorBlink: true
