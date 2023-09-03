@@ -161,7 +161,11 @@ set viewdir=$XDG_STATE_HOME/vim/view     | call mkdir(&viewdir,   'p')
 if !has('nvim') | set viminfofile=$XDG_STATE_HOME/vim/viminfo | endif
 
 " Mappings ---------------------------------------------------------------------
+" There's no native mapping command that creates the same mapping in both
+" Normal and Insert modes. Sad.
 
+" Reload current file
+nnoremap <F4> :e<CR>
 " Reload vimrc
 nnoremap <F7> :source $MYVIMRC<CR>:echo "Vimrc reloaded"<CR>
 
@@ -180,7 +184,8 @@ nnoremap <F10> :if &colorcolumn == '' \| setlocal colorcolumn=81 \| else \| setl
 "(<F11> is used to toggle fullscreen in i3wm bindsym)
 
 " Toggle line numbering
-nnoremap <F12> :if &number == 0 \| setlocal number relativenumber \| else \| setlocal nonumber norelativenumber \| endif<CR>
+
+map <F12> :if &number == 0 \| setlocal number relativenumber \| else \| setlocal nonumber norelativenumber \| endif<CR>
 
 " inoremap \- <Esc>:call InsertHyphens()<CR>:startinsert<CR>
 
@@ -191,4 +196,8 @@ function InsertHyphens()
     let hyphens = repeat('-', hyphens_to_insert)
     execute "normal! a" . hyphens
 endfunction
+
+" Define an autocommand for when a file is written
+autocmd BufWritePost ~/.config/X11/xresources !xrdb -merge  ~/.config/X11/xresources
+"autocmd BufWritePost ~/.config/X11/xresources silent! execute '!xrdb -merge ~/.config/X11/xresources' | redraw!
 
