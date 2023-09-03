@@ -2,7 +2,8 @@ inoremap \sec \section{}<Left>
 inoremap \ssec \subsection{}<Left>
 inoremap \toc \tableofcontents<CR>
 inoremap \up \usepackage{}<Left>
-
+inoremap \ig \includegraphics[width=\textwidth]{}<Left>
+inoremap \np \newpage %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 " Compile TeX file into PDF using PDFLaTeX
 inoremap <F5> <Esc> :w <CR> :!clear; pdflatex % <CR>; <CR>
 
