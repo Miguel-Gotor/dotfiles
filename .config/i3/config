@@ -183,9 +183,9 @@ bindsym $mod+Shift+t --release exec --no-startup-id empty-trash.sh
 # bindsym Caps_Lock --release exec pkill -SIGRTMIN+1 i3blocks
 
 # Set a random wallpaper
-bindsym $mod+w --release exec --no-startup-id xwallpaper --zoom $(find ~/Pictures/Wallpapers -type f | shuf | head -n1)
+bindsym $mod+w exec --no-startup-id xwallpaper --zoom $(find ~/Pictures/Wallpapers -type f | shuf | head -n1)
 # Pick a wallpaper
-bindsym $mod+Shift+w --release exec --no-startup-id find ~/Pictures/Wallpapers -type f | shuf | sxiv - -t
+bindsym $mod+Shift+w exec --no-startup-id find ~/Pictures/Wallpapers -type f | shuf | sxiv - -t
 
 # XRANDR ----------------------------------------------------------------------
 # Night mode
