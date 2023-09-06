@@ -1,51 +1,31 @@
-*.foreground:   #ffffff
-*.cursorColor:  #ff00ff
-*.alpha:        0.75
-*.background:   #000000
+!! Set a default font and font size as below:
+st.font: JetBrainsMono:pixelsize=14.5:style=Bold
+!! st.font: Source Code Pro:pixelsize=15:antialias=true:autohint=true;
 
-*.color0:       #000000
-*.color1:       #FF0000
-*.color2:       #FFFF00
-*.color3:       #FFFF00
-
-!! The prompt powerline
-*.color4:       #0FFFFF
-
-*.color5:       #FF00FF
-*.color6:       #FFFF00
-*.color7:       #FFFF00
-*.color8:       #FFFF00
-*.color9:       #FFFF00
-*.color10:       #FFFF00
-*.color11:       #FFFF00
-*.color12:       #FFFF00
-
-!! st
-!!st.font: Hack:size=11:antialias=true:autohint=true
-!! st.font: Hack:size=11:antialias=true:autohint=true:style=Bold
-!! st.font: JetBrainsMono:pixelsize=14:antialias=true:autohint=true:style=Medium
-st.font: JetBrainsMono:size=11:antialias=true:autohint=true:style=Bold
-
-
-!! Pictures
-st.color13:      #FF00FF
-
-
-!!st.termname: st-256color
+st.termname: st-256color
 st.borderpx: 10
 st.borderpy: 10
-st.cursorBlink: true
 
-!! urxvt
-!! 16 ms (~ 60 Hz)
-URxvt.buffered: false
-URxvt.refreshPeriod: 16
-URxvt.font: xft:Monospace:style=Regular:size=11
-URxvt.scrollBar: false
-URxvt.depth:      32                                                                                                                                                        
-URxvt.background: [80]#000000
-URxvt.cursorBlink: true
-URxvt.iso14755: false
-URxvt.internalBorder: 12
-URxvt.urgentOnBell: true
+!! Set the background, foreground and cursor colors as below:
 
+
+*.background:  black
+*.foreground:  white
+*.cursorColor: magenta
+*.color0:      cyan
+*.color1:      green
+*.color2:      red
+*.color3:      blue
+*.color4:      yellow
+*.color5:      white
+*.color6:      pink
+*.color7:      orange
+*.color8:      #928374
+*.color9:      #de352e
+*.color10:     #1dd361
+*.color11:     #f3bd09
+*.color12:     #1081d6
+*.color13:     #5350b9
+*.color14:     cyan
+*.color15:     #ffffff
+*.colorBD:     #d6dbe5
