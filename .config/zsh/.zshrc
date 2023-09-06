@@ -15,7 +15,8 @@ export ZSH="$XDG_DATA_HOME/oh-my-zsh"
 # Reminder: themes location: $ZSH_CUSTOM/themes
 
 # ZSH_THEME="gnzh"
-ZSH_THEME="agnoster"
+# ZSH_THEME="new"
+# ZSH_THEME="agnoster"
 # ZSH_THEME="miloshadzic"
 # ZSH_THEME="robbyrussell"
 # ZSH_THEME="half-life"
@@ -23,7 +24,7 @@ ZSH_THEME="agnoster"
 
 # ZSH_THEME='rainbow'
 # ZSH_THEME='my-theme'
-# ZSH_THEME='simple'
+ZSH_THEME='simple'
 # ZSH_THEME='arch'
 
 # ZSH_THEME='blinks'
