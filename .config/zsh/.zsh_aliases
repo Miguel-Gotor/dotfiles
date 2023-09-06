@@ -27,12 +27,17 @@ alias ffcss='vim $(locate userChrome)' # One file per profile
 # Actually clear the terminal so I don't see previous commands output
 alias c='printf "\033c"'
 
-# Frequently used commands
+# Have frequently used commands one keystroke away
 alias e='exit'
 alias o='nohup pcmanfm . &> /dev/null & disown'
 alias k='kitty +kitten icat $1'
 alias v='vim'
-alias z='zathura'
+
+# alias z='nohup zathura "$1" &> /dev/null & disown'
+# Regular alias won't do.
+# Need a function truly detach the proccess form terminal 
+z(){nohup zathura "$1" &> /dev/null  & disown}
+
 alias p='sudo pacman'
 
 # Customize xterm
