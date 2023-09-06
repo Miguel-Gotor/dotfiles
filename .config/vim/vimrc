@@ -210,8 +210,10 @@ endfunction
 
 " Cycle through available color schemes
 function! CycleColorSchemes()
-    let current_scheme = g:colors_name
+
+    " g:colors_name is undefined until a color scheme is explicitly set
     let available_schemes = getcompletion('', 'color')
+    let current_scheme = exists('g:colors_name') ? g:colors_name : available_schemes[0]
     let next_scheme = ''
 
     for i in range(len(available_schemes))
@@ -220,11 +222,6 @@ function! CycleColorSchemes()
             break
         endif
     endfor
-
-    if empty(next_scheme)
-        " If we reached the end of the list, loop back to the first scheme
-        let next_scheme = available_schemes[0]
-    endif
 
     execute 'colorscheme' next_scheme
 
