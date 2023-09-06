@@ -4,7 +4,7 @@ set wildmenu
 
 " set colorcolumn=81
 highlight ColorColumn ctermbg=LightGray guibg=Gray
-"
+
 " Enable type file detection
 filetype on
 
@@ -162,10 +162,13 @@ if !has('nvim') | set viminfofile=$XDG_STATE_HOME/vim/viminfo | endif
 
 " Mappings ---------------------------------------------------------------------
 " There's no native mapping command that creates the same mapping in both
-" Normal and Insert modes. Sad.
+" Normal and Insert modes D:
+
+"(<F3> is used to toggle uppercase/lowercase)
 
 " Reload current file
 nnoremap <F4> :e<CR>
+
 " Reload vimrc
 nnoremap <F7> :source $MYVIMRC<CR>:echo "Vimrc reloaded"<CR>
 
@@ -187,7 +190,15 @@ nnoremap <F10> :if &colorcolumn == '' \| setlocal colorcolumn=81 \| else \| setl
 
 map <F12> :if &number == 0 \| setlocal number relativenumber \| else \| setlocal nonumber norelativenumber \| endif<CR>
 
-" inoremap \- <Esc>:call InsertHyphens()<CR>:startinsert<CR>
+" Visual line separator
+
+" inoremap ;- <Esc>:call InsertHyphens()<CR>:startinsert<CR>
+
+" Automatically merge changes in xresources
+autocmd BufWritePost ~/.config/X11/xresources !xrdb -merge  ~/.config/X11/xresources
+" autocmd BufWritePost ~/.config/X11/xresources silent! execute '!xrdb -merge ~/.config/X11/xresources' | redraw!
+
+nnoremap <F2> :call CycleColorSchemes()<CR>:colo<CR>
 
 " Separator - Fill with hyphens up to the 80th column
 function InsertHyphens()
@@ -197,7 +208,25 @@ function InsertHyphens()
     execute "normal! a" . hyphens
 endfunction
 
-" Define an autocommand for when a file is written
-autocmd BufWritePost ~/.config/X11/xresources !xrdb -merge  ~/.config/X11/xresources
-"autocmd BufWritePost ~/.config/X11/xresources silent! execute '!xrdb -merge ~/.config/X11/xresources' | redraw!
+" Cycle through available color schemes
+function! CycleColorSchemes()
+    let current_scheme = g:colors_name
+    let available_schemes = getcompletion('', 'color')
+    let next_scheme = ''
+
+    for i in range(len(available_schemes))
+        if available_schemes[i] ==# current_scheme
+            let next_scheme = available_schemes[(i + 1) % len(available_schemes)]
+            break
+        endif
+    endfor
+
+    if empty(next_scheme)
+        " If we reached the end of the list, loop back to the first scheme
+        let next_scheme = available_schemes[0]
+    endif
+
+    execute 'colorscheme' next_scheme
+
+endfunction
 
