@@ -2,7 +2,11 @@
 " Display command line tab complete options as a menu
 set wildmenu
 
-" set colorcolumn=81
+:colo zaibatsu
+" :colo torte
+" :colo murphy
+" :colo koehler
+
 highlight ColorColumn ctermbg=LightGray guibg=Gray
 
 " Enable type file detection
@@ -23,7 +27,7 @@ set autoindent
 " Turn syntax highlighting on
 syntax on
 
-" Add numbers to each line on the left-hand side
+" Add line numbers
 set number
 
 " Show relative line numbers
@@ -38,11 +42,8 @@ set tabstop=4
 " Use space characters instead of tabs
 set expandtab
 
-" Do not save backup files
-" set nobackup
-
 " Do not let cursor scroll below or above N number of lines when scrolling
-set scrolloff=10
+" set scrolloff=100
 
 " Avoid breaking/wrapping lines in the middle of the words
 set linebreak
@@ -113,7 +114,7 @@ set statusline +=\ \|\ Lines:\ %L
 " Time and date
 set statusline +=\ \|\ %{strftime('%a\ %d\ %b,\ %H:%M:%S')}
 " Final space on the right side of the screen
-set statusline +=\ 
+set statusline +=\
 
 " Ignore files matching these patterns when opening files based on a glob 
 " pattern
@@ -135,8 +136,8 @@ set showbreak =↪\
 " set list
 " set listchars =
 " set listchars +=tab:⇥\ 
-" set listchars +=extends:›
-" set listchars +=precedes:‹
+" set listchars +=extends:>
+" set listchars +=precedes:<
 " set listchars +=nbsp:␣
 " set listchars +=trail:•
 " set listchars +=eol:↲
@@ -162,12 +163,28 @@ if !has('nvim') | set viminfofile=$XDG_STATE_HOME/vim/viminfo | endif
 
 " Mappings ---------------------------------------------------------------------
 " There's no native mapping command that creates the same mapping in both
-" Normal and Insert modes D:
+" Normal and Insert modes :(
 
-"(<F3> is used to toggle uppercase/lowercase)
+" Toggle line comment
+vnoremap º :call ToggleComment()<CR>
+nnoremap º :call ToggleComment()<CR>
+inoremap º <C-o>:call ToggleComment()<CR>
+
+" Cycle through available color schemes
+" Previous
+nnoremap <F1> :call CycleColorSchemes(-1)<CR>:colo<CR>
+inoremap <F1> <C-o>:call CycleColorSchemes(-1)<CR>
+" Next
+nnoremap <F2> :call CycleColorSchemes(1)<CR>:colo<CR>
+inoremap <F2> <C-o>:call CycleColorSchemes(1)<CR>
+
+" Reminder: <F3> is used to toggle UPPERCASE/lowercase
 
 " Reload current file
-nnoremap <F4> :e<CR>
+nnoremap <F4> :w<CR>:e<CR>:echo "File reloaded"<CR>
+inoremap <F4> <C-o>:w<CR><C-o>:e<CR>
+
+" Reminder: <F5> and <F6> are used to run/compile/execute based on ft
 
 " Reload vimrc
 nnoremap <F7> :source $MYVIMRC<CR>:echo "Vimrc reloaded"<CR>
@@ -180,36 +197,39 @@ nnoremap <F8> <Esc>:w <CR> :e $MYVIMRC<CR>
 
 " Toggle spellchecking
 nnoremap <F9> :setlocal spell! spell?<CR>
+inoremap <F9> <C-o>:setlocal spell! spell?<CR>
 
 " Toggle column highlighting
 nnoremap <F10> :if &colorcolumn == '' \| setlocal colorcolumn=81 \| else \| setlocal colorcolumn= \| endif<CR>
-
-"(<F11> is used to toggle fullscreen in i3wm bindsym)
+inoremap <F10> <C-o>:if &colorcolumn == '' \| setlocal colorcolumn=81 \| else \| setlocal colorcolumn= \| endif<CR>
+" 
+" Reminder: <F11 is used to toggle fullscreen in i3wm bindsym)
 
 " Toggle line numbering
+nnoremap <F12> :if &number == 0 \| setlocal number relativenumber \| else \| setlocal nonumber norelativenumber \| endif<CR>
+inoremap <F12> <C-o>:if &number == 0 \| setlocal number relativenumber \| else \| setlocal nonumber norelativenumber \| endif<CR>
 
-map <F12> :if &number == 0 \| setlocal number relativenumber \| else \| setlocal nonumber norelativenumber \| endif<CR>
-
-" Visual line separator
-
-" inoremap ;- <Esc>:call InsertHyphens()<CR>:startinsert<CR>
+" Visual line separator.
+inoremap ;- <Esc>:call InsertHyphens()<CR>:startinsert<CR>
 
 " Automatically merge changes in xresources
-autocmd BufWritePost ~/.config/X11/xresources !xrdb -merge  ~/.config/X11/xresources
-" autocmd BufWritePost ~/.config/X11/xresources silent! execute '!xrdb -merge ~/.config/X11/xresources' | redraw!
-
-nnoremap <F2> :call CycleColorSchemes()<CR>:colo<CR>
+autocmd BufWritePost $XDG_CONFIG_HOME/X11/xresources silent! execute '!xrdb -merge %' | redraw!
 
 " Separator - Fill with hyphens up to the 80th column
 function InsertHyphens()
+    let save_cursor = getpos(".")
     let current_column = col('.')
     let hyphens_to_insert = 79 - current_column
     let hyphens = repeat('-', hyphens_to_insert)
     execute "normal! a" . hyphens
+    call setpos('.', current_column)
+    
 endfunction
 
-" Cycle through available color schemes
-function! CycleColorSchemes()
+" Functions
+" -----------------------------------------------------------------
+
+function! CycleColorSchemes(inc)
 
     " g:colors_name is undefined until a color scheme is explicitly set
     let available_schemes = getcompletion('', 'color')
@@ -218,12 +238,43 @@ function! CycleColorSchemes()
 
     for i in range(len(available_schemes))
         if available_schemes[i] ==# current_scheme
-            let next_scheme = available_schemes[(i + 1) % len(available_schemes)]
+            let next_scheme = available_schemes[(i + a:inc) % len(available_schemes)]
             break
         endif
     endfor
 
     execute 'colorscheme' next_scheme
 
+endfunction
+
+function! ToggleComment()
+    let cursor = getpos(".")
+    let line = getline(".")
+    let comment_str = ""
+
+    " Define comment string based on file type
+    if &ft == 'c'
+        let comment_str = '\/\/'
+    elseif &ft == 'tex' || &ft == 'matlab'
+        let comment_str = '%'
+    elseif &ft == 'vim'
+        let comment_str = '"'
+    elseif &ft == 'python' || &ft == 'conf'
+        let comment_str = '#'
+    endif
+
+    " Check if the line is already commented
+    if line =~ '^\s*' . comment_str . '\s\?'
+        " Uncomment
+        execute 's/^\(\s*\)' . comment_str . '\s\?/\1/'
+        let cursor[2] -= (len(comment_str) + 1)
+    else
+        " Comment
+        execute 's/^\(\s*\)/\1' . comment_str . ' /'
+        let cursor[2] += (len(comment_str) + 1)
+    endif
+
+    " Account for the comment_str length to restore cursor position
+    call setpos('.', cursor)
 endfunction
 
