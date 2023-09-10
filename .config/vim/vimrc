@@ -247,34 +247,38 @@ function! CycleColorSchemes(inc)
 
 endfunction
 
+" Commenting blocks of code.
+augroup commenting_blocks_of_code
+    autocmd!
+    " Fallback for unspecified file types
+    autocmd FileType * let b:comment_leader = ''
+    
+    autocmd FileType c,cpp,java,scala let b:comment_leader = '\/\/'
+    autocmd FileType sh,ruby,python   let b:comment_leader = '#'
+    autocmd FileType conf,fstab       let b:comment_leader = '#'
+    autocmd FileType tex              let b:comment_leader = '%'
+    autocmd FileType mail             let b:comment_leader = '>'
+    autocmd FileType vim              let b:comment_leader = '"'
+augroup END
+
 function! ToggleComment()
     let cursor = getpos(".")
     let line = getline(".")
-    let comment_str = ""
 
-    " Define comment string based on file type
-    if &ft == 'c'
-        let comment_str = '\/\/'
-    elseif &ft == 'tex' || &ft == 'matlab'
-        let comment_str = '%'
-    elseif &ft == 'vim'
-        let comment_str = '"'
-    elseif &ft == 'python' || &ft == 'conf'
-        let comment_str = '#'
-    endif
+    " Careful with special characters
+    let length = len(substitute(b:comment_leader, '\\', '', 'g')) + 1
 
     " Check if the line is already commented
-    if line =~ '^\s*' . comment_str . '\s\?'
+    if line =~ '^\s*' . b:comment_leader . '\s\?'
         " Uncomment
-        execute 's/^\(\s*\)' . comment_str . '\s\?/\1/'
-        let cursor[2] -= (len(comment_str) + 1)
+        execute 's/^\(\s*\)' . b:comment_leader . '\s\?/\1/'
+        let cursor[2] -= length
     else
         " Comment
-        execute 's/^\(\s*\)/\1' . comment_str . ' /'
-        let cursor[2] += (len(comment_str) + 1)
+        execute 's/^\(\s*\)/\1' . b:comment_leader . ' /'
+        let cursor[2] += length
     endif
 
-    " Account for the comment_str length to restore cursor position
+    " Account for theb:comment_leader length to restore cursor position
     call setpos('.', cursor)
 endfunction
-
