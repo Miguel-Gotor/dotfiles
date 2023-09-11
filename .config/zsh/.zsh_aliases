@@ -1,4 +1,4 @@
-#.zsh_aliases
+# .zsh_aliases
 
 alias open='xdg-open'
 alias install='install -Dv /dev/null'
@@ -24,21 +24,21 @@ alias dict='$EDITOR $XDG_CONFIG_HOME/cspell/shared-dict.txt'
 # alias ffdict='vim $(locate persdict.dat)'
 alias ffcss='vim $(locate userChrome)' # One file per profile
 
+# Have frequently used commands one keystroke away
 # Actually clear the terminal so I don't see previous commands output
 alias c='printf "\033c"'
-
-# Have frequently used commands one keystroke away
+# DuckDuckGo from terminal. Disable User Agent to speed up a bit.
+alias d='ddgr --noua -n 8'
 alias e='exit'
 alias o='nohup pcmanfm . &> /dev/null & disown'
 alias k='kitty +kitten icat $1'
 alias v='vim'
+alias p='sudo pacman'
 
 # alias z='nohup zathura "$1" &> /dev/null & disown'
 # Regular alias won't do.
 # Need a function truly detach the proccess form terminal 
 z(){nohup zathura "$1" &> /dev/null  & disown}
-
-alias p='sudo pacman'
 
 # Customize xterm
 alias xt='xterm -fa 'Hack' -fs 11 zsh &> /dev/null &disown'
