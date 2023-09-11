@@ -38,4 +38,5 @@ URxvt.cursorBlink: true
 URxvt.iso14755: false
 URxvt.internalBorder: 12
 URxvt.urgentOnBell: true
-
+ 
+// vim: set ft=xdefaults :
