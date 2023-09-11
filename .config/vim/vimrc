@@ -2,10 +2,13 @@
 " Display command line tab complete options as a menu
 set wildmenu
 
-:colo zaibatsu
-" :colo torte
+" :colo zaibatsu
+:colo torte
 " :colo murphy
 " :colo koehler
+
+" Force transparent background on st 
+autocmd ColorScheme *  hi! Normal ctermbg=none guibg=NONE
 
 highlight ColorColumn ctermbg=LightGray guibg=Gray
 
@@ -21,7 +24,7 @@ set omnifunc=syntaxcomplete#Complete
 " Load an indent file for the detected file type
 filetype indent on
 
-" Inherit indentation from pervious line when starting writing in a new line
+" Inherit indentation from previous line when starting writing in a new line
 set autoindent
 
 " Turn syntax highlighting on
@@ -43,7 +46,7 @@ set tabstop=4
 set expandtab
 
 " Do not let cursor scroll below or above N number of lines when scrolling
-" set scrolloff=100
+set scrolloff=8
 
 " Avoid breaking/wrapping lines in the middle of the words
 set linebreak
@@ -58,17 +61,17 @@ set ignorecase
 " Override the ignorecase option if searching for capital letters
 set smartcase
 
-" Show partial command you type in the last line of the screen
-set showcmd
-
-" Show the mode you are on the last line
-set showmode
-
 " Show matching words during a search
 set showmatch
 
 " Use highlighting when doing a search
 set hlsearch
+
+" Show partial command you type in the last line of the screen
+set showcmd
+
+" Show the mode you are on the last line
+set showmode
 
 " Have vim use 256-color schemes
 " Turns out the following option suffices. No need to override $TERM
@@ -86,11 +89,15 @@ set autoread
 " Always display the status bar
 set laststatus =2
 
-function! Capitalize(string)
-    let result = substitute(a:string,'\(\<\w\+\>\)', '\u\1', 'g')
-    return result
-endfunction
-
+" function! Capitalize(string)
+    " let result = substitute(a:string,'\(\<\w\+\>\)', '\u\1', 'g')
+    " return result
+" endfunction
+" 
+" function! Upper(string)
+    " return substitute(a:string, '\w\+', '\u\0', 'g')
+" endfunction
+ 
 set statusline =
 
 " Buffer number
@@ -106,7 +113,7 @@ set statusline+=%=
 " File type, encoding and end of line format
 set statusline +=\ %Y
 set statusline +=\ \|\ %{toupper(&fileencoding?&fileencoding:&encoding)}
-set statusline +=\ \|\ %{Capitalize(&fileformat)}
+set statusline +=\ \|\ %{toupper(&fileformat)}
 " Current line and column number
 set statusline +=\ \|\ %l:%c
 " Total lines in file
@@ -141,7 +148,7 @@ set showbreak =↪\
 " set listchars +=nbsp:␣
 " set listchars +=trail:•
 " set listchars +=eol:↲
-
+"
 " XDG base directory specification  --------------------------------------------
 
 set runtimepath^=$XDG_CONFIG_HOME/vim
@@ -165,9 +172,8 @@ if !has('nvim') | set viminfofile=$XDG_STATE_HOME/vim/viminfo | endif
 " There's no native mapping command that creates the same mapping in both
 " Normal and Insert modes :(
 
-" Toggle line comment
-vnoremap º :call ToggleComment()<CR>
-nnoremap º :call ToggleComment()<CR>
+" Toggle line comment (insert, normal AND visual modes)
+noremap º :call ToggleComment()<CR>
 inoremap º <C-o>:call ToggleComment()<CR>
 
 " Cycle through available color schemes
@@ -247,18 +253,20 @@ function! CycleColorSchemes(inc)
 
 endfunction
 
-" Commenting blocks of code.
-augroup commenting_blocks_of_code
+" Commenting lines/blocks of code
+augroup commenting_code
     autocmd!
-    " Fallback for unspecified file types
-    autocmd FileType * let b:comment_leader = ''
     
-    autocmd FileType c,cpp,java,scala let b:comment_leader = '\/\/'
-    autocmd FileType sh,ruby,python   let b:comment_leader = '#'
-    autocmd FileType conf,fstab       let b:comment_leader = '#'
-    autocmd FileType tex              let b:comment_leader = '%'
-    autocmd FileType mail             let b:comment_leader = '>'
-    autocmd FileType vim              let b:comment_leader = '"'
+    " Fallback: empty string for unspecified file types
+    autocmd FileType * let b:comment_leader = ''
+
+    autocmd FileType sh,python,asm,zsh,conf,fstab
+                                    \   let b:comment_leader = '#'
+    autocmd FileType c,cpp              let b:comment_leader = '\/\/'
+    autocmd FileType tex                let b:comment_leader = '%'
+    autocmd FileType mail               let b:comment_leader = '>'
+    autocmd FileType vim                let b:comment_leader = '"'
+    autocmd FileType xdefaults          let b:comment_leader = '!!'
 augroup END
 
 function! ToggleComment()
@@ -279,6 +287,6 @@ function! ToggleComment()
         let cursor[2] += length
     endif
 
-    " Account for theb:comment_leader length to restore cursor position
+    " Account for the comment_leader length to restore cursor position
     call setpos('.', cursor)
 endfunction
