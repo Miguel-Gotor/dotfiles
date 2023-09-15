@@ -30,10 +30,13 @@ alias c='printf "\033c"'
 # DuckDuckGo from terminal. Disable User Agent to speed up a bit.
 alias d='ddgr --noua -n 8'
 alias e='exit'
-alias o='nohup pcmanfm . &> /dev/null & disown'
+alias f='file'
+# cat but with syntax highlight
+alias h='highlight --out-format=ansi'
 alias k='kitty +kitten icat $1'
-alias v='vim'
+alias o='nohup pcmanfm . &> /dev/null & disown'
 alias p='sudo pacman'
+alias v='vim'
 
 # alias z='nohup zathura "$1" &> /dev/null & disown'
 # Regular alias won't do.
@@ -51,7 +54,6 @@ alias mv='mv -i'
 alias cp='cp -iv'
 alias rm='rm -i --preserve-root'      	
 
-alias hl='highlight --out-format=ansi'
 # Searching
 alias fp='ps -e | grep $1'    # Find Process
 alias hs='history | grep $1'  # Find command
