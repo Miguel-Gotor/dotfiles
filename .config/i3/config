@@ -225,8 +225,8 @@ for_window [urgent="latest"] focus
 # i3status generates status bar to use with i3bar
 bar {
     # 3 options:
-    status_command i3status --config "$XDG_CONFIG_HOME/i3status/conf" 
-    # status_command i3blocks
+    # status_command i3status --config "$XDG_CONFIG_HOME/i3status/conf" 
+    status_command i3blocks
     # status_command prepend-i3status.sh
 
     font pango: JetBrains Mono Bold 11
