@@ -1,16 +1,43 @@
 " vimrc
-" Display command line tab complete options as a menu
-set wildmenu
 
-" :colo zaibatsu
-:colo torte
-" :colo murphy
-" :colo koehler
+colorscheme torte
+
+autocmd FileType text colorscheme pablo
+" set lazyredraw
+" colo zaibatsu
+" colo murphy
+" colo koehler " torte but brighter
 
 " Force transparent background on st 
-autocmd ColorScheme *  hi! Normal ctermbg=none guibg=NONE
-
+autocmd ColorScheme *  hi! Normal ctermbg=NONE guibg=NONE
 highlight ColorColumn ctermbg=LightGray guibg=Gray
+
+
+" Underline (rather than highlight) the current line in vim
+
+" Only in insert mode 
+au InsertEnter * set cul
+au InsertLeave * set nocul
+" set culopt=screenline
+set culopt=number
+
+" hi clear CursorLine
+" hi CursorLine gui=underline cterm=underline ctermfg=NONE guifg=NONE
+
+" Separate commands don't seem to work. Gotta bind it to autocmds and override
+" colorscheme settings for all schemes.
+
+autocmd ColorScheme * hi! clear cursorline
+autocmd ColorScheme * hi! CursorLine cterm=underline gui=underline ctermfg=NONE guifg=NONE
+
+" Clear jumplist between sessions
+au VimEnter * clearjumps
+
+" Set the shell used to execute commands
+set shell =/bin/sh
+
+" Display command line tab complete options as a menu
+set wildmenu
 
 " Enable type file detection
 filetype on
@@ -61,7 +88,7 @@ set ignorecase
 " Override the ignorecase option if searching for capital letters
 set smartcase
 
-" Show matching words during a search
+" Highlight matching parentheses or brackets
 set showmatch
 
 " Use highlighting when doing a search
@@ -73,31 +100,25 @@ set showcmd
 " Show the mode you are on the last line
 set showmode
 
-" Have vim use 256-color schemes
+" Have vim use 256-color schemes (cyan/magenta/yellow for default colorscheme)
 " Turns out the following option suffices. No need to override $TERM
-set background=dark
+set bg=dark
 
 " Automatically reload files when modified by an external source
 set autoread
 
+" Avoid moving cursor to BOL when jumping around
+set nostartofline
+
 " Enable spellchecking
 " set spell spelllang=en_us
 
-" Status line From Matjaž (https://github.com/TheMatjaz)
-" ------------------------------------------------------------------------------
+" From user Matjaž (https://github.com/TheMatjaz)
+" *****************************************************************************
 
 " Always display the status bar
 set laststatus =2
 
-" function! Capitalize(string)
-    " let result = substitute(a:string,'\(\<\w\+\>\)', '\u\1', 'g')
-    " return result
-" endfunction
-" 
-" function! Upper(string)
-    " return substitute(a:string, '\w\+', '\u\0', 'g')
-" endfunction
- 
 set statusline =
 
 " Buffer number
@@ -121,7 +142,7 @@ set statusline +=\ \|\ Lines:\ %L
 " Time and date
 set statusline +=\ \|\ %{strftime('%a\ %d\ %b,\ %H:%M:%S')}
 " Final space on the right side of the screen
-set statusline +=\
+set statusline +=\ 
 
 " Ignore files matching these patterns when opening files based on a glob 
 " pattern
@@ -140,15 +161,16 @@ set wildignore +=.DS_Store  " macOS folder metadata
 set showbreak =↪\
 
 " Show whitespace characters with the following characters instead.
-" set list
-" set listchars =
-" set listchars +=tab:⇥\ 
-" set listchars +=extends:>
-" set listchars +=precedes:<
-" set listchars +=nbsp:␣
-" set listchars +=trail:•
-" set listchars +=eol:↲
-"
+
+set listchars +=tab:⇥\ 
+set listchars +=extends:>
+set listchars +=precedes:<
+set listchars +=nbsp:␣
+set listchars +=trail:•
+set listchars +=eol:↲
+
+" *****************************************************************************
+
 " XDG base directory specification  --------------------------------------------
 
 set runtimepath^=$XDG_CONFIG_HOME/vim
@@ -170,56 +192,69 @@ if !has('nvim') | set viminfofile=$XDG_STATE_HOME/vim/viminfo | endif
 
 " Mappings ---------------------------------------------------------------------
 " There's no native mapping command that creates the same mapping in both
-" Normal and Insert modes :(
+" Normal and Insert modes, hence the duplicity
 
-" Toggle line comment (insert, normal AND visual modes)
-noremap º :call ToggleComment()<CR>
-inoremap º <C-o>:call ToggleComment()<CR>
+" Toggle line comment (also in visual mode for block selection)
+noremap <silent> º :call ToggleComment()<CR>
+inoremap <silent> º <C-o>:call ToggleComment()<CR>
 
 " Cycle through available color schemes
 " Previous
-nnoremap <F1> :call CycleColorSchemes(-1)<CR>:colo<CR>
-inoremap <F1> <C-o>:call CycleColorSchemes(-1)<CR>
+nnoremap <silent> <F1> :call CycleColorSchemes(-1)<CR>:colo<CR>
+inoremap <silent> <F1> <C-o>:call CycleColorSchemes(-1)<CR>
 " Next
-nnoremap <F2> :call CycleColorSchemes(1)<CR>:colo<CR>
-inoremap <F2> <C-o>:call CycleColorSchemes(1)<CR>
+nnoremap <silent> <F2> :call CycleColorSchemes(1)<CR>:colo<CR>
+inoremap <silent> <F2> <C-o>:call CycleColorSchemes(1)<CR>
 
 " Reminder: <F3> is used to toggle UPPERCASE/lowercase
 
 " Reload current file
-nnoremap <F4> :w<CR>:e<CR>:echo "File reloaded"<CR>
-inoremap <F4> <C-o>:w<CR><C-o>:e<CR>
+nnoremap <silent> <F4> :w<CR>:e<CR>:echo "File reloaded"<CR>
+inoremap <silent> <F4> <C-o>:w<CR><C-o>:e<CR>
 
-" Reminder: <F5> and <F6> are used to run/compile/execute based on ft
+" Reminder: <F5> and <F6> are used to run/compile/execute based on filetype
 
 " Reload vimrc
-nnoremap <F7> :source $MYVIMRC<CR>:echo "Vimrc reloaded"<CR>
+nnoremap <silent> <F7> :source $MYVIMRC<CR>:echo "Vimrc reloaded"<CR>
 
 " Open vimrc
-nnoremap <F8> <Esc>:w <CR> :e $MYVIMRC<CR>
+nnoremap <silent> <F8> :w <CR> :e $MYVIMRC<CR>
 
 " Useful toggles for various settings that are not needed permanently but come 
 " in handy at times.
+" ------------------------------------------------------------------------------
 
 " Toggle spellchecking
-nnoremap <F9> :setlocal spell! spell?<CR>
-inoremap <F9> <C-o>:setlocal spell! spell?<CR>
+nnoremap <silent> <F9> :setlocal spell!<CR>:setlocal spell?<CR>
+inoremap <silent> <F9> <C-o>:setlocal spell!<CR>
 
 " Toggle column highlighting
-nnoremap <F10> :if &colorcolumn == '' \| setlocal colorcolumn=81 \| else \| setlocal colorcolumn= \| endif<CR>
-inoremap <F10> <C-o>:if &colorcolumn == '' \| setlocal colorcolumn=81 \| else \| setlocal colorcolumn= \| endif<CR>
+nnoremap <silent> <F10> :if &colorcolumn == '' \| setlocal colorcolumn=81 \| else \| setlocal colorcolumn= \| endif<CR>
+inoremap <silent> <F10> <C-o>:if &colorcolumn == '' \| setlocal colorcolumn=81 \| else \| setlocal colorcolumn= \| endif<CR>
 " 
 " Reminder: <F11 is used to toggle fullscreen in i3wm bindsym)
 
 " Toggle line numbering
-nnoremap <F12> :if &number == 0 \| setlocal number relativenumber \| else \| setlocal nonumber norelativenumber \| endif<CR>
-inoremap <F12> <C-o>:if &number == 0 \| setlocal number relativenumber \| else \| setlocal nonumber norelativenumber \| endif<CR>
+nnoremap <silent> <F12> :setlocal number! relativenumber!<CR>
+inoremap <silent> <F12> <C-o>:setlocal number! relativenumber!<CR>
 
-" Visual line separator.
-inoremap ;- <Esc>:call InsertHyphens()<CR>:startinsert<CR>
+" ...and there's more!
+
+" Toggle line wrapping
+nnoremap <silent> <C-F11> :setlocal nowrap!<CR>:set nowrap?<CR>
+inoremap <silent> <C-F11> <C-o>:setlocal nowrap!<CR>
+
+" Toggle the display of special characters for formatting
+nnoremap <silent> <C-F12> :setlocal list!<CR>:set list?<CR>
+inoremap <silent> <C-F12> <C-o>:setlocal list!<CR>
+
+" Visual line separator
+inoremap ;- <C-o>:call InsertHyphens()<CR>
 
 " Automatically merge changes in xresources
 autocmd BufWritePost $XDG_CONFIG_HOME/X11/xresources silent! execute '!xrdb -merge %' | redraw!
+
+" Functions -------------------------------------------------------------------
 
 " Separator - Fill with hyphens up to the 80th column
 function InsertHyphens()
@@ -232,11 +267,8 @@ function InsertHyphens()
     
 endfunction
 
-" Functions
-" -----------------------------------------------------------------
-
+" Select next/previous color scheme
 function! CycleColorSchemes(inc)
-
     " g:colors_name is undefined until a color scheme is explicitly set
     let available_schemes = getcompletion('', 'color')
     let current_scheme = exists('g:colors_name') ? g:colors_name : available_schemes[0]
@@ -260,7 +292,7 @@ augroup commenting_code
     " Fallback: empty string for unspecified file types
     autocmd FileType * let b:comment_leader = ''
 
-    autocmd FileType sh,python,asm,zsh,conf,fstab
+    autocmd FileType sh,python,asm,zsh,conf,fstab,i3config
                                     \   let b:comment_leader = '#'
     autocmd FileType c,cpp              let b:comment_leader = '\/\/'
     autocmd FileType tex                let b:comment_leader = '%'
