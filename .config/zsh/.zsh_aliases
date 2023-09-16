@@ -30,17 +30,19 @@ alias c='printf "\033c"'
 # DuckDuckGo from terminal. Disable User Agent to speed up a bit.
 alias d='ddgr --noua -n 8'
 alias e='exit'
-alias f='file'
+alias f='file -b'
 # cat but with syntax highlight
 alias h='highlight --out-format=ansi'
 alias k='kitty +kitten icat $1'
+alias m='man'
+# 'O'pen file manager in PWD
 alias o='nohup pcmanfm . &> /dev/null & disown'
 alias p='sudo pacman'
 alias v='vim'
 
 # alias z='nohup zathura "$1" &> /dev/null & disown'
 # Regular alias won't do.
-# Need a function truly detach the proccess form terminal 
+# Need a function truly detach the process form terminal 
 z(){nohup zathura "$1" &> /dev/null  & disown}
 
 # Customize xterm
@@ -63,6 +65,7 @@ alias gs='git status'
 alias gp='git push'
 alias gc='git commit -v -m'
 alias gd='git diff'
+alias gr='git rm'
 
 # Mount and switch to other volumes
 alias win='sudo mount /dev/sda2 /mnt/Windows10 && cd /mnt/Windows10'
