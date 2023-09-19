@@ -1,21 +1,21 @@
 " vimrc
 
-colorscheme torte
+" Colors ----------------------------------------------------------------------
 
+colorscheme torte
 autocmd FileType text colorscheme pablo
-" set lazyredraw
+
 " colo zaibatsu
 " colo murphy
 " colo koehler " torte but brighter
 
-" Force transparent background on st 
+" Force transparent background on st
 autocmd ColorScheme *  hi! Normal ctermbg=NONE guibg=NONE
 highlight ColorColumn ctermbg=LightGray guibg=Gray
 
-
 " Underline (rather than highlight) the current line in vim
-
-" Only in insert mode 
+" ----------------------------------------------------------------------------
+" Only in insert mode
 au InsertEnter * set cul
 au InsertLeave * set nocul
 " set culopt=screenline
@@ -30,8 +30,19 @@ set culopt=number
 autocmd ColorScheme * hi! clear cursorline
 autocmd ColorScheme * hi! CursorLine cterm=underline gui=underline ctermfg=NONE guifg=NONE
 
+" Remove trailing whitespaces on file write
+autocmd BufWritePre * :%s/\s\+$//e
+
 " Clear jumplist between sessions
 au VimEnter * clearjumps
+
+" Enable automatic line wrapping
+" autocmd Filetype text set formatoptions+=a
+
+" The screen will not be redrawn while executing macros, registers and other
+" commands that have not been typed. Also, updating the window title is
+" postponed
+" set lazyredraw
 
 " Set the shell used to execute commands
 set shell =/bin/sh
@@ -142,9 +153,9 @@ set statusline +=\ \|\ Lines:\ %L
 " Time and date
 set statusline +=\ \|\ %{strftime('%a\ %d\ %b,\ %H:%M:%S')}
 " Final space on the right side of the screen
-set statusline +=\ 
+set statusline +=\
 
-" Ignore files matching these patterns when opening files based on a glob 
+" Ignore files matching these patterns when opening files based on a glob
 " pattern
 set wildignore +=*.pyc  " Python bytecode
 set wildignore +=*.swp  " Vim swap files
@@ -162,11 +173,14 @@ set showbreak =↪\
 
 " Show whitespace characters with the following characters instead.
 
-set listchars +=tab:⇥\ 
-set listchars +=extends:>
-set listchars +=precedes:<
+set listchars +=tab:⇥\
+set listchars +=extends:→
+" set listchars +=extends:⇒
+" set listchars +=precedes:⇐
+set listchars +=precedes:←
 set listchars +=nbsp:␣
 set listchars +=trail:•
+set listchars +=lead:•
 set listchars +=eol:↲
 
 " *****************************************************************************
@@ -190,9 +204,7 @@ set viewdir=$XDG_STATE_HOME/vim/view     | call mkdir(&viewdir,   'p')
 
 if !has('nvim') | set viminfofile=$XDG_STATE_HOME/vim/viminfo | endif
 
-" Mappings ---------------------------------------------------------------------
-" There's no native mapping command that creates the same mapping in both
-" Normal and Insert modes, hence the duplicity
+" Mappings --------------------------------------------------------------------
 
 " Toggle line comment (also in visual mode for block selection)
 noremap <silent> º :call ToggleComment()<CR>
@@ -220,18 +232,18 @@ nnoremap <silent> <F7> :source $MYVIMRC<CR>:echo "Vimrc reloaded"<CR>
 " Open vimrc
 nnoremap <silent> <F8> :w <CR> :e $MYVIMRC<CR>
 
-" Useful toggles for various settings that are not needed permanently but come 
+" Useful toggles for various settings that are not needed permanently but come
 " in handy at times.
-" ------------------------------------------------------------------------------
+" -----------------------------------------------------------------------------
 
 " Toggle spellchecking
 nnoremap <silent> <F9> :setlocal spell!<CR>:setlocal spell?<CR>
 inoremap <silent> <F9> <C-o>:setlocal spell!<CR>
 
 " Toggle column highlighting
-nnoremap <silent> <F10> :if &colorcolumn == '' \| setlocal colorcolumn=81 \| else \| setlocal colorcolumn= \| endif<CR>
-inoremap <silent> <F10> <C-o>:if &colorcolumn == '' \| setlocal colorcolumn=81 \| else \| setlocal colorcolumn= \| endif<CR>
-" 
+nnoremap <silent> <F10> :if &colorcolumn == '' \| setlocal colorcolumn=80 \| else \| setlocal colorcolumn= \| endif<CR>
+inoremap <silent> <F10> <C-o>:if &colorcolumn == '' \| setlocal colorcolumn=80 \| else \| setlocal colorcolumn= \| endif<CR>
+
 " Reminder: <F11 is used to toggle fullscreen in i3wm bindsym)
 
 " Toggle line numbering
@@ -241,15 +253,15 @@ inoremap <silent> <F12> <C-o>:setlocal number! relativenumber!<CR>
 " ...and there's more!
 
 " Toggle line wrapping
-nnoremap <silent> <C-F11> :setlocal nowrap!<CR>:set nowrap?<CR>
-inoremap <silent> <C-F11> <C-o>:setlocal nowrap!<CR>
+nnoremap <silent> <C-F11> :setlocal wrap!<CR>:set wrap?<CR>
+inoremap <silent> <C-F11> <C-o>:setlocal wrap!<CR>
 
 " Toggle the display of special characters for formatting
 nnoremap <silent> <C-F12> :setlocal list!<CR>:set list?<CR>
 inoremap <silent> <C-F12> <C-o>:setlocal list!<CR>
 
 " Visual line separator
-inoremap ;- <C-o>:call InsertHyphens()<CR>
+inoremap ;- <C-o>:call InsertLine()<CR>
 
 " Automatically merge changes in xresources
 autocmd BufWritePost $XDG_CONFIG_HOME/X11/xresources silent! execute '!xrdb -merge %' | redraw!
@@ -259,15 +271,15 @@ autocmd BufWritePost $XDG_CONFIG_HOME/i3/config silent! execute '!i3-msg reload'
 
 " Functions -------------------------------------------------------------------
 
-" Separator - Fill with hyphens up to the 80th column
-function InsertHyphens()
+" Separator - Fill with hyphens up to the 79th column
+function InsertLine()
     let save_cursor = getpos(".")
     let current_column = col('.')
     let hyphens_to_insert = 79 - current_column
     let hyphens = repeat('-', hyphens_to_insert)
     execute "normal! a" . hyphens
     call setpos('.', current_column)
-    
+
 endfunction
 
 " Select next/previous color scheme
@@ -291,7 +303,7 @@ endfunction
 " Commenting lines/blocks of code
 augroup commenting_code
     autocmd!
-    
+
     " Fallback: empty string for unspecified file types
     autocmd FileType * let b:comment_leader = ''
 
