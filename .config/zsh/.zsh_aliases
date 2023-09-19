@@ -1,5 +1,7 @@
 # .zsh_aliases
 
+pop-pdf() { qpdf "$1" --pages "$1" 1-$(( $(qpdf --show-npages "$1") - $2 )) -- "${1%.pdf}-popped.pdf"; }
+
 alias open='xdg-open'
 alias install='install -Dv /dev/null'
 
@@ -42,7 +44,7 @@ alias v='vim'
 
 # alias z='nohup zathura "$1" &> /dev/null & disown'
 # Regular alias won't do.
-# Need a function truly detach the process form terminal 
+# Need a function truly detach the process form terminal
 z(){nohup zathura "$1" &> /dev/null  & disown}
 
 # Customize xterm
@@ -54,7 +56,7 @@ alias rmd='rmdir -v'
 # Add interactive flag - Ask for confirmation when deleting or overwriting stuff
 alias mv='mv -i'
 alias cp='cp -iv'
-alias rm='rm -i --preserve-root'      	
+alias rm='rm -i --preserve-root'
 
 # Searching
 alias fp='ps -e | grep $1'    # Find Process
@@ -74,5 +76,5 @@ alias ubu='sudo mount /dev/sda5 /mnt/Ubuntu && cd /mnt/Ubuntu'
 
 alias fort='fortune | cowsay | lolcat'
 
-# Highlight current date in calendar 
+# Highlight current date in calendar
 # alias cal="cal | grep --color -EC6 \"\b\$(date +%e | sed 's/ //g')\b\""
