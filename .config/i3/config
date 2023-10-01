@@ -21,13 +21,18 @@ bindsym $mod+dead_grave gaps inner current minus 5
 bindsym $mod+Return exec $TERMINAL
 
 # Launch browser
-bindsym $mod+b workspace "<span foreground='#0059FF' size='x-large'></span>"; exec $BROWSER 
+bindsym $mod+b workspace "<span foreground='#0059FF' size='x-large'></span>"; exec $BROWSER
 
 # Kill focused window
 bindsym $mod+q kill
 
-# Launch i3-dmenu-desktop (shows only programs with .desktop file)
+# i3-dmenu-desktop shows only programs with .desktop file, even includes user
+# custom desktop files, but ignores entries with the type "Link"
 bindsym $mod+d exec --no-startup-id i3-dmenu-desktop --dmenu="dmenu -i -b -fn 'Dejavu Sans Book:size=11' -nb '#000000' -nf '#FFFFFF' -sb '#FFFFFF' -sf '#000000'"
+bindsym $mod+Shift+d exec --no-startup-id dmenu_run -i -b -fn 'Dejavu Sans Book:size=11' -nb '#00001F' -nf '#FFFFFF' -sb '#FFFFFF' -sf '#000000'
+
+# bindsym $mod+d exec --no-startup-id i3-dmenu-desktop --dmenu="dmenu -i -b -fn 'JetBrains Mono:size=11' -nb '#00001F' -nf '#FFFFFF' -sb '#FFFFFF' -sf '#000000'"
+# bindsym $mod+Shift+d exec --no-startup-id dmenu_run -i -b -fn 'JetBrains Mono:size=11' -nb '#00001F' -nf '#FFFFFF' -sb '#FFFFFF' -sf '#000000'
 
 # Change focus
 bindsym $mod+Left focus left
@@ -118,13 +123,12 @@ bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcu
 # MY BYNDSYMS -----------------------------------------------------------------
 
 # Assign some apps to custom workspaces represented by Font Awesome icons
-# Generally those I intend to have only one instance of 
+# Generally those I intend to have only one instance of
 bindsym $mod+v workspace "<span size='xx-large'></span>"; exec $TERMINAL -e cava
 bindsym $mod+k workspace "<span size='x-large' ></span>"; exec $TERMINAL -e qalc
 bindsym $mod+y workspace "<span size='x-large' foreground='#FF0000' ></span>"; exec $BROWSER --new-window https://www.youtube.com/
 bindsym $mod+Shift+y workspace "<span size='x-large' foreground='#FF0000' ></span>"; exec $BROWSER --private-window https://www.youtube.com/
 bindsym $mod+s workspace "<span size='x-large' foreground='#FF6500' ></span>"; exec $BROWSER --new-window https://soundcloud.com/you/likes
-
 
 # Reset default gap sizes
 bindsym $mod+r gaps inner all set 12; gaps outer all set 6;
@@ -208,6 +212,8 @@ bindsym $mod+Shift+s --release exec --no-startup-id area-screenshot.sh
 
 # Assign programs to specific workspaces
 # assign [class="firefoxdeveloperedition" instance="Navigator"] "<span size='x-large' foreground='#0059FF'></span>"
+# assign [class="Slack" instance="slack"] "<span size='xx-large' foreground='#800080'></span>"
+assign [class="Slack" instance="slack"] "<span size='x-large' ></span>"
 # assign [class="code-oss" instance="code-oss"] ""
 
 # assign [class="MATLAB R2022b - academic use" instance="sun-awt-X11-XFramePeer"] MATLAB
@@ -226,18 +232,18 @@ for_window [urgent="latest"] focus
 # i3status generates status bar to use with i3bar
 bar {
     # 3 options:
-    status_command i3status --config "$XDG_CONFIG_HOME/i3status/conf" 
+    status_command i3status --config "$XDG_CONFIG_HOME/i3status/conf"
     # status_command i3blocks
     # status_command prepend-i3status.sh
 
     # font pango: JetBrains Mono Regular 11
     # font pango: JetBrains Mono Bold 11
     font pango: JetBrains Mono Semibold 11
-    
+
     # font pango: Source Code Pro Semibold 11
     # font pango: Systemui Bold 11
     # font pango: IPAPGothic Bold 11
-    
+
     # font pango: Mono 11
     # font pango: Mono Bold 11
 
@@ -247,7 +253,7 @@ bar {
     # font pango: DejaVu Sans Book 11
     # font pango: Sans Bold 11
     # font pango: DejaVu Sans Bold 11
-    
+
     position top
     # position bottom
 	separator_symbol "  "
@@ -258,6 +264,6 @@ bar {
 		background #000000
         focused_workspace #FFFFFF #FFFFFF #000000
         inactive_workspace #000000 #000000 #FFFFFF
-        urgent_workspace   #F0000F #000000 #FFFFFF  
+        urgent_workspace   #F0000F #000000 #FFFFFF
 	}
 }
