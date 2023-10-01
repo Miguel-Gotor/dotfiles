@@ -181,6 +181,7 @@
     # Vertical alignment of message text and icon.
     # Possible values are "top", "center" and "bottom".
     vertical_alignment = center
+    # vertical_alignment = top
 
     # Show age of message if message is older than show_age_threshold
     # seconds.
@@ -189,7 +190,7 @@
 
     # Specify where to make an ellipsis in long lines.
     # Possible values are "start", "middle" and "end".
-    ellipsize = middle
+    ellipsize = end
 
     # Ignore newlines '\n' in notifications.
     ignore_newline = no
@@ -198,7 +199,7 @@
     stack_duplicates = true
 
     # Hide the count of stacked notifications with the same content
-    hide_duplicate_count = false
+    hide_duplicate_count = yes
 
     # Display indicators for URLs (U) and actions (A).
     show_indicators = no
@@ -243,8 +244,8 @@
     # dmenu path.
     # dmenu = /usr/bin/dmenu -p dunst -i -b -fn 'Dejavu Sans Book:size=11'
     # dmenu = /usr/bin/dmenu -p dunst -i -b -fn 'Dejavu Sans Book:size=11' -nb '#000000'
-    dmenu = /usr/bin/dmenu -i -p "Choose a playlist:" -b -fn 'Dejavu Sans Book:size=11' 
-    
+    dmenu = /usr/bin/dmenu -i -p "Choose a playlist:" -b -fn 'Dejavu Sans Book:size=11'
+
     # Browser for opening urls in context menu.
     browser = /usr/bin/xdg-open
 
@@ -310,7 +311,7 @@
     mouse_left_click = do_action, open_url
     mouse_middle_click = none
     mouse_right_click = none
- 
+
     # history = "Mod4+h"
     # close = ctrl+shift+period
 
