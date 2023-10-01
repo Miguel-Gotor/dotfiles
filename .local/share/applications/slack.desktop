@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=Slack Web
+# Exec=xdg-open https://slack.com/intl/es-es/
+Exec=xdg-open https://fentiss.slack.com/
+Type=Application
+Icon=slack
+Categories=Network;
+
+# Using Type=Application to make it appear in i3-dmenu-desktop.
+# i3-dmenu-desktop ignores desktop entries with the type "Link,"
+# making them unusable. Executing the URL is a workaround.
