@@ -18,6 +18,7 @@ alias ldmconf='sudo $EDITOR /etc/lightdm/lightdm-gtk-greeter.conf'
 alias duconf='$EDITOR $XDG_CONFIG_HOME/dunst/dunstrc'
 alias zconf='$EDITOR $XDG_CONFIG_HOME/zsh/.zshrc'
 alias prof='$EDITOR $HOME/.profile'
+alias fent='$EDITOR $HOME/Documents/FentISS/Notes/notes.txt
 
 # Firefox dict and css files
 alias dict='$EDITOR $XDG_CONFIG_HOME/cspell/shared-dict.txt'
@@ -27,6 +28,9 @@ alias dict='$EDITOR $XDG_CONFIG_HOME/cspell/shared-dict.txt'
 alias ffcss='vim $(locate userChrome)' # One file per profile
 
 # Have frequently used commands one keystroke away
+
+
+
 # Actually clear the terminal so I don't see previous commands output
 alias c='printf "\033c"'
 # DuckDuckGo from terminal. Disable User Agent to speed up a bit.
@@ -41,6 +45,8 @@ alias m='man'
 alias o='nohup pcmanfm . &> /dev/null & disown'
 alias p='sudo pacman'
 alias v='vim'
+
+alias b='$OLDPWD'
 
 # alias z='nohup zathura "$1" &> /dev/null & disown'
 # Regular alias won't do.
