@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Drive
+Exec=xdg-open https://drive.google.com/drive/folders/0B9sLJbB8GGpIaW8wYzh2Q2wzcTA?resourcekey=0-76jwOCsjwHtAZeVJnhTBjg&usp=drive_link
+Type=Application
+Icon=google-drive
+Categories=Network;
+
+# Using Type=Application to make it appear in i3-dmenu-desktop.
+# i3-dmenu-desktop ignores desktop entries with the type "Link,"
+# making them unusable. Executing the URL is a workaround.
