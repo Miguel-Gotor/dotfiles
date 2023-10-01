@@ -12,13 +12,15 @@ PATH="$HOME/bin:$PATH"
 PATH="$HOME/.local/bin:$PATH"
 # Add TeX Live 2023 installation path
 PATH="/usr/local/texlive/2023/bin/x86_64-linux:$PATH"
+# Prepend TSIM-LEON4 location to $PATH
+# PATH="$HOME/Documents/tsim-leon4/tsim/linux-x64:$PATH"
 
 # XDG Base Directory Specification --------------------------------------------
 #
 # Moved to: "etc/security/pam_env.conf" to make them available to the LightDM
 # xsession wrapper script. This way we can manually config the display manager
 # to honor de default XDG dirs, forcing to check XDG_CONFIG_HOME.
-# 
+#
 # export XDG_CONFIG_HOME="$HOME/.config"
 # export XDG_CACHE_HOME="$HOME/.cache"
 # export XDG_DATA_HOME="$HOME/.local/share"
@@ -46,6 +48,8 @@ export VIMINIT='let $MYVIMRC="$XDG_CONFIG_HOME/vim/vimrc" | source $MYVIMRC'
 export WGETRC="$XDG_CONFIG_HOME/wgetrc"
 export XINITRC="$XDG_CONFIG_HOME/X11/xinitrc"
 export GTK2_RC_FILES="$XDG_CONFIG_HOME/gtk-2.0/gtkrc"
+export MPLAYER_HOME="$XDG_CONFIG_HOME/mplayer"
+export INPUTRC="$XDG_CONFIG_HOME"/readline/inputrc
 
 # Xauthority ------------------------------------------------------------------
 # Place xauthority file in a runtime directory with restricted access
