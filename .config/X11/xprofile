@@ -23,3 +23,6 @@ polkit-dumb-agent &
 
 # Start unclutter to automatically hide the cursor
 unclutter &
+
+# Start network manager applet
+# nm-applet &
