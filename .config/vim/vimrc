@@ -174,10 +174,10 @@ set showbreak =↪\
 " Show whitespace characters with the following characters instead.
 
 set listchars +=tab:⇥\
-set listchars +=extends:→
-" set listchars +=extends:⇒
-" set listchars +=precedes:⇐
-set listchars +=precedes:←
+" set listchars +=extends:→
+" set listchars +=precedes:←
+set listchars +=extends:⇒
+set listchars +=precedes:⇐
 set listchars +=nbsp:␣
 set listchars +=trail:•
 set listchars +=lead:•
@@ -269,6 +269,12 @@ autocmd BufWritePost $XDG_CONFIG_HOME/X11/xresources silent! execute '!xrdb -mer
 " Automatically reload i3wm after modifying config file
 autocmd BufWritePost $XDG_CONFIG_HOME/i3/config silent! execute '!i3-msg reload' | redraw!
 
+" Switch to the next / previous buffer in queue when opening multiple files
+" using Alt + Arrows
+nnoremap <M-Left> :N<CR>
+nnoremap <M-Right> :n<CR>
+
+
 " Functions -------------------------------------------------------------------
 
 " Separator - Fill with hyphens up to the 79th column
@@ -307,7 +313,7 @@ augroup commenting_code
     " Fallback: empty string for unspecified file types
     autocmd FileType * let b:comment_leader = ''
 
-    autocmd FileType sh,python,asm,zsh,conf,fstab,i3config
+    autocmd FileType sh,python,asm,zsh,conf,fstab,i3config,make,cfg
                                     \   let b:comment_leader = '#'
     autocmd FileType c,cpp              let b:comment_leader = '\/\/'
     autocmd FileType tex                let b:comment_leader = '%'
