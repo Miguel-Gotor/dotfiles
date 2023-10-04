@@ -26,6 +26,13 @@ PATH="/usr/local/texlive/2023/bin/x86_64-linux:$PATH"
 # export XDG_DATA_HOME="$HOME/.local/share"
 # export XDG_STATE_HOME="$HOME/.local/state"
 
+# Change color of grep
+# export GREP_COLORS='ms=01;31'
+# export GREP_COLORS='ms=01;32'
+# export GREP_COLORS='ms=01;33'
+export GREP_COLORS='ms=01;34'
+# export GREP_COLORS='ms=01;35'
+
 # History files ---------------------------------------------------------------
 
 # Disable "less" history
@@ -65,5 +72,6 @@ export INPUTRC="$XDG_CONFIG_HOME"/readline/inputrc
 #
 export EDITOR="vim"
 export BROWSER="firefox-developer-edition"
-export TERMINAL="kitty"
+# export TERMINAL="kitty"
+export TERMINAL="st"
 export READER="zathura"
