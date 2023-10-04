@@ -5,6 +5,7 @@
 # Unique identifier (name of the script for example)
 msg_tag=$(basename $0)
 
+set -e
 temp_file=$(mktemp /tmp/screenshot-XXX.png)
 maim -u -c 1,0,0 -s $temp_file
 
