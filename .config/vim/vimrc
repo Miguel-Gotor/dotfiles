@@ -1,25 +1,20 @@
-" vimrc
-
-" Colors ----------------------------------------------------------------------
-
-colorscheme torte
-autocmd FileType text colorscheme pablo
-
-" colo zaibatsu
-" colo murphy
-" colo koehler " torte but brighter
+" .config/vim/vimrc
 
 " Force transparent background on st
 autocmd ColorScheme *  hi! Normal ctermbg=NONE guibg=NONE
 highlight ColorColumn ctermbg=LightGray guibg=Gray
+"
+if &term =~ '256color'
+    set t_ut=
+endif
 
 " Underline (rather than highlight) the current line in vim
 " ----------------------------------------------------------------------------
 " Only in insert mode
-au InsertEnter * set cul
-au InsertLeave * set nocul
+" au InsertEnter * set cul
+" au InsertLeave * set nocul
 " set culopt=screenline
-set culopt=number
+" set culopt=number
 
 " hi clear CursorLine
 " hi CursorLine gui=underline cterm=underline ctermfg=NONE guifg=NONE
@@ -169,11 +164,13 @@ set wildignore +=.DS_Store  " macOS folder metadata
 " a visual continuation on the next line.
 " Note: a space is the last character in the string.
 
-set showbreak =↪\
+" set showbreak =↪\
+set showbreak =↪
 
 " Show whitespace characters with the following characters instead.
 
 set listchars +=tab:⇥\
+
 " set listchars +=extends:→
 " set listchars +=precedes:←
 set listchars +=extends:⇒
@@ -181,7 +178,8 @@ set listchars +=precedes:⇐
 set listchars +=nbsp:␣
 set listchars +=trail:•
 set listchars +=lead:•
-set listchars +=eol:↲
+" set listchars +=eoL:↲
+set listchars +=eol:↩
 
 " *****************************************************************************
 
@@ -205,6 +203,10 @@ set viewdir=$XDG_STATE_HOME/vim/view     | call mkdir(&viewdir,   'p')
 if !has('nvim') | set viminfofile=$XDG_STATE_HOME/vim/viminfo | endif
 
 " Mappings --------------------------------------------------------------------
+
+map <S-Insert> <MiddleMouse>
+map! <S-Insert> <MiddleMouse>
+
 
 " Toggle line comment (also in visual mode for block selection)
 noremap <silent> º :call ToggleComment()<CR>
@@ -274,7 +276,6 @@ autocmd BufWritePost $XDG_CONFIG_HOME/i3/config silent! execute '!i3-msg reload'
 nnoremap <M-Left> :N<CR>
 nnoremap <M-Right> :n<CR>
 
-
 " Functions -------------------------------------------------------------------
 
 " Separator - Fill with hyphens up to the 79th column
@@ -302,7 +303,7 @@ function! CycleColorSchemes(inc)
         endif
     endfor
 
-    execute 'colorscheme' next_scheme
+    exec 'colorscheme' next_scheme
 
 endfunction
 
@@ -343,3 +344,9 @@ function! ToggleComment()
     " Account for the comment_leader length to restore cursor position
     call setpos('.', cursor)
 endfunction
+
+" Colors
+colorscheme deep-space
+" colorscheme darkglass
+" colorscheme zmrok
+" colorscheme enzyme
