@@ -1,20 +1,39 @@
 *.foreground:   #ffffff
 *.background:   #000000
 *.cursorColor:  #ff00ff
-*.alpha:        0.80
+*.alpha:        0.70
 
 !! st
 !! Fonts
 !! st.font: Hack:size=11:antialias=true:autohint=true
+
 !! st.font: JetBrainsMono:pixelsize=14:antialias=true:autohint=true:style=Medium
+!! st.font: JetBrainsMono:size=11:antialias=true:autohint=true:style=Bold
+
 !! st.font: Source Code Pro:size=11.5:antialias:true:autohint=true:style=Semibold
-!! st.font: Source Code Pro:size=11.5:antialias:true:autohint=true:style=Medium
-st.font: JetBrainsMono:size=11:antialias=true:autohint=true:style=Bold
+!! st.font: Source Code Pro:size=11:antialias:true:autohint=true:style=Medium
+
+!! st.font: Iosevka Comfy:size=12.5:antialias=true:autohint=true:style=Regular
+!! st.font: Iosevka Comfy:size=11:antialias=true:autohint=true:style=Bold
+!! st.font: Iosevka Comfy:size=13:antialias=true:autohint=true:style=Medium
+!! st.font: Iosevka Comfy:size=12:antialias=true:autohint=true:style=Medium
+
+st.font: Iosevka Comfy Wide:size=11:antialias=true:autohint=true:style=Bold
+
+!! st.font: Iosevka Comfy Wide:size=11:antialias=true:autohint=true:style=Medium
+!! st.font: Iosevka Comfy Wide:size=12:antialias=true:autohint=true:style=Medium
+
+*.cursorstyle:beam
 
 st.color0:       #000000
 st.color1:       #FF0000
-st.color2:       #FFFF00
+st.color2:       #00FF00
 st.color3:       #FFFF00
+st.color12:       #00FFFF
+st.color14:       #1159FF
+
+*.per-ext-common: default,selection-autotransform
+*.selection-autotransform.0: s/ +$//gm
 
 !! The prompt powerline
 st.color4:       #0FFFFF
@@ -34,9 +53,9 @@ URxvt.font: xft:Monospace:style=Regular:size=11
 URxvt.scrollBar: false
 
 URxvt.background: [80]#000000
-URxvt.cursorBlink: true
+*.cursorBlink: true
 URxvt.iso14755: false
 URxvt.internalBorder: 12
 URxvt.urgentOnBell: true
- 
+
 // vim: set ft=xdefaults :
