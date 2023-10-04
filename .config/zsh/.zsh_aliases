@@ -8,6 +8,8 @@ alias install='install -Dv /dev/null'
 # Quickly edit plain text files
 alias ali='$EDITOR $ZDOTDIR/.zsh_aliases'
 alias log='$EDITOR $HOME/Documents/Linux/Notes/arch.txt'
+alias fent='$EDITOR $HOME/Documents/FentISS/Notes/notes.txt'
+alias prof='$EDITOR $HOME/.profile'
 
 # Config files
 alias xconf='$EDITOR $XDG_CONFIG_HOME/X11/xresources'
@@ -17,35 +19,40 @@ alias viconf='$EDITOR $XDG_CONFIG_HOME/vim/vimrc'
 alias ldmconf='sudo $EDITOR /etc/lightdm/lightdm-gtk-greeter.conf'
 alias duconf='$EDITOR $XDG_CONFIG_HOME/dunst/dunstrc'
 alias zconf='$EDITOR $XDG_CONFIG_HOME/zsh/.zshrc'
-alias prof='$EDITOR $HOME/.profile'
-alias fent='$EDITOR $HOME/Documents/FentISS/Notes/notes.txt
+alias tconf='$EDITOR $XDG_CONFIG_HOME/tmux/tmux.conf'
 
-# Firefox dict and css files
-alias dict='$EDITOR $XDG_CONFIG_HOME/cspell/shared-dict.txt'
+# Firefox dict and css fileS
+# alias dict='$EDITOR $XDG_CONFIG_HOME/cspell/shared-dict.txt'
 # Firefox dictionary "persdict.dat" is a symlink pointing to the shared
 # dictionary with the VSCode extension cspell
-# alias ffdict='vim $(locate persdict.dat)'
-alias ffcss='vim $(locate userChrome)' # One file per profile
+alias ffdict='vim $(locate persdict.dat)'
+
+alias ffcss='vim $(locate userChrome)'
 
 # Have frequently used commands one keystroke away
 
-
-
 # Actually clear the terminal so I don't see previous commands output
 alias c='printf "\033c"'
+
 # DuckDuckGo from terminal. Disable User Agent to speed up a bit.
 alias d='ddgr --noua -n 8'
 alias e='exit'
 alias f='file -b'
-# cat but with syntax highlight
+
+# Cat but with syntax (H)ighlight
 alias h='highlight --out-format=ansi'
+
 alias k='kitty +kitten icat $1'
 alias m='man'
-# 'O'pen file manager in PWD
+
+# (O)pen file manager in PWD
 alias o='nohup pcmanfm . &> /dev/null & disown'
+
 alias p='sudo pacman'
+alias t='tmux'
 alias v='vim'
 
+# (B)ack to previous dir
 alias b='$OLDPWD'
 
 # alias z='nohup zathura "$1" &> /dev/null & disown'
@@ -54,7 +61,7 @@ alias b='$OLDPWD'
 z(){nohup zathura "$1" &> /dev/null  & disown}
 
 # Customize xterm
-alias xt='xterm -fa 'Hack' -fs 11 zsh &> /dev/null &disown'
+# alias xt='xterm -fa 'Hack' -fs 11 zsh &> /dev/null &disown'
 
 # Add verbosity
 alias mkd='mkdir -pv'
@@ -68,6 +75,7 @@ alias rm='rm -i --preserve-root'
 alias fp='ps -e | grep $1'    # Find Process
 alias hs='history | grep $1'  # Find command
 
+# Git
 alias ga='git add -v'
 alias gs='git status'
 alias gp='git push'
