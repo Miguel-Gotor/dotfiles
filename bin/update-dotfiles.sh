@@ -6,7 +6,7 @@ cd "$HOME" || exit
 
 dotfiles_dir="./dotfiles"
 
-# Use relative paths to prevent the "--parents" option from copying unnnecesary
+# Use relative paths to prevent the "--parents" option from copying unnecesary
 # parent directories (/home/user/...) while preserving directory structure:
 
 cp --parents -u "./.config/Code - OSS/User/settings.json" $dotfiles_dir
@@ -27,13 +27,17 @@ cp --parents -ru "./.config/X11" $dotfiles_dir
 cp --parents -ru "./.config/zsh" $dotfiles_dir
 cp --parents -ru "./.config/wgetrc" $dotfiles_dir
 cp --parents -ru "./.config/lf" $dotfiles_dir
+cp --parents -ru "./.config/tmux" $dotfiles_dir
+
 cp --parents -ru "./bin" $dotfiles_dir
 cp --parents -ru "./Pictures/Wallpapers" $dotfiles_dir
 cp --parents -ru "./Pictures/Screenshots/Ricing" $dotfiles_dir
 cp --parents -ru "./.profile" $dotfiles_dir
 cp --parents -ru "./.mozilla/firefox/hl9gcn50.default-release/chrome/userChrome.css" $dotfiles_dir
+
 cp --parents -ru "./.local/share/applications" $dotfiles_dir
 cp --parents -ru "./.local/share/fonts" $dotfiles_dir
+cp --parents -ru "./.local/share/oh-my-zsh/custom/themes" $dotfiles_dir
 
 # System-wide config files worth tracking.
 # Not dotfiles per se, but modified to make LightDM XDG-BDS compliant
