@@ -25,4 +25,4 @@ polkit-dumb-agent &
 unclutter &
 
 # Start network manager applet
-# nm-applet &
+nm-applet &
