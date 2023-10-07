@@ -6,6 +6,9 @@
 # Set keyboard rate
 xset r rate 200 60
 
+# Turn on the numlock key by default
+numlockx on
+
 # Start compositor
 picom &
 
