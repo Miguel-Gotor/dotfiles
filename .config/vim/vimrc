@@ -1,32 +1,53 @@
 " .config/vim/vimrc
 
-" Force transparent background on st
-autocmd ColorScheme *  hi! Normal ctermbg=NONE guibg=NONE
-highlight ColorColumn ctermbg=LightGray guibg=Gray
-"
-if &term =~ '256color'
-    set t_ut=
+" Disable timeout on esc key
+" TODO: Find out how is st related to this issue
+set timeoutlen=0
+
+" vim / neovim specific settings
+if !has('nvim')
+    " Change cursor from block (normal mode) to line (insert mode)
+    let &t_SI = "\e[6 q"
+    let &t_EI = "\e[2 q"
+else
+    " Disable popup menu on RMB click
+    set mouse=
+    " Yank selection to clipboard
+    set clipboard=unnamedplus
 endif
+
+" Force transparent background on all color schemes
+" autocmd ColorScheme *  hi! Normal ctermbg=NONE guibg=NONE
+" highlight ColorColumn ctermbg=LightGray guibg=Gray
+
+" if &term =~ '256color'
+    " set t_ut=
+" endif
 
 " Underline (rather than highlight) the current line in vim
 " ----------------------------------------------------------------------------
-" Only in insert mode
-" au InsertEnter * set cul
-" au InsertLeave * set nocul
-" set culopt=screenline
-" set culopt=number
+set culopt=screenline
+" Only the line number
+set culopt=number
+
+" But only in insert mode
+au InsertEnter * set cul
+au InsertLeave * set nocul
 
 " hi clear CursorLine
 " hi CursorLine gui=underline cterm=underline ctermfg=NONE guifg=NONE
-
+" ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 " Separate commands don't seem to work. Gotta bind it to autocmds and override
 " colorscheme settings for all schemes.
 
 autocmd ColorScheme * hi! clear cursorline
-autocmd ColorScheme * hi! CursorLine cterm=underline gui=underline ctermfg=NONE guifg=NONE
+autocmd ColorScheme * hi! CursorLine
+            \ cterm=underline 
+            \ gui=underline 
+            \ ctermfg=NONE guifg=NONE
 
 " Remove trailing whitespaces on file write
-autocmd BufWritePre * :%s/\s\+$//e
+" autocmd BufWritePre * :%s/\s\+$//e
 
 " Clear jumplist between sessions
 au VimEnter * clearjumps
@@ -37,7 +58,7 @@ au VimEnter * clearjumps
 " The screen will not be redrawn while executing macros, registers and other
 " commands that have not been typed. Also, updating the window title is
 " postponed
-" set lazyredraw
+set lazyredraw
 
 " Set the shell used to execute commands
 set shell =/bin/sh
@@ -148,7 +169,7 @@ set statusline +=\ \|\ Lines:\ %L
 " Time and date
 set statusline +=\ \|\ %{strftime('%a\ %d\ %b,\ %H:%M:%S')}
 " Final space on the right side of the screen
-set statusline +=\
+set statusline +=\ 
 
 " Ignore files matching these patterns when opening files based on a glob
 " pattern
@@ -204,9 +225,33 @@ if !has('nvim') | set viminfofile=$XDG_STATE_HOME/vim/viminfo | endif
 
 " Mappings --------------------------------------------------------------------
 
+" Switch to the next / previous buffer in queue when opening multiple files
+" using Alt + Arrows
+nnoremap <M-Left> :N<CR>
+nnoremap <M-Right> :n<CR>
+
+" Mouse wheel moves cursor Up/Down like arrow keys
+inoremap  <Up>
+nnoremap  <Up>
+
+inoremap  <Down>
+nnoremap  <Down>
+
+" Select all
+map <C-a> <esc>ggVG<CR>
+
+" Move between panes
+nnoremap <C-Down> <C-W><C-J>
+nnoremap <C-Up> <C-W><C-K>
+nnoremap <C-Right> <C-W><C-L>
+nnoremap <C-Left> <C-W><C-H>
+
+" Move between tabs
+nnoremap <C-PageUp> :tabprevious<CR>
+nnoremap <C-PageDown> :tabnext<CR>
+
 map <S-Insert> <MiddleMouse>
 map! <S-Insert> <MiddleMouse>
-
 
 " Toggle line comment (also in visual mode for block selection)
 noremap <silent> º :call ToggleComment()<CR>
@@ -255,12 +300,22 @@ inoremap <silent> <F12> <C-o>:setlocal number! relativenumber!<CR>
 " ...and there's more!
 
 " Toggle line wrapping
-nnoremap <silent> <C-F11> :setlocal wrap!<CR>:set wrap?<CR>
-inoremap <silent> <C-F11> <C-o>:setlocal wrap!<CR>
+
+" kitty (vim & nvim)
+" nnoremap <silent> <C-F11> :setlocal wrap!<CR>:set wrap?<CR>
+" inoremap <silent> <C-F11> <C-o>:setlocal wrap!<CR>
+
+" simple terminal (vim)
+nnoremap <silent> [23;5~ :setlocal wrap!<CR>:set wrap?<CR>
+inoremap <silent> [23;5~ <C-o>:setlocal wrap!<CR>
+
+" simple terminal (nvim)
+nnoremap <silent> [23;5~ :setlocal wrap!<CR>:set wrap?<CR>
+inoremap <silent> [23;5~ <C-o>:setlocal wrap!<CR>
 
 " Toggle the display of special characters for formatting
-nnoremap <silent> <C-F12> :setlocal list!<CR>:set list?<CR>
-inoremap <silent> <C-F12> <C-o>:setlocal list!<CR>
+" nnoremap <silent> <C-F12> :setlocal list!<CR>:set list?<CR>
+" inoremap <silent> <C-F12> <C-o>:setlocal list!<CR>
 
 " Visual line separator
 inoremap ;- <C-o>:call InsertLine()<CR>
@@ -271,10 +326,7 @@ autocmd BufWritePost $XDG_CONFIG_HOME/X11/xresources silent! execute '!xrdb -mer
 " Automatically reload i3wm after modifying config file
 autocmd BufWritePost $XDG_CONFIG_HOME/i3/config silent! execute '!i3-msg reload' | redraw!
 
-" Switch to the next / previous buffer in queue when opening multiple files
-" using Alt + Arrows
-nnoremap <M-Left> :N<CR>
-nnoremap <M-Right> :n<CR>
+
 
 " Functions -------------------------------------------------------------------
 
@@ -310,10 +362,8 @@ endfunction
 " Commenting lines/blocks of code
 augroup commenting_code
     autocmd!
-
     " Fallback: empty string for unspecified file types
-    autocmd FileType * let b:comment_leader = ''
-
+    let b:comment_leader = ''
     autocmd FileType sh,python,asm,zsh,conf,fstab,i3config,make,cfg
                                     \   let b:comment_leader = '#'
     autocmd FileType c,cpp              let b:comment_leader = '\/\/'
@@ -321,6 +371,8 @@ augroup commenting_code
     autocmd FileType mail               let b:comment_leader = '>'
     autocmd FileType vim                let b:comment_leader = '"'
     autocmd FileType xdefaults          let b:comment_leader = '!!'
+	autocmd FileType xml				let b:comment_leader = '<!--'
+	autocmd FileType lua				let b:comment_leader = '--'
 augroup END
 
 function! ToggleComment()
@@ -328,25 +380,42 @@ function! ToggleComment()
     let line = getline(".")
 
     " Careful with special characters
-    let length = len(substitute(b:comment_leader, '\\', '', 'g')) + 1
+	let length = len(substitute(b:comment_leader, '\\', '', 'g')) + 1
 
-    " Check if the line is already commented
-    if line =~ '^\s*' . b:comment_leader . '\s\?'
-        " Uncomment
-        execute 's/^\(\s*\)' . b:comment_leader . '\s\?/\1/'
-        let cursor[2] -= length
-    else
-        " Comment
-        execute 's/^\(\s*\)/\1' . b:comment_leader . ' /'
-        let cursor[2] += length
-    endif
+    " XML comments also need a specific ending sequence
+    if &filetype == "xml"
+        let comment_leader = b:comment_leader
+        if line =~ '^\s*' . comment_leader . '.*-->$'
+            " Uncomment
+            execute 's/^\(\s*\)' . comment_leader . '\(.*\)-->/\1\2/'
+        else
+            " Comment
+            execute 's/^\(\s*\)\(.*\)/\1' . comment_leader . '\2-->/'
+        endif
+
+    " The rest of filetypes only need a comment leader
+	else
+		" Check if the line is already commented
+		if line =~ '^\s*' . b:comment_leader . '\s\?'
+			" Uncomment
+			execute 's/^\(\s*\)' . b:comment_leader . '\s\?/\1/'
+			let cursor[2] -= length
+		else
+			" Comment
+			execute 's/^\(\s*\)/\1' . b:comment_leader . ' /'
+			let cursor[2] += length
+		endif
+	endif	
 
     " Account for the comment_leader length to restore cursor position
     call setpos('.', cursor)
 endfunction
 
 " Colors
-colorscheme deep-space
+" colorscheme deep-space
+" colorscheme darth
+" colorscheme ekinivim
+colorscheme evolution
 " colorscheme darkglass
 " colorscheme zmrok
 " colorscheme enzyme
