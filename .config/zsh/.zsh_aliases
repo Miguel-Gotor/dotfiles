@@ -2,14 +2,20 @@
 
 pop-pdf() { qpdf "$1" --pages "$1" 1-$(( $(qpdf --show-npages "$1") - $2 )) -- "${1%.pdf}-popped.pdf"; }
 
+alias dots='update-dotfiles && ~/dotfiles'
 alias open='xdg-open'
 alias install='install -Dv /dev/null'
+alias du='du -h'
 
 # Quickly edit plain text files
 alias ali='$EDITOR $ZDOTDIR/.zsh_aliases'
-alias log='$EDITOR $HOME/Documents/Linux/Notes/arch.txt'
-alias fent='$EDITOR $HOME/Documents/FentISS/Notes/notes.txt'
 alias prof='$EDITOR $HOME/.profile'
+
+# My much beloved notes
+alias log='$EDITOR $HOME/Documents/Linux/Notes/arch.txt'
+alias fent='$EDITOR $HOME/Documents/FentISS/Notes/fentiss.txt'
+alias asm='$EDITOR $HOME/Documents/Assembly/Notes/asm.txt'
+alias cprog='$EDITOR $HOME/Documents/C-programming/Notes/c.txt'
 
 # Config files
 alias xconf='$EDITOR $XDG_CONFIG_HOME/X11/xresources'
@@ -43,14 +49,14 @@ alias f='file -b'
 alias h='highlight --out-format=ansi'
 
 alias k='kitty +kitten icat $1'
-alias m='man'
+# alias m='man'
 
 # (O)pen file manager in PWD
 alias o='nohup pcmanfm . &> /dev/null & disown'
 
 alias p='sudo pacman'
 alias t='tmux'
-alias v='vim'
+alias v='nvim'
 
 # (B)ack to previous dir
 alias b='$OLDPWD'
