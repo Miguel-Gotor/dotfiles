@@ -16,7 +16,7 @@ picom &
 # pgrep -x "inotify-mpris" || inotify-mpris
 
 # Execute custom script to follow playerctl updates
-playerctl-follow.sh &
+playerctl-follow &
 
 # Set wallpaper
 xwallpaper --zoom $HOME/Pictures/current-wallpaper
