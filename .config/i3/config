@@ -41,7 +41,7 @@ bindsym $mod+d exec --no-startup-id i3-dmenu-desktop --dmenu="dmenu -i -b -fn 'D
 # bindsym $mod+d exec --no-startup-id i3-dmenu-desktop --dmenu="dmenu -i -b -fn 'JetBrains Mono:size=11' -nb '#000077' -nf '#FFFFFF' -sb '#FFFFFF' -sf '#000000'"
 bindsym $mod+Shift+d exec --no-startup-id dmenu_run -i -b -fn 'Dejavu Sans Book:size=11' -nb '#00001F' -nf '#FFFFFF' -sb '#FFFFFF' -sf '#000000'
 
-bindsym $mod+Shift+x exec --no-startup-id dmenu-kill.sh
+bindsym $mod+Shift+x exec --no-startup-id dmenu-kill
 # bindsym $mod+x exec --no-startup-id xkill
 
 # xkill needs to capture input (grab the cursor) with the "--release" option
@@ -168,38 +168,44 @@ set $refresh_i3status killall -SIGUSR1 i3status
 
 # PAPLAY
 # Decrease vol.
-bindsym $mod+KP_Add exec --no-startup-id change-volume.sh -1
+bindsym $mod+KP_Add exec --no-startup-id change-volumesh -1
 # Increase vol.
-bindsym $mod+KP_Subtract exec --no-startup-id change-volume.sh +1
+bindsym $mod+KP_Subtract exec --no-startup-id change-volume +1
 # Mute
-bindsym $mod+m --release exec --no-startup-id mute-audio.sh
+bindsym $mod+m --release exec --no-startup-id mute-audio
 
 # MPRIS
 # Play/Pause
-bindsym $mod+space --release exec --no-startup-id mpris-play-pause.sh
+bindsym $mod+space --release exec --no-startup-id mpris-play-pause
 # Next
 bindsym $mod+period --release exec --no-startup-id playerctl next
 # Previous
 bindsym $mod+comma --release exec --no-startup-id playerctl previous
 # Notify metadata
-bindsym $mod+minus --release exec --no-startup-id notify-metadata.sh
+bindsym $mod+minus --release exec --no-startup-id notify-metadata
 # Focus current player
-bindsym $mod+p --release exec --no-startup-id dbus-focus-player.sh
+bindsym $mod+p --release exec --no-startup-id dbus-focus-player
 
 # OTHER
 # WIP. Also conflicts with browser shortcuts for yt and soundcloud
-# bindsym $mod+y exec --no-startup-id browse-yt-playlists.sh
+# bindsym $mod+y exec --no-startup-id browse-yt-playlists
 # dmenu immediately gains focus and captures input so no need for --release
-# bindsym $mod+s exec dmenu-search.sh
+# bindsym $mod+s exec dmenu-search
 # Lock session
-bindsym $mod+Shift+l --release exec --no-startup-id lock-screen.sh
-bindsym $mod+l exec --no-startup-id $TERMINAL -e lf
+bindsym $mod+Shift+l --release exec --no-startup-id lock-screen
+
+# lf terminal file manager
+bindsym $mod+l workspace "<span foreground='#00FFFF' size='x-large'></span>"; exec --no-startup-id $TERMINAL -e lf
+# bindsym $mod+l workspace "<span foreground='#00FFFF' size='xx-large'></span>"; exec --no-startup-id $TERMINAL -e lf
+# bindsym $mod+l workspace "<span foreground='#00FFFF' size='medium'></span>"; exec --no-startup-id $TERMINAL -e lf
+# bindsym $mod+l workspace "<span foreground='#00FFFF' size='xx-large'></span>"; exec --no-startup-id $TERMINAL -e lf
+
 # Show current date highlighted
-bindsym $mod+c --release exec --no-startup-id calendar.sh
+bindsym $mod+c --release exec --no-startup-id calendar
 # Open a new workspace and immediately switch to it in a browser tab style
-bindsym $mod+t exec --no-startup-id new-workspace.sh
+bindsym $mod+t exec --no-startup-id new-workspace
 # Empty trash
-bindsym $mod+Shift+t --release exec --no-startup-id empty-trash.sh
+bindsym $mod+Shift+t --release exec --no-startup-id empty-trash
 # Update i3blocks Caps Lock blocklet
 # bindsym Caps_Lock --release exec pkill -SIGRTMIN+1 i3blocks
 
@@ -210,14 +216,14 @@ bindsym $mod+Shift+w exec --no-startup-id find ~/Pictures/Wallpapers -type f | s
 
 # XRANDR ----------------------------------------------------------------------
 # Night mode
-bindsym $mod+n --release exec --no-startup-id night-light.sh
+bindsym $mod+n --release exec --no-startup-id night-light
 # Adjust brightness (not the best way to to this. Should use xbacklight)
-bindsym $mod+KP_Multiply exec --no-startup-id adjust-brightness.sh 0.1
-bindsym $mod+KP_Divide  exec --no-startup-id adjust-brightness.sh -0.1
+bindsym $mod+KP_Multiply exec --no-startup-id adjust-brightness 0.1
+bindsym $mod+KP_Divide  exec --no-startup-id adjust-brightness -0.1
 
 # Screenshots
-bindsym Print --release exec --no-startup-id full-screenshot.sh
-bindsym $mod+Shift+s --release exec --no-startup-id area-screenshot.sh
+bindsym Print --release exec --no-startup-id full-screenshot
+bindsym $mod+Shift+s --release exec --no-startup-id area-screenshot
 
 # MORE CONFIGS ----------------------------------------------------------------
 
@@ -248,7 +254,7 @@ bar {
     # 3 options:
     status_command i3status --config "$XDG_CONFIG_HOME/i3status/conf"
     # status_command i3blocks
-    # status_command prepend-i3status.sh
+    # status_command prepend-i3status
 
     # font pango: JetBrains Mono Regular 11
     # font pango: JetBrains Mono Bold 11
