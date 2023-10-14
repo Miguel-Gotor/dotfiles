@@ -15,8 +15,8 @@ dunstify \
     -h "string:x-dunst-stack-tag:img" \
     "Taking screenshot..." &
 
-maim -o "$path"
-# scrot "$path"
+#  maim -o "$path" && \
+scrot "$path"
 
 # Notification
 dunstify \

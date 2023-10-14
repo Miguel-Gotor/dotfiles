@@ -12,9 +12,9 @@ dotfiles_dir="./dotfiles"
 cp --parents -u "./.config/Code - OSS/User/settings.json" $dotfiles_dir
 cp --parents -ru "./.config/cava" $dotfiles_dir
 cp --parents -ru "./.config/dunst" $dotfiles_dir
-cp --parents -ru "./.config/gtk-2.0" $dotfiles_dir
-cp --parents -ru "./.config/gtk-3.0" $dotfiles_dir
-cp --parents -ru "./.config/gtk-4.0" $dotfiles_dir
+# cp --parents -ru "./.config/gtk-2.0" $dotfiles_dir
+# cp --parents -ru "./.config/gtk-3.0" $dotfiles_dir
+# cp --parents -ru "./.config/gtk-4.0" $dotfiles_dir
 cp --parents -ru "./.config/i3" $dotfiles_dir
 cp --parents -ru "./.config/i3blocks" $dotfiles_dir
 cp --parents -ru "./.config/i3status" $dotfiles_dir
@@ -33,7 +33,8 @@ cp --parents -ru "./bin" $dotfiles_dir
 cp --parents -ru "./Pictures/Wallpapers" $dotfiles_dir
 cp --parents -ru "./Pictures/Screenshots/Ricing" $dotfiles_dir
 cp --parents -ru "./.profile" $dotfiles_dir
-cp --parents -ru "./.mozilla/firefox/hl9gcn50.default-release/chrome/userChrome.css" $dotfiles_dir
+cp --parents -ru "./.mozilla/firefox/kylras/chrome/userChrome.css" $dotfiles_dir
+cp --parents -ru "./.mozilla/firefox/kylras/persdict.dat" $dotfiles_dir
 
 cp --parents -ru "./.local/share/applications" $dotfiles_dir
 cp --parents -ru "./.local/share/fonts" $dotfiles_dir
@@ -44,4 +45,7 @@ cp --parents -ru "./.local/share/oh-my-zsh/custom/themes" $dotfiles_dir
 cp --parents -ru "/etc/lightdm/Xsession" $dotfiles_dir
 cp --parents -ru "/etc/security/pam_env.conf" $dotfiles_dir
 
-echo "dotfiles updated"
+echo "dotfiles updated!"
+# cd $dotfiles_dir
+# set +e
+# return
