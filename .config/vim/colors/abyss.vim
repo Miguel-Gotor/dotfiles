@@ -3,6 +3,8 @@
 "  Description: dark colorscheme for NeoVim
 " -------------------------------------------------------------------
 
+let g:colors_name = 'abyss'
+
 set termguicolors
 set background=light
 syntax enable " Switch on syntax highlighting
