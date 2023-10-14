@@ -1,7 +1,7 @@
 *.foreground:   #ffffff
 *.background:   #000000
 *.cursorColor:  #ff00ff
-*.alpha:        0.70
+*.alpha:        0.80
 
 !! st
 !! Fonts

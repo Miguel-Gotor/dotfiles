@@ -15,24 +15,22 @@ export ZSH="$XDG_DATA_HOME/oh-my-zsh"
 # Reminder: themes location: $ZSH_CUSTOM/themes
 
 # ZSH_THEME="gnzh"
-# ZSH_THEME="new"
 # ZSH_THEME="agnoster"
-# ZSH_THEME="miloshadzic"
 # ZSH_THEME="robbyrussell"
-# ZSH_THEME="half-life"
 # ZSH_THEME="kardan"
-# ZSH_THEME="gallois"
 
-ZSH_THEME='rainbow'
+# ZSH_THEME='rainbow'
 # ZSH_THEME='simple'
 # ZSH_THEME='arch'
 
 # ZSH_THEME='blinks'
-# ZSH_THEME='eastwood'
+
+# ZSH_THEME=geoffgarside
+# ZSH_THEME=jreese
+ZSH_THEME=half-life
+# ZSH_THEME=kennethreitz
+
 # ZSH_THEME='random'
-# ZSH_THEME='frisk'
-# ZSH_THEME='trapd00r'
-# ZSH_THEME='cypher'
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
@@ -131,6 +129,7 @@ source $ZDOTDIR/.zsh_aliases
 # [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 # [[ ! -f ${ZDOTDIR:-~}/.p10k.zsh ]] || source ${ZDOTDIR:-~}/.p10k.zsh
 
+# setopt cdable_vars
 # Leave only last occurence of a command
 setopt HIST_IGNORE_ALL_DUPS
 # setopt HIST_IGNORE_SPACE
@@ -140,3 +139,9 @@ unsetopt EXTENDED_HISTORY
 
 bindkey "^[[1;3C" forward-word
 bindkey "^[[1;3D" backward-word
+
+zstyle ':completion:*' ignored-patterns \
+    'down-line-or-beginning-search' \
+    'zcompile'
+
+
