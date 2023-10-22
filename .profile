@@ -4,8 +4,8 @@
 # Sourced by LightDM by default, even when the login shell is ZSH
 # However the Zsh login shell sources ~/.zprofile (symlinked to this this file)
 # Setting all these here makes them available to ttys aswell
-# Those wont be changing that frequently, so having Zsh load all of these of
-# every instance is a bit overkill
+# Those wont be changing that frequently, so having Zsh load all of these for
+# every instance of the shell is a bit overkill
 
 # PATH ------------------------------------------------------------------------
 PATH="$HOME/bin:$PATH"
@@ -57,6 +57,7 @@ export XINITRC="$XDG_CONFIG_HOME/X11/xinitrc"
 export GTK2_RC_FILES="$XDG_CONFIG_HOME/gtk-2.0/gtkrc"
 export MPLAYER_HOME="$XDG_CONFIG_HOME/mplayer"
 export INPUTRC="$XDG_CONFIG_HOME"/readline/inputrc
+export W3M_DIR="$XDG_STATE_HOME/w3m"
 
 # Xauthority ------------------------------------------------------------------
 # Place xauthority file in a runtime directory with restricted access
@@ -70,8 +71,8 @@ export INPUTRC="$XDG_CONFIG_HOME"/readline/inputrc
 
 # Default programs ------------------------------------------------------------
 #
-export EDITOR="vim"
-# export EDITOR="nvim"
+# export EDITOR="vim"
+export EDITOR="nvim"
 export BROWSER="firefox-developer-edition"
 # export TERMINAL="kitty"
 export TERMINAL="st"
