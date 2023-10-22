@@ -1,8 +1,9 @@
 " .config/vim/vimrc
 
 " Disable timeout on esc key
-" TODO: Find out how is st related to this issue
+" TODO: Find out how is st related to this issue (doesn't happen in kitty)
 set timeoutlen=0
+" ^^^^^^^^^^^^ Disables the "gx" macro but not "gf"
 
 " vim / neovim specific settings
 if !has('nvim')
@@ -105,8 +106,7 @@ set scrolloff=8
 " Avoid breaking/wrapping lines in the middle of the words
 set linebreak
 
-" While searching though a file incrementally highlight matching characters as
-" you type
+" Incrementally highlight matching characters as you type while searching 
 set incsearch
 
 " Make searches case insensitive
@@ -173,10 +173,10 @@ set statusline +=\
 
 " Ignore files matching these patterns when opening files based on a glob
 " pattern
-set wildignore +=*.pyc  " Python bytecode
-set wildignore +=*.swp  " Vim swap files
-set wildignore +=*.bak  " Generic backup files
-set wildignore +=*.class  " Java bytecode
+set wildignore +=*.pyc      " Python bytecode
+set wildignore +=*.swp      " Vim swap files
+set wildignore +=*.bak      " Generic backup files
+set wildignore +=*.class    " Java bytecode
 set wildignore +=.DS_Store  " macOS folder metadata
 
 " Whitespace characters display ------------------------------------------------
@@ -250,9 +250,6 @@ nnoremap <C-Left> <C-W><C-H>
 nnoremap <C-PageUp> :tabprevious<CR>
 nnoremap <C-PageDown> :tabnext<CR>
 
-map <S-Insert> <MiddleMouse>
-map! <S-Insert> <MiddleMouse>
-
 " Toggle line comment (also in visual mode for block selection)
 noremap <silent> º :call ToggleComment()<CR>
 inoremap <silent> º <C-o>:call ToggleComment()<CR>
@@ -305,11 +302,11 @@ inoremap <silent> <F12> <C-o>:setlocal number! relativenumber!<CR>
 " nnoremap <silent> <C-F11> :setlocal wrap!<CR>:set wrap?<CR>
 " inoremap <silent> <C-F11> <C-o>:setlocal wrap!<CR>
 
-" simple terminal (vim)
-nnoremap <silent> [23;5~ :setlocal wrap!<CR>:set wrap?<CR>
-inoremap <silent> [23;5~ <C-o>:setlocal wrap!<CR>
-
 " simple terminal (nvim)
+nnoremap <silent> <F35> :setlocal wrap!<CR>:set wrap?<CR>
+inoremap <silent> <F35> <C-o>:setlocal wrap!<CR>
+
+" simple terminal (vim)
 nnoremap <silent> [23;5~ :setlocal wrap!<CR>:set wrap?<CR>
 inoremap <silent> [23;5~ <C-o>:setlocal wrap!<CR>
 
@@ -373,6 +370,7 @@ augroup commenting_code
     autocmd FileType xdefaults          let b:comment_leader = '!!'
 	autocmd FileType xml				let b:comment_leader = '<!--'
 	autocmd FileType lua				let b:comment_leader = '--'
+	autocmd FileType lisp				let b:comment_leader = ';'
 augroup END
 
 function! ToggleComment()
@@ -415,7 +413,10 @@ endfunction
 " colorscheme deep-space
 " colorscheme darth
 " colorscheme ekinivim
-colorscheme evolution
+" colorscheme evolution
+colorscheme eva01-LCL
 " colorscheme darkglass
 " colorscheme zmrok
 " colorscheme enzyme
+
+
