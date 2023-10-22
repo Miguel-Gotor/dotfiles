@@ -1,5 +1,16 @@
 # I3 CONFIG
 
+# Moved to xprofile
+# exec_always --no-startup-id xset r rate 200 60
+# exec_always --no-startup-id numlock on
+# exec_always --no-startup-id xwallpaper --zoom $HOME/Pictures/current-wallpaper
+# Only if they're not already running
+# exec_always --no-startup-id pgrep -x picom || picom
+# exec_always --no-startup-id pgrep playerctl-follo || playerctl-follow
+# exec_always --no-startup-id pgrep unclutter || unclutter
+# exec_always --no-startup-id pgrep nm-applet || nm-applet
+# exec_always --no-startup-id pgrep polkit-dumb-age || polkit-dumb-agent
+
 # Windows Key
 set $mod Mod4
 
@@ -87,6 +98,8 @@ bindsym $mod+space focus mode_toggle
 # focus the child container
 #bindsym $mod+d focus child
 
+for_window [instance="math"] floating enable
+# bindsym $mod+Shift+k exec --no-startup-id $TERMINAL -e qalc -name math
 # WORKSPACES ------------------------------------------------------------------
 
 # Return to previous workspace by pressing the same key
@@ -153,6 +166,9 @@ bindsym $mod+r gaps inner all set 12; gaps outer all set 6;
 bindsym $mod+Control+Left workspace prev
 bindsym $mod+Control+Right workspace next
 
+bindsym $mod+Prior workspace prev
+bindsym $mod+Next workspace next
+
 # AUDIO
 # Use pactl to adjust volume in PulseAudio.
 set $refresh_i3status killall -SIGUSR1 i3status
@@ -168,7 +184,7 @@ set $refresh_i3status killall -SIGUSR1 i3status
 
 # PAPLAY
 # Decrease vol.
-bindsym $mod+KP_Add exec --no-startup-id change-volumesh -1
+bindsym $mod+KP_Add exec --no-startup-id change-volume -1
 # Increase vol.
 bindsym $mod+KP_Subtract exec --no-startup-id change-volume +1
 # Mute
@@ -192,7 +208,11 @@ bindsym $mod+p --release exec --no-startup-id dbus-focus-player
 # dmenu immediately gains focus and captures input so no need for --release
 # bindsym $mod+s exec dmenu-search
 # Lock session
-bindsym $mod+Shift+l --release exec --no-startup-id lock-screen
+# bindsym $mod+Shift+l --release exec --no-startup-id lock-screen
+# bindsym $mod+Shift+l --release exec --no-startup-id dm-tool switch-to-greeter
+# bindsym $mod+Shift+l --release exec --no-startup-id dm-tool lock
+bindsym $mod+Shift+l --release exec --no-startup-id i3lock -i ~/Pictures/Wallpapers/Other/30-08-2023-23:38:10.png
+
 
 # lf terminal file manager
 bindsym $mod+l workspace "<span foreground='#00FFFF' size='x-large'></span>"; exec --no-startup-id $TERMINAL -e lf
@@ -235,8 +255,10 @@ bindsym $mod+Shift+s --release exec --no-startup-id area-screenshot
 
 # Assign programs to specific workspaces
 # assign [class="firefoxdeveloperedition" instance="Navigator"] "<span size='x-large' foreground='#0059FF'></span>"
-assign [class="Slack" instance="slack"] "<span size='xx-large' foreground='#800080'></span>"
-# assign [class="Slack" instance="slack"] "<span size='xx-large' ></span>"
+# assign [class="Slack" instance="slack"] "<span size='xx-large' foreground='#800080'></span>"
+# To Do: pick the right font to display the slack icon correctly
+# assign [class="Slack" instance="slack"] "<span size='x-large' foreground='#FFFFFF'></span>"
+assign [class="Slack" instance="slack"] "<span size='x-large' ></span>"
 # assign [class="code-oss" instance="code-oss"] ""
 
 # Automatically focus newly created workspaces
