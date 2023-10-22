@@ -1,0 +1,18 @@
+{
+    "workbench.startupEditor": "none",
+    "workbench.iconTheme": "material-icon-theme",
+    // "window.zoomLevel": 1,
+    "explorer.confirmDragAndDrop": false,
+    "debug.terminal.clearBeforeReusing": true,
+    "files.autoSaveDelay": 1000,
+    "window.restoreWindows": "none",
+    "terminal.integrated.enablePersistentSessions": false,
+    "terminal.integrated.persistentSessionReviveProcess": "never",
+    "explorer.confirmDelete": false,
+    // "editor.fontFamily": "'Iosevka Comfy Wide', 'Source Code Pro', 'JetBrains Mono', 'FontAwesome', monospace",
+    "editor.fontSize": 15,
+    // "editor.fontWeight": "bold",
+    "explorer.sortOrder": "type",
+    "editor.fontLigatures": true,
+    "workbench.colorTheme": "Default Dark+",
+}
