@@ -2,14 +2,19 @@
 
 pop-pdf() { qpdf "$1" --pages "$1" 1-$(( $(qpdf --show-npages "$1") - $2 )) -- "${1%.pdf}-popped.pdf"; }
 
+alias qalc='qalc -i -f $XDG_CONFIG_HOME/qalculate/units'
 alias dots='update-dotfiles && ~/dotfiles'
 alias open='xdg-open'
 alias install='install -Dv /dev/null'
 alias du='du -h'
 
-# Quickly edit plain text files
+# Quickly edit plain text files -----------------------------------------------
 alias ali='$EDITOR $ZDOTDIR/.zsh_aliases'
 alias prof='$EDITOR $HOME/.profile'
+
+# Firefox dict and css files
+alias ffdict='$EDITOR $HOME/.mozilla/firefox/kylras/persdict.dat'
+alias ffcss='$EDITOR $HOME/.mozilla/firefox/kylras/chrome/userChrome.css'
 
 # My much beloved notes
 alias log='$EDITOR $HOME/Documents/Linux/Notes/arch.txt'
@@ -18,22 +23,16 @@ alias asm='$EDITOR $HOME/Documents/Assembly/Notes/asm.txt'
 alias cprog='$EDITOR $HOME/Documents/C-programming/Notes/c.txt'
 
 # Config files
+alias xprof='$EDITOR $XDG_CONFIG_HOME/X11/xprofile'
 alias xconf='$EDITOR $XDG_CONFIG_HOME/X11/xresources'
 alias piconf='$EDITOR $XDG_CONFIG_HOME/picom/picom.conf'
 alias i3conf='$EDITOR $XDG_CONFIG_HOME/i3/config'
 alias viconf='$EDITOR $XDG_CONFIG_HOME/vim/vimrc'
+alias nvconf='$EDITOR $XDG_CONFIG_HOME/nvim/init.lua'
 alias ldmconf='sudo $EDITOR /etc/lightdm/lightdm-gtk-greeter.conf'
 alias duconf='$EDITOR $XDG_CONFIG_HOME/dunst/dunstrc'
 alias zconf='$EDITOR $XDG_CONFIG_HOME/zsh/.zshrc'
 alias tconf='$EDITOR $XDG_CONFIG_HOME/tmux/tmux.conf'
-
-# Firefox dict and css fileS
-# alias dict='$EDITOR $XDG_CONFIG_HOME/cspell/shared-dict.txt'
-# Firefox dictionary "persdict.dat" is a symlink pointing to the shared
-# dictionary with the VSCode extension cspell
-alias ffdict='vim $(locate persdict.dat)'
-
-alias ffcss='vim $(locate userChrome)'
 
 # Have frequently used commands one keystroke away
 
@@ -41,14 +40,14 @@ alias ffcss='vim $(locate userChrome)'
 alias c='printf "\033c"'
 
 # DuckDuckGo from terminal. Disable User Agent to speed up a bit.
-alias d='ddgr --noua -n 8'
+# alias d='ddgr --noua -n 8'
 alias e='exit'
 alias f='file -b'
 
 # Cat but with syntax (H)ighlight
 alias h='highlight --out-format=ansi'
 
-alias k='kitty +kitten icat $1'
+# alias k='kitty +kitten icat $1'
 # alias m='man'
 
 # (O)pen file manager in PWD
