@@ -5,7 +5,7 @@
 # Unique identifier (name of the script for example)
 msg_tag=$(basename $0)
 
-curr_volume=$(pactl list sinks | awk '$1 == "Volume:" {gsub(/%/, ""); print $5}')
+curr_volume=$(pactl get-sink-volume @DEFAULT_SINK@ | awk '{print $5}' | tr -d %)
 new_volume=$((curr_volume + $1))
 
 # Make sure the new volume doesn't exceed 100
