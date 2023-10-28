@@ -2,7 +2,7 @@
 " the standard gcc include search path and require no additional compiler
 " arguments
 
-" :colo murphy " Easier on the eyes
+" :colo molokai
 
 " Only compile and name binary after the C file. Stop compilation on error
 " nnoremap <F5> :w <CR> :!printf "\033c";gcc -Wall -Wextra -Wfatal-errors % -o %< <CR>
