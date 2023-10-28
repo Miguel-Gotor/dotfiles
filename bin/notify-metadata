@@ -4,5 +4,15 @@
 # Should be called on player metadata update
 # Shares tag with other MPRIS notifications since they all carry the same info
 
-dunstify -i $(playerctl metadata mpris:artUrl) -h "string:x-dunst-stack-tag:"mpris"" \
-"$(playerctl metadata artist)" "\n<span  color='#0FFFFF' font='18px'>$(playerctl metadata title)</span>";
+# This one-liner handles the 3 possible scenarios:
+# Display full actual metadata when available
+# Set a fallback icon in case no artUrl metadata is found (e.g, private instance of Firefox)
+# Early return in case no players are found
+
+dunstify -h "string:x-dunst-stack-tag:"mpris"" \
+    "$(playerctl metadata artist)" \
+    "\n<span  color='#0FFFFF' font='18px'>$(playerctl metadata title || \
+    (dunstify "No media players found" -i /usr/share/icons/Arc/status/symbolic/dialog-error-symbolic.svg; kill 0))</span>" \
+    -i $(playerctl metadata mpris:artUrl || \ 
+    echo '/usr/share/icons/Papirus/64x64/apps/musique.svg');
+    # echo '/usr/share/icons/Papirus/64x64/apps/firefox-developer-icon.svg');
