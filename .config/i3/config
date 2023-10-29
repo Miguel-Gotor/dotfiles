@@ -1,8 +1,9 @@
 # I3 CONFIG
 
+# STARTUP ---------------------------------------------------------------------
 # Moved to xprofile
 # exec_always --no-startup-id xset r rate 200 60
-# exec_always --no-startup-id numlock on
+# exec_always --no-startup-id numlockx on
 # exec_always --no-startup-id xwallpaper --zoom $HOME/Pictures/current-wallpaper
 # Only if they're not already running
 # exec_always --no-startup-id pgrep -x picom || picom
@@ -10,21 +11,24 @@
 # exec_always --no-startup-id pgrep unclutter || unclutter
 # exec_always --no-startup-id pgrep nm-applet || nm-applet
 # exec_always --no-startup-id pgrep polkit-dumb-age || polkit-dumb-agent
+
+set $refresh_i3status killall -SIGUSR1 i3status
+
+# Initial Home worskpace:
 exec --no-startup-id i3-msg workspace "<span foreground='#FFFFFF' size='x-large'></span>"
+
 # Windows/Super Key
 set $mod Mod4
+
+# Alt key
+# set $mod Mod1
 
 for_window [class="^.*"] border pixel 0
 # default_border pixel 5
 
+# GAPS
 gaps inner 12
 gaps outer 6
-
-#font pango:monospace 8
-font pango:DejaVu Sans Mono 17
-
-# Use Mouse+$mod to drag floating windows to their wanted position
-floating_modifier $mod
 
 # Easily resize margins and windows
 bindsym $mod+plus gaps inner current plus 5
@@ -36,12 +40,18 @@ bindsym Mod1+dead_grave resize shrink width 5
 bindsym Mod1+exclamdown resize grow height 5
 bindsym Mod1+apostrophe resize shrink height 5
 
+# Reset default gap sizes
+bindsym $mod+r gaps inner all set 12; gaps outer all set 6;
+
+#font pango:monospace 8
+font pango:DejaVu Sans Mono 17
+
+# Use Mouse+$mod to drag floating windows to their wanted position
+floating_modifier $mod
+
 # Launch terminal
 # bindsym $mod+Return exec $TERMINAL -e tmux
 bindsym $mod+Return exec $TERMINAL
-
-# Launch browser
-bindsym $mod+b workspace "<span foreground='#0059FF' size='xx-large'></span>"; exec $BROWSER
 
 # Kill focused window
 bindsym $mod+q kill
@@ -98,14 +108,40 @@ bindsym $mod+space focus mode_toggle
 # focus the child container
 #bindsym $mod+d focus child
 
-for_window [instance="math"] floating enable
+# for_window [instance="math"] floating enable
 # bindsym $mod+Shift+k exec --no-startup-id $TERMINAL -e qalc -name math
+
 # WORKSPACES ------------------------------------------------------------------
 
 # Return to previous workspace by pressing the same key
 # workspace_auto_back_and_forth yes
 
-# Define names for default workspaces for which we configure key bindings later on.
+# Custom workspaces
+bindsym $mod+v workspace "<span size='xx-large'></span>"; exec kitty -e cava
+bindsym $mod+k workspace "<span size='xx-large' ></span>"; exec $TERMINAL -e qalc
+bindsym $mod+y workspace "<span size='xx-large' foreground='#FF0000' ></span>"; exec $BROWSER --new-window https://www.youtube.com/
+bindsym $mod+Shift+y workspace "<span size='xx-large' foreground='#FF0000' ></span>"; exec $BROWSER --private-window https://www.youtube.com/
+bindsym $mod+s workspace "<span size='xx-large' foreground='#FF6500' ></span>"; exec $BROWSER --new-window https://soundcloud.com/you/likes
+bindsym $mod+b workspace "<span foreground='#0059FF' size='xx-large'></span>"; exec $BROWSER
+
+# Assign some apps to custom workspaces represented by Font Awesome icons
+# Generally those I intend to have only one instance of
+
+# Use kitty specifically for CAVA as it's a GPU-based terminal emulator and provides a more fluid animation
+# bindsym $mod+v workspace "<span size='xx-large'></span>"; exec kitty --name cava -c NONE -o background_opacity=0.0 -o confirm_os_window_close=0 -e cava
+# bindsym $mod+v workspace "<span size='xx-large'></span>"; exec kitty --name cava -e cava
+# for_window [instance="cava"] floating enable
+# for_window [instance="cava"] move position bottom
+# for_window [instance="cava"] resize set 1920 1050
+# Switch to adjacent workspaces
+
+bindsym $mod+Control+Left workspace prev
+bindsym $mod+Control+Right workspace next
+
+bindsym $mod+Prior workspace prev
+bindsym $mod+Next workspace next
+
+# Define names for default workspaces for which we configure key bindings
 # We use variables to avoid repeating the names in multiple places.
 set $ws1 "1"
 set $ws2 "2"
@@ -142,43 +178,19 @@ bindsym $mod+Shift+8 move container to workspace number $ws8; workspace number $
 bindsym $mod+Shift+9 move container to workspace number $ws9; workspace number $ws9;
 bindsym $mod+Shift+0 move container to workspace number $ws10; workspace number $ws10;
 
+# i3-msgs
 # Reload the configuration file
 bindsym $mod+Shift+c reload
 # Restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod+Shift+r restart
-# Exit i3 (logs you out of your X session)
-bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes' 'i3-msg exit'"
-
-# MY BYNDSYMS -----------------------------------------------------------------
-
-# Assign some apps to custom workspaces represented by Font Awesome icons
-# Generally those I intend to have only one instance of
-
-# Use kitty specifically for CAVA as it's a GPU-based terminal emulator and provides a more fluid animation
-bindsym $mod+v workspace "<span size='xx-large'></span>"; exec kitty --name cava -c NONE -o background_opacity=0.0 -o confirm_os_window_close=0 -e cava
-for_window [instance="cava"] floating enable
-for_window [instance="cava"] move position bottom
-for_window [instance="cava"] resize set 1920 1050
-# bindsym $mod+v workspace "<span size='xx-large'></span>"; exec kitty -e cava
-
-bindsym $mod+k workspace "<span size='xx-large' ></span>"; exec $TERMINAL -e qalc
-bindsym $mod+y workspace "<span size='xx-large' foreground='#FF0000' ></span>"; exec $BROWSER --new-window https://www.youtube.com/
-bindsym $mod+Shift+y workspace "<span size='xx-large' foreground='#FF0000' ></span>"; exec $BROWSER --private-window https://www.youtube.com/
-bindsym $mod+s workspace "<span size='xx-large' foreground='#FF6500' ></span>"; exec $BROWSER --new-window https://soundcloud.com/you/likes
-
-# Reset default gap sizes
-bindsym $mod+r gaps inner all set 12; gaps outer all set 6;
-
-# Switch to adjacent workspaces
-bindsym $mod+Control+Left workspace prev
-bindsym $mod+Control+Right workspace next
-
-bindsym $mod+Prior workspace prev
-bindsym $mod+Next workspace next
+# Exit i3
+# bindsym $mod+Shift+e exec "i3-nagbar -f 'pango:Iosevka Comfy Wide Bold 11' -t warning -m ' Exit request detected  Do you really want to exit i3  This will end your X session.' -B 'Yes,  i3' 'i3-msg exit'"
+bindsym $mod+Shift+e exec "i3-nagbar -f 'pango:Iosevka Comfy Wide 11' -t warning -m ' Exit request detected  Do you really want to exit i3  This will end your X session.' -B 'Yes,  i3' 'i3-msg exit'"
+# bindsym $mod+Shift+e exec "i3-nagbar -f 'pango:monospace 11' -t warning -m ' Exit request detected  Do you really want to exit i3  This will end your X session.' -B 'Yes,  i3' 'i3-msg exit'"
+# Scripts & Commands for Audio/Media control ----------------------------------
 
 # AUDIO
 # Use pactl to adjust volume in PulseAudio.
-set $refresh_i3status killall -SIGUSR1 i3status
 
 # 1) Using XF86 keyboard symbols + one-line cmds
 
@@ -210,7 +222,7 @@ bindsym $mod+comma --release exec --no-startup-id playerctl previous
 bindsym $mod+minus --release exec --no-startup-id notify-metadata
 # Focus current player
 bindsym $mod+p --release exec --no-startup-id dbus-focus-player
-
+# Config PulseAudio
 bindsym $mod+Shift+p --release exec --no-startup-id pavucontrol
 
 # OTHER
@@ -222,7 +234,7 @@ bindsym $mod+Shift+p --release exec --no-startup-id pavucontrol
 # bindsym $mod+Shift+l --release exec --no-startup-id lock-screen
 # bindsym $mod+Shift+l --release exec --no-startup-id dm-tool switch-to-greeter
 # bindsym $mod+Shift+l --release exec --no-startup-id dm-tool lock
-bindsym $mod+Shift+l --release exec --no-startup-id i3lock -i ~/Pictures/Wallpapers/Other/30-08-2023-23:38:10.png
+# bindsym $mod+Shift+l --release exec --no-startup-id i3lock -i ~/Pictures/Wallpapers/Other/30-08-2023-23:38:10.png
 
 # lf terminal file manager
 bindsym $mod+l workspace "<span foreground='#00FFFF' size='x-large'></span>"; exec --no-startup-id $TERMINAL -e lf
@@ -230,12 +242,15 @@ bindsym $mod+l workspace "<span foreground='#00FFFF' size='x-large'></span>";
 # bindsym $mod+l workspace "<span foreground='#00FFFF' size='medium'></span>"; exec --no-startup-id $TERMINAL -e lf
 # bindsym $mod+l workspace "<span foreground='#00FFFF' size='xx-large'></span>"; exec --no-startup-id $TERMINAL -e lf
 
-# Show current date highlighted
+# Notify calendar with current date highlighted
 bindsym $mod+c --release exec --no-startup-id calendar
+
 # Open a new workspace and immediately switch to it in a browser tab style
 bindsym $mod+t exec --no-startup-id new-workspace
+
 # Empty trash
 bindsym $mod+Shift+t --release exec --no-startup-id empty-trash
+
 # Update i3blocks Caps Lock blocklet
 # bindsym Caps_Lock --release exec pkill -SIGRTMIN+1 i3blocks
 
@@ -248,8 +263,10 @@ bindsym $mod+w --release exec --no-startup-id find ~/Pictures/Wallpapers -type f
 bindsym $mod+Shift+w exec --no-startup-id find ~/Pictures/Wallpapers -type f | shuf | sxiv - -t
 
 # XRANDR ----------------------------------------------------------------------
+
 # Night mode
 bindsym $mod+n --release exec --no-startup-id night-light
+
 # Adjust brightness (not the best way to to this. Should use xbacklight)
 bindsym $mod+KP_Multiply exec --no-startup-id adjust-brightness 0.1
 bindsym $mod+KP_Divide  exec --no-startup-id adjust-brightness -0.1
@@ -291,12 +308,12 @@ bar {
     # status_command i3blocks
     # status_command prepend-i3status
 
+    font pango: Iosevka Comfy Wide Bold 11
+    # font pango: Iosevka Comfy Wide Medium 11
+
     # font pango: JetBrains Mono Regular 11
     # font pango: JetBrains Mono Bold 11
     # font pango: JetBrains Mono Semibold 11
-
-    font pango: Iosevka Comfy Wide Bold 11
-    # font pango: Iosevka Comfy Wide Medium 11
 
     # font pango: Source Code Pro Semibold 11
     # font pango: Systemui Bold 11
@@ -327,6 +344,7 @@ bar {
 	}
 }
 
+# Bumblee bar
 # bar {
 	# font pango:Iosevka Comfy Wide Medium 11
 	# position top
