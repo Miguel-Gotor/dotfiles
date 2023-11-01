@@ -237,7 +237,7 @@
     sticky_history = no
 
     # Maximum amount of notifications kept in history
-    history_length = 20
+    history_length = 0
 
     ### Misc/Advanced ###
 
@@ -308,11 +308,15 @@
     # * context_all: Open context menu for all notifications.
     # These values can be strung together for each mouse event, and
     # will be executed in sequence.
-    mouse_left_click = do_action, open_url
+    #
+    # For some reason open_url and close cannot share button
+    # mouse_left_click = open_url, close
+    #
+    mouse_left_click = open_url
     mouse_middle_click = none
-    mouse_right_click = none
+    mouse_right_click = close
 
-    # history = "Mod4+h"
+    # history = "ctrl+period"
     # close = ctrl+shift+period
 
 # Experimental features that may or may not work correctly. Do not expect them
@@ -404,15 +408,17 @@
 
 # Disable the transient hint so that idle_threshold cannot be bypassed from the
 # client
-#[transient_disable]
-#    match_transient = yes
-#    set_transient = no
+[transient_disable]
+   match_transient = yes
+   script = /home/kylras/bin/calendar
+   # set_transient = no
 #
 # Make the handling of transient notifications more strict by making them not
 # be placed in history.
-#[transient_history_ignore]
-#    match_transient = yes
-#    history_ignore = yes
+# [transient_history_ignore]
+   # match_transient = yes
+   # history_ignore = yes
+   # script = /home/kylras/calendar
 
 # fullscreen values
 # show: show the notifications, regardless if there is a fullscreen window opened
@@ -440,7 +446,9 @@
 #    skip_display = true
 
 # [history-ignore]
-# stack_tag="mpris"
+    # stack_tag="mpris"
+    # script = /home/kylras/bin/calendar
+    # history_ignore = yes
 
 
 #[skip-display]
