@@ -1,6 +1,6 @@
 *.foreground:   #ffffff
 *.background:   #000000
-*.cursorColor:  #ff00ff
+*.cursorColor:  #00ffff
 *.alpha:        0.80
 
 !! st
@@ -59,3 +59,4 @@ URxvt.internalBorder: 12
 URxvt.urgentOnBell: true
 
 // vim: set ft=xdefaults :
+
