@@ -36,16 +36,21 @@ min_width=" OFF"
 align=left
 signal=1
 
-#[weather]
-#command=curl -Ss 'https://wttr.in?0&T&Q' | cut -c 16- | head -2 | xargs echo
-#interval=3600
+# [weather]
+# command=curl -Ss 'https://wttr.in?0&T&Q' | cut -c 16- | head -2 | xargs echo
+# interval=3600
 #color=#A4C2F4
 
+# [calc-button]
+# full_text=Calculator
+# command=st -e qalc
+#
 # Pango markup example
 # [funky]
-# full_text=<span size="x-large"></span>
+# label=<span size="xx-large"> </span>
+# command=date
+# interval=once
 # markup=pango
-
 
 [local-ip]
 label= 
@@ -53,7 +58,6 @@ command=ip addr show enp27s0 | grep 'inet ' | awk '{print $2}' | cut -f1 -d'/'
 interval=once
 
 # Fetch the public IP address only on startup
-
 [public-ip]
 color=#00FF00
 label= 
@@ -88,8 +92,8 @@ interval=1
 
 [my-volume]
 label= 
-command=echo $(pactl list sinks | awk '$1 == "Volume:" {gsub(/%/, ""); print $5}')%
-interval=once
+command=echo $(pactl get-sink-volume @DEFAULT_SINK@ | awk '{print $5}')
+interval=1
 signal=9
 
 # Clickable blocklets (already binded to keyboard shortcuts so not really needed)
@@ -120,8 +124,17 @@ command=echo $(lsblk -o SIZE /dev/sda2 | awk 'NR==2 {print $1}')
 interval=1
 
 [my-date-1]
+# label=<span size="xx-large"> </span>
+# command=date '+%H:%M:%S'
 command=date '+ %H:%M:%S'
 interval=1
+markup=pango
+
+# [test]
+# command=echo '<span size="x-large">🕛</span>'
+# interval=1
+# markup=pango
+
 
 [my-date-1]
 command=date '+ %d/%m/%Y'
@@ -133,5 +146,5 @@ interval=once
 
 # Add a space for separation
 # [spacer]
-# command=echo
+# command=
 # interval=once
