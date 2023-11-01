@@ -27,7 +27,7 @@ export ZSH="$XDG_DATA_HOME/oh-my-zsh"
 
 # ZSH_THEME=geoffgarside
 # ZSH_THEME=jreese
-ZSH_THEME=half-life
+ZSH_THEME=my-half-life
 # ZSH_THEME=kennethreitz
 
 # ZSH_THEME='random'
