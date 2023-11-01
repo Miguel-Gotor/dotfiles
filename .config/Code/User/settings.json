@@ -11,6 +11,7 @@
     "explorer.confirmDelete": false,
     // "editor.fontFamily": "'Iosevka Comfy Wide', 'Source Code Pro', 'JetBrains Mono', 'FontAwesome', monospace",
     "editor.fontSize": 15,
+    // editor.fortmatOnSave": true
     // "editor.fontWeight": "bold",
     "explorer.sortOrder": "type",
     "editor.fontLigatures": true,
