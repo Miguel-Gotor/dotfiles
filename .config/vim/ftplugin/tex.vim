@@ -1,13 +1,19 @@
-inoremap \sec \section{}<Left>
-inoremap \ssec \subsection{}<Left>
-inoremap \toc \tableofcontents<CR>
-inoremap \up \usepackage{}<Left>
-inoremap \ig \includegraphics[width=\textwidth]{}<Left>
-inoremap \np \newpage %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+" inoremap \sec \section{}<Left>
+" inoremap \ssec \subsection{}<Left>
+" inoremap \toc \tableofcontents<CR>
+" inoremap \up \usepackage{}<Left>
+" inoremap \ig \includegraphics[width=\textwidth]{}<Left>
+" inoremap \np \newpage %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 " Compile TeX file into PDF using PDFLaTeX
 inoremap <silent> <F5> <C-o>:w <CR><C-o> :!clear; pdflatex % <CR>;
 nnoremap <silent> <F5> :w <CR> :!clear; pdflatex %;<CR>
+
+" inoremap <silent> <F5> <C-o>:w <CR><C-o> :!clear; pdflatex % <CR>;
+" nnoremap <silent> <F5> :w <CR> silent! execute '!clear; pdflatex %'
+
+" autocmd BufWritePre * :!clear && pdflatex %
+" autocmd BufWritePre * silent! execute '!clear && pdflatex %' 
 
 " Hide auxiliary files
 " inoremap <F5> <Esc> :w <CR> :!clear; mkdir -p tmp; pdflatex  -output-directory tmp %; mv tmp/*.pdf . <CR>; <CR>
