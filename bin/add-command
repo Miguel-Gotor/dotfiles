@@ -1,5 +1,5 @@
 #!/usr/bin/bash
-# add-command.sh
+# add-command
 # As a linux newbie, I created this little script to keep track of useful
 # commands that I've been discovering and using over time 
 # Appends the "whatis" description for the specified command to a file if it 

@@ -1,14 +1,15 @@
-#!/bin/sh
-# area-screenshot.sh
+#!/bin/sh -e
+# area-screenshot
 # Take a screenshot of the selected area
 # Click the notification to open the file using the default image viewer
 # Unique identifier (name of the script for example)
-msg_tag=$(basename $0)
+msg_tag=${0##*/} # (quick "basename")
 
-set -e
 temp_file=$(mktemp /tmp/screenshot-XXX.png)
 maim -u -c 1,0,0 -s $temp_file
 
+# Show the cursor after it has been hidden by unclutter
+# xdotool mousemove_relative 1 0
 # scrot -o -s -f $temp_file
 cat $temp_file | xclip -selection clipboard -t image/png
 dunstify -i $temp_file 'Snippet copied to clipboard' "<a href=\"file://$temp_file\"></a>"

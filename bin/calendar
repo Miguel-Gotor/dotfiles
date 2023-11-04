@@ -1,5 +1,5 @@
-#!/bin/sh
-# calendar.sh
+#!/bin/sh -e
+# calendar
 # Notify current date in calendar using "cal"
 # Unique identifier (name of the script for example)
 # Color today's date in yellow
@@ -13,3 +13,6 @@ highlighted_output=$(echo "$cal" | sed "s/\b$(date +%e | sed 's/ //g')\b/<span c
 dunstify -i /usr/share/icons/breeze-dark/apps/48/office-calendar.svg \
         -h "string:x-dunst-stack-tag:$0" \
         "Calendar" "\n<span font_family='Hack' font='15px'>$highlighted_output\n</span>"
+
+# vim: set filetype=sh : 
+

@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/sh -e
 # dmenu-search.sh
 # Browse the internet using dmenu
 pgrep -x dmenu  && exit

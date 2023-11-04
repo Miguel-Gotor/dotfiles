@@ -1,9 +1,9 @@
-#!/bin/sh
+#!/bin/sh -e
 # full-screenshot.sh
 # Take a screenshot of the entire screen using scrot
 
 # Unique identifier (name of the script for example)
-msg_tag=$(basename $0)
+msg_tag=${0##*/} # (quick "basename")
 
 directory="$HOME/Pictures/Screenshots"
 filename=$(date "+%d-%m-%Y-%T.png")

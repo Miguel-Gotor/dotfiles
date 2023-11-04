@@ -1,9 +1,9 @@
-#!/usr/bin/sh
-# mute-audio.sh
+#!/bin/sh -e
+# mute-audio
 # Mute and unmute audio using PulseAudio Control and notify current status
 
 # Unique identifier (name of the script for example)
-msg_tag=$(basename $0)
+msg_tag=${0##*/} # (quick "basename")
 
 pactl set-sink-mute @DEFAULT_SINK@ toggle
 

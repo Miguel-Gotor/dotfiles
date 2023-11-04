@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/bin/bash
 # By Jonathan Hartley
 # https://stackoverflow.com/users/10176/jonathan-hartley
 # Directs audio input (e.g. mic) to audio output (e.g. speakers),

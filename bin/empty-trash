@@ -1,9 +1,9 @@
-#!/bin/sh
+#!/bin/sh -e
 # empty-trash.sh
 # Empty trash if any
 
 # Unique identifier (name of the script for example)
-msg_tag=$(basename $0)
+msg_tag=${0##*/} # (quick "basename")
 
 trash_dir="$XDG_DATA_HOME/Trash"
 files=$(ls -A1 $trash_dir/files  2>/dev/null) && \

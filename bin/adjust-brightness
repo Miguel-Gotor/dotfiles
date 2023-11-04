@@ -1,5 +1,5 @@
-#!/bin/sh
-# adjust-brightness.sh
+#!/bin/sh -e
+# adjust-brightness
 # Change monitor brightness to an extent (50% - 150%)
 # TODO: There is room for improvement regarding the responsivity. Too many arithmetic operations, prob can be simplified.
 # Only one instance of the xrandr command for adjusting brightness is executed at a time to avoid race conditions.
@@ -7,7 +7,7 @@
 pgrep -x xrandr && exit
 
 # Unique identifier (name of the script for example)
-msg_tag=$(basename $0)
+msg_tag=${0##*/} # (quick "basename")
 display="HDMI-1"
 increment="$1"
 

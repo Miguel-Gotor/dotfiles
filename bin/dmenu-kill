@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/sh -e
 
 # List processes
 processes=$(pgrep -l '' | cut -d ' ' -f 2-)
