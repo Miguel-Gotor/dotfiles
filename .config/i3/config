@@ -113,10 +113,11 @@ bindsym $mod+space focus mode_toggle
 
 # WORKSPACES ------------------------------------------------------------------
 
-# Return to previous workspace by pressing the same key
-# workspace_auto_back_and_forth yes
+# Assign some apps to custom workspaces represented by Font Awesome icons
+# Generally those I intend to have only one instance of.
 
 # Custom workspaces
+# Use kitty specifically for CAVA as it's a GPU-based terminal emulator and provides a more fluid animation
 bindsym $mod+v workspace "<span size='xx-large'></span>"; exec kitty -e cava
 bindsym $mod+k workspace "<span size='xx-large' ></span>"; exec $TERMINAL -e qalc
 bindsym $mod+y workspace "<span size='xx-large' foreground='#FF0000' ></span>"; exec $BROWSER --new-window https://www.youtube.com/
@@ -124,10 +125,11 @@ bindsym $mod+Shift+y workspace "<span size='xx-large' foreground='#FF0000' ><
 bindsym $mod+s workspace "<span size='xx-large' foreground='#FF6500' ></span>"; exec $BROWSER --new-window https://soundcloud.com/you/likes
 bindsym $mod+b workspace "<span foreground='#0059FF' size='xx-large'></span>"; exec $BROWSER
 
-# Assign some apps to custom workspaces represented by Font Awesome icons
-# Generally those I intend to have only one instance of
+# Return to previous workspace by pressing the same key
+workspace_auto_back_and_forth yes
+# Comes with a downside. Spawning twice the same custom workspace send the
+# window to the wrong (previous) one.
 
-# Use kitty specifically for CAVA as it's a GPU-based terminal emulator and provides a more fluid animation
 # bindsym $mod+v workspace "<span size='xx-large'></span>"; exec kitty --name cava -c NONE -o background_opacity=0.0 -o confirm_os_window_close=0 -e cava
 # bindsym $mod+v workspace "<span size='xx-large'></span>"; exec kitty --name cava -e cava
 # for_window [instance="cava"] floating enable
@@ -135,11 +137,12 @@ bindsym $mod+b workspace "<span foreground='#0059FF' size='xx-large'></span>"
 # for_window [instance="cava"] resize set 1920 1050
 # Switch to adjacent workspaces
 
-bindsym $mod+Control+Left workspace prev
-bindsym $mod+Control+Right workspace next
-
+# Browser-like tab navigation
 bindsym $mod+Prior workspace prev
 bindsym $mod+Next workspace next
+
+bindsym $mod+Control+Left workspace prev
+bindsym $mod+Control+Right workspace next
 
 # Define names for default workspaces for which we configure key bindings
 # We use variables to avoid repeating the names in multiple places.
@@ -178,6 +181,9 @@ bindsym $mod+Shift+6 move container to workspace number $ws6; workspace number $
 bindsym $mod+Shift+7 move container to workspace number $ws7; workspace number $ws7;
 bindsym $mod+Shift+8 move container to workspace number $ws8; workspace number $ws8;
 bindsym $mod+Shift+9 move container to workspace number $ws9; workspace number $ws9;
+
+# For the sake of organization, reassign windows to custom workspaces
+bindsym $mod+Shift+b move container to workspace "<span foreground='#0059FF' size='xx-large'></span>"; workspace "<span foreground='#0059FF' size='xx-large'></span>"
 
 # i3-msgs
 # Reload the configuration file
