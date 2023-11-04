@@ -143,6 +143,7 @@ bindsym $mod+Next workspace next
 
 # Define names for default workspaces for which we configure key bindings
 # We use variables to avoid repeating the names in multiple places.
+# zero-indexed workspaces
 set $ws0 "0"
 set $ws1 "1"
 set $ws2 "2"
@@ -236,11 +237,9 @@ bindsym $mod+Shift+p --release exec --no-startup-id pavucontrol
 # bindsym $mod+Shift+l --release exec --no-startup-id dm-tool lock
 # bindsym $mod+Shift+l --release exec --no-startup-id i3lock -i ~/Pictures/Wallpapers/Other/30-08-2023-23:38:10.png
 
-# lf terminal file manager
+# File Managers
 bindsym $mod+l workspace "<span foreground='#00FFFF' size='x-large'></span>"; exec --no-startup-id $TERMINAL -e lf
-# bindsym $mod+l workspace "<span foreground='#00FFFF' size='xx-large'></span>"; exec --no-startup-id $TERMINAL -e lf
-# bindsym $mod+l workspace "<span foreground='#00FFFF' size='medium'></span>"; exec --no-startup-id $TERMINAL -e lf
-# bindsym $mod+l workspace "<span foreground='#00FFFF' size='xx-large'></span>"; exec --no-startup-id $TERMINAL -e lf
+bindsym $mod+f workspace "<span foreground='#5294E2' size='x-large'></span>"; exec --no-startup-id pcmanfm
 
 # Notify calendar with current date highlighted
 bindsym $mod+c --release exec --no-startup-id calendar
@@ -258,7 +257,6 @@ bindsym $mod+Shift+t --release exec --no-startup-id empty-trash
 # bindsym $mod+w exec --no-startup-id xwallpaper --zoom $(find ~/Pictures/Wallpapers -type f | shuf | head -n1)
 # And send a notification using the selected picture as icon:
 bindsym $mod+w --release exec --no-startup-id find ~/Pictures/Wallpapers -type f | shuf | head -n1 | xargs -I {} sh -c 'xwallpaper --zoom "$1" & dunstify -i "$1" "Random wallpaper set"' -- {}
-# bindsym $mod+w --release exec --no-startup-id find ~/Pictures/Wallpapers -type f | shuf | head -n1 | xargs -I {} sh -c 'xwallpaper --zoom "$1" & dunstify -i "$1" "$1"' -- {}
 
 # Pick a wallpaper
 bindsym $mod+Shift+w exec --no-startup-id find ~/Pictures/Wallpapers -type f | shuf | sxiv - -t
