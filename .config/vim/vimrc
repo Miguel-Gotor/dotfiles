@@ -1,13 +1,17 @@
 " .config/vim/vimrc
 
+" map q <Nop>
+
 " Disable timeout on esc key
 " TODO: Find out how is st related to this issue (doesn't happen in kitty)
-set timeoutlen=0
+" set timeoutlen=0
 " ^^^^^^^^^^^^ Disables the "gx" macro but not "gf"
+" let g:netrw_browser_viewer='open'
 
 " vim / neovim specific settings
 if !has('nvim')
     " Change cursor from block (normal mode) to line (insert mode)
+    set timeoutlen=0
     let &t_SI = "\e[6 q"
     let &t_EI = "\e[2 q"
 else
@@ -266,6 +270,7 @@ inoremap <silent> <F2> <C-o>:call CycleColorSchemes(1)<CR>
 
 " Reload current file
 nnoremap <silent> <F4> :w<CR>:e<CR>:echo "File reloaded"<CR>
+" nnoremap <silent> <F4> :w<CR>
 inoremap <silent> <F4> <C-o>:w<CR><C-o>:e<CR>
 
 " Reminder: <F5> and <F6> are used to run/compile/execute based on filetype
@@ -317,11 +322,13 @@ inoremap <silent> [23;5~ <C-o>:setlocal wrap!<CR>
 " Visual line separator
 inoremap ;- <C-o>:call InsertLine()<CR>
 
+" Filesave hooks
 " Automatically merge changes in xresources
 autocmd BufWritePost $XDG_CONFIG_HOME/X11/xresources silent! execute '!xrdb -merge %' | redraw!
 
-" Automatically reload i3wm after modifying config file
+" Automatically reload i3wm after modifying config files
 autocmd BufWritePost $XDG_CONFIG_HOME/i3/config silent! execute '!i3-msg reload' | redraw!
+autocmd BufWritePost $XDG_CONFIG_HOME/i3blocks/config silent! execute '!i3-msg restart' | redraw!
 
 
 
@@ -418,5 +425,3 @@ colorscheme eva01-LCL
 " colorscheme darkglass
 " colorscheme zmrok
 " colorscheme enzyme
-
-
