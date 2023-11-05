@@ -137,8 +137,24 @@ setopt HIST_IGNORE_ALL_DUPS
 # Remove timestamps
 unsetopt EXTENDED_HISTORY
 
-bindkey "^[[1;3C" forward-word
-bindkey "^[[1;3D" backward-word
+# Those are now handled by st
+# Alt + Right Arrow
+# bindkey "^[[1;3C" forward-word
+
+# Shift + Home selection
+# bindkey "^[[1;2H" select-in-word; beginning-of-line
+# bindkey "^[[1;2H" beginning-of-line
+
+# Alt + Left Arrow
+# bindkey "^[[1;3D" backward-word
+
+# Control + Right Arrow
+# bindkey "^[[1;5C" forward-word
+# Control + Left Arrow
+# bindkey "^[[1;5D" backward-word
+
+# bindkey "^[[3~" backward-delete-char
+# bindkey "^[[P" backward-delete-char
 
 zstyle ':completion:*' ignored-patterns \
     'down-line-or-beginning-search' \
