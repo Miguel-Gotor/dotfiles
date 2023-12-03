@@ -98,6 +98,7 @@ fi
 # PROMPT="${purple}%n%{$reset_color%} in ${limegreen}%~%{$reset_color%}\$(virtualenv_prompt_info)\$(ruby_prompt_info)\$vcs_info_msg_0_${orange} λ%{$reset_color%} "
 
 # PROMPT="${purple}%n%{$reset_color%} in ${limegreen}%~% ${orange} λ%{$reset_color%} "
+# PROMPT="${purple}%n%{$reset_color%} in ${limegreen}%~%  %{$fg_bold[white]%}λ "
 # Moon
 # PROMPT="${purple}%n%{$reset_color%} in ${limegreen}%~% ${orange}  %{$reset_color%} "
 # Star
@@ -105,8 +106,14 @@ fi
 # Asterisk
 # PROMPT="${purple}%n%{$reset_color%} in ${limegreen}%~% ${orange}  %{$reset_color%} "
 # Lightning bolt
-PROMPT="${purple}%n%{$reset_color%} in ${limegreen}%~% ${orange} %{$reset_color%} "
+# PROMPT="${purple}%n%{$reset_color%} in ${limegreen}%~% ${orange} %{$reset_color%} "
 # Kunai
 # PROMPT="${purple}%n%{$reset_color%} in ${limegreen}%~% ${orange}  %{$reset_color%} "
+# Dollar
+# PROMPT="${purple}%n%{$reset_color%} in ${limegreen}%~% ${orange} %{$reset_color%} "
+# Right Arrow
+# PROMPT="${purple}%n%{$reset_color%} in ${limegreen}%~% ${orange}  %{$reset_color%}"
+# PROMPT="${purple}%n%{$reset_color%} in ${limegreen}%~% ${orange}  %{$reset_color%}"
+# PROMPT="${purple}%n%{$reset_color%} ${orange}  ${limegreen}%~% ${turquoise}  %{$reset_color%} "
+PROMPT="${purple}%n%{$reset_color%} in ${limegreen}%~% ${turquoise}  %{$reset_color%} "
 
-# PROMPT="${purple}%n%{$reset_color%} in ${limegreen}%~%  %{$fg[blue]%}% "$'\UF303'" %{$reset_color%} "
