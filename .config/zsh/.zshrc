@@ -15,22 +15,26 @@ export ZSH="$XDG_DATA_HOME/oh-my-zsh"
 # Reminder: themes location: $ZSH_CUSTOM/themes
 
 # ZSH_THEME="gnzh"
+# ZSH_THEME="new"
 # ZSH_THEME="agnoster"
+# ZSH_THEME="miloshadzic"
 # ZSH_THEME="robbyrussell"
+# ZSH_THEME="half-life"
 # ZSH_THEME="kardan"
+# ZSH_THEME="gallois"
 
 # ZSH_THEME='rainbow'
+# ZSH_THEME='my-theme'
 # ZSH_THEME='simple'
 # ZSH_THEME='arch'
-
+ZSH_THEME="my-half-life"
+#
 # ZSH_THEME='blinks'
-
-# ZSH_THEME=geoffgarside
-# ZSH_THEME=jreese
-ZSH_THEME=my-half-life
-# ZSH_THEME=kennethreitz
-
+# ZSH_THEME='eastwood'
 # ZSH_THEME='random'
+# ZSH_THEME='frisk'
+# ZSH_THEME='trapd00r'
+# ZSH_THEME='cypher'
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
@@ -129,13 +133,14 @@ source $ZDOTDIR/.zsh_aliases
 # [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 # [[ ! -f ${ZDOTDIR:-~}/.p10k.zsh ]] || source ${ZDOTDIR:-~}/.p10k.zsh
 
-# setopt cdable_vars
 # Leave only last occurence of a command
 setopt HIST_IGNORE_ALL_DUPS
 # setopt HIST_IGNORE_SPACE
 #
 # Remove timestamps
 unsetopt EXTENDED_HISTORY
+
+setopt cdablevars
 
 # Those are now handled by st
 # Alt + Right Arrow
@@ -158,6 +163,6 @@ unsetopt EXTENDED_HISTORY
 
 zstyle ':completion:*' ignored-patterns \
     'down-line-or-beginning-search' \
-    'zcompile'
-
+    'zcompile' \
+    'xconsole'
 
