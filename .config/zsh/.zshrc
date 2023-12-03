@@ -140,7 +140,7 @@ setopt HIST_IGNORE_ALL_DUPS
 # Remove timestamps
 unsetopt EXTENDED_HISTORY
 
-setopt cdablevars
+setopt cdable_vars
 
 # Those are now handled by st
 # Alt + Right Arrow
