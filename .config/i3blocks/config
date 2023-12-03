@@ -6,145 +6,74 @@
 #     https://vivien.github.io/i3blocks
 #
 # Global properties
+
 separator=true
 separator_block_width=25
-command=/usr/lib/i3blocks/$BLOCK_NAME/$BLOCK_NAME 
+# command=/usr/lib/i3blocks/$BLOCK_NAME/$BLOCK_NAME 
+command=/home/mgotor/bin/i3blocks/$BLOCK_NAME
 
-# Caps Lock: off - Caps Lock: on
-# [Caps-lock]
-# command=xset -q | grep Caps | awk '{ print $2, $3, $4 }'
-# interval=once
 
-[player-metadata]
-color=#FFFF00
-label= 
-command=echo $(playerctl metadata xesam:artist) - $(playerctl metadata xesam:title)
-interval=once
-signal=3
-
-[player-status]
-command=[ "$(playerctl status)" = "Paused" ] && echo "  " || echo "  "
-interval=once
-min_width="  "
-signal=2
-
-[Caps-lock]
-command=xset -q | grep Caps | awk '{ print $4 }' | tr '[:lower:]' '[:upper:]'
-interval=once
-label= 
-min_width=" OFF"
-align=left
-signal=1
-
-# [weather]
-# command=curl -Ss 'https://wttr.in?0&T&Q' | cut -c 16- | head -2 | xargs echo
-# interval=3600
-#color=#A4C2F4
-
-# [calc-button]
-# full_text=Calculator
-# command=st -e qalc
-#
-# Pango markup example
-# [funky]
-# label=<span size="xx-large"> </span>
-# command=date
-# interval=once
-# markup=pango
-
-[local-ip]
-label= 
-command=ip addr show enp27s0 | grep 'inet ' | awk '{print $2}' | cut -f1 -d'/'
-interval=once
-
-# Fetch the public IP address only on startup
-[public-ip]
-color=#00FF00
-label= 
-command=curl ifconfig.me && echo
-#command=wget -qO - icanhazip.com
-interval=once
-
-[home]
-label= 
-command=ls -A1 ~/ | wc -l 
-interval=1
-
-#  
-[trash]
-label= 
-#command=[ -d ~/.local/share/Trash/files ] && ls .local/share/Trash/files || echo 0
-command=(ls -A1 ~/.local/share/Trash/files 2>/dev/null | wc -l) || echo 0
-interval=1
-
-[my-cpu]
-label= 
-# command=grep 'cpu ' /proc/stat | awk '{usage=($2+$4)*100/($2+$4+$5)} END {print "CPU: " usage "%"}'
-# Limit precision to 2 decimal places:
-command=grep 'cpu ' /proc/stat | awk '{usage=($2+$4)*100/($2+$4+$5)} END {printf "%.2f%%\n", usage}'
-interval=1
-
-#[my-brightness]
-#label= 
-#command=echo $(xrandr --verbose | grep "$display" -A 5 | grep "Brightness" | awk '{print $2}')
-#interval=once
-#signal=8
-
-[my-volume]
-label= 
-command=echo $(pactl get-sink-volume @DEFAULT_SINK@ | awk '{print $5}')
-interval=1
-signal=9
-
-# Clickable blocklets (already binded to keyboard shortcuts so not really needed)
-# [click]
-# full_text=
-# command=playerctl previous
-
-# [click]
-# full_text= 
-# command=playerctl play-pause
-
-# [click]
-# full_text=
-# command=playerctl next
-
-# [click]
-# full_text=<span size="x-large"></span>
-# markup=pango
-# command=calendar.sh
-
-[memory]
-label= 
-interval=1
-
-[my-disk]
-label= 
-command=echo $(lsblk -o SIZE /dev/sda2 | awk 'NR==2 {print $1}')
-interval=1
-
-[my-date-1]
-# label=<span size="xx-large"> </span>
-# command=date '+%H:%M:%S'
-command=date '+ %H:%M:%S'
-interval=1
-markup=pango
-
-# [test]
-# command=echo '<span size="x-large">🕛</span>'
+# [player]
+# command=echo "<span font='FontAwesome' size='large' foreground='#FFFF00'></span> $(playerctl metadata artist) | $(playerctl metadata title)"
 # interval=1
 # markup=pango
 
+# [ram-usage]
+# command=echo "<span font='FontAwesome' size='x-large' foreground='#888888'></span><span font='Iosevka Comfy' size='large'> $(awk '{printf "%.2fºC\n", $1/1000}' /sys/class/hwmon/hwmon1/temp1_input)</span>"
+# interval=1
+# markup=pango
 
-[my-date-1]
-command=date '+ %d/%m/%Y'
+[ram-usage]
+interval=1
+markup=pango
+
+[cpu-temp]
+command=echo "<span font='FontAwesome' size='x-large' foreground='#FF0000'></span><span font='Iosevka Comfy' size='large'> $(awk '{printf "%.2fºC\n", $1/1000}' /sys/class/hwmon/hwmon1/temp1_input)</span>"
+interval=1
+markup=pango
+
+interval=1
+
+# [gpu-temp]
+# interval=1
+
+[free-disk]
+interval=1
+
+[local-ip]
+command=echo "<span font='FontAwesome' size='x-large' foreground='#00AFAA'></span><span font='Iosevka Comfy' size='large'> $(ip -br a show enp27s0 | awk '{print $3}')</span>"
 interval=once
+markup=pango
 
-#[my-date]
-#command=date '+ %H:%M:%S  %d/%m/%Y   '
-#interval=1
+[public-ip]
+command=echo "<span font='FontAwesome' size='x-large' foreground='#00AAFF'></span><span font='Iosevka Comfy' size='large'> $(curl ifconfig.me && echo)</span>"
+interval=once
+markup=pango
 
-# Add a space for separation
-# [spacer]
-# command=
-# interval=once
+[home]
+# command=echo "<span font='FontAwesome' size='xx-large' foreground='#FFDDAA'> </span><span font='Iosevka Comfy' size='large'>$(ls -A1 ~/ | wc -l)</span>"
+command=echo "<span font='FontAwesome' size='x-large' foreground='#FFDDAA'></span><span font='Iosevka Comfy' size='large'> $(ls -A1 ~/ | wc -l)</span>"
+interval=1
+markup=pango
+
+[trash]
+command=echo "<span font='FontAwesome' size='x-large' foreground='#BBBBBB'></span><span font='Iosevka Comfy' size='large'> $(ls -A1 ~/.local/share/Trash/files 2>/dev/null | wc -l)</span>"
+# command=echo "<span font='FontAwesome' size='xx-large' foreground='#BBBBBB'> </span><span font='Iosevka Comfy'  size='large'>$(ls -A1 ~/.local/share/Trash/files 2>/dev/null | wc -l)</span>"
+interval=1
+markup=pango
+
+[volume]
+command=echo "<span font='FontAwesome' size='x-large' foreground='#FFFFFF'></span><span font='Iosevka Comfy' size='large'> $(pactl get-sink-volume @DEFAULT_SINK@ | awk '{print $5}')</span>"
+interval=1
+markup=pango
+
+
+[time]
+command=echo "<span font='FontAwesome' size='x-large' foreground='#FF6511'></span><span font='Iosevka Comfy' size='large' foreground='#FFFFFF'> $(date '+%H:%M:%S')</span>"
+interval=1
+markup=pango
+
+[date]
+command=echo "<span font='FontAwesome' size='x-large' foreground='#AAFFAA'></span><span font='Iosevka Comfy' size='large' foreground='#FFFFFF'> $(date '+%d/%m/%Y')</span> "
+interval=1
+markup=pango
