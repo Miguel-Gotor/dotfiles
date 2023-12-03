@@ -23,7 +23,7 @@ cp --parents -ruv "./.config/i3blocks" $dotfiles_dir
 cp --parents -ruv "./.config/i3status" $dotfiles_dir
 # No longer use this terminal. Leave it untracked.
 # cp --parents -ruv "./.config/kitty" $dotfiles_dir
-cp --parents -ruv "./.config/mpv" $dotfiles_dir
+# cp --parents -ruv "./.config/mpv" $dotfiles_dir
 cp --parents -ruv "./.config/picom" $dotfiles_dir
 cp --parents -ruv "./.config/ranger" $dotfiles_dir
 cp --parents -ruv "./.config/vim" $dotfiles_dir
@@ -35,7 +35,7 @@ cp --parents -ruv "./.config/tmux" $dotfiles_dir
 # cp --parents -ruv "./.config/emacs" $dotfiles_dir
 
 # exclude subdirectories in ~/.bin without cp complaining about ommited "-r"
-find ./bin -maxdepth 1 -type f -exec cp --parents -u {} $dotfiles_dir \;
+find ./bin -maxdepth 1 -type f -exec cp --parents -uv {} $dotfiles_dir \;
 
 cp --parents -ruv "./Pictures/current-wallpaper" $dotfiles_dir
 cp --parents -ruv "./Pictures/Wallpapers" $dotfiles_dir
