@@ -6,14 +6,14 @@
 # Set keyboard rate
 xset r rate 200 60
 
-# Turn on the numlock key by default
-numlockx on
+# Merge xresources
+xrdb -merge ~/.config/X11/xresources 
 
 # Start compositor
 picom &
 
-# Execute custom script to monitor updates in currently playing media if it's not already running
-inotify-mpris
+# Activate NumLock key
+numlockx on
 
 # Execute custom script to follow playerctl updates
 playerctl-follow &
@@ -22,10 +22,13 @@ playerctl-follow &
 xwallpaper --zoom $HOME/Pictures/current-wallpaper
 
 # Start the polkit agent to allow GUI editors to modify system-wide config files
-polkit-dumb-agent &
+# polkit-dumb-agent &
 
 # Start unclutter to automatically hide the cursor
 unclutter &
 
-# Start network manager applet
-nm-applet &
+# Time/date embedded into the bare DWM status bar
+while true; do
+   xsetroot -name "$(date) "
+   sleep 1
+done &
