@@ -1,12 +1,38 @@
 # .zsh_aliases
 
+alias cpy='xclip -selection clipboard'
+
+bak() {
+    cp --parents -v "$1" ~/Documents/Backups/
+}
+
+# Functions -------------------------------------------------------------------
+# Remove the last X pages of the given PDF file
+# Example: pop-pdf c-style-guide.pdf 20
 pop-pdf() { qpdf "$1" --pages "$1" 1-$(( $(qpdf --show-npages "$1") - $2 )) -- "${1%.pdf}-popped.pdf"; }
+
+# Create a tar.gz archive
+gzip() { tar -czvf "$1.tar.gz" $1 }
+
+# Create a tar.bz2 archive
+bzip2() { tar -cjvf "$1.tar.bz2" $1 }
+
+alias untar='tar -xvf'
+
+# Extract tar.gz archive
+alias ungzip='tar -xzvf'
+alias unbzip2='tar -xjvf'
+
+# Device tree compiler. From source to blob and back
+# dtb_to_dts() { dtc -I dtb -O dts -o ${1%.dtb}.dts "$1" }
+# dts_to_dtb() { dtc -I dts -O dtb -o ${1%.dts}.dtb "$1" }
 
 alias qalc='qalc -i -f $XDG_CONFIG_HOME/qalculate/units'
 alias dots='update-dotfiles && ~/dotfiles'
 alias open='xdg-open'
 alias install='install -Dv /dev/null'
-alias du='du -h'
+alias du='du -h --max-depth=1'
+# alias du='du -sh'
 
 # Quickly edit plain text files -----------------------------------------------
 alias ali='$EDITOR $ZDOTDIR/.zsh_aliases'
@@ -17,10 +43,13 @@ alias ffdict='$EDITOR $HOME/.mozilla/firefox/kylras/persdict.dat'
 alias ffcss='$EDITOR $HOME/.mozilla/firefox/kylras/chrome/userChrome.css'
 
 # My much beloved notes
-alias log='$EDITOR $HOME/Documents/Linux/Notes/arch.txt'
+alias log='$EDITOR $HOME/Documents/Linux/Scribbles/arch.txt'
+alias til='$EDITOR $HOME/Documents/Linux/Scribbles/TIL.txt'
+alias todo='$EDITOR $HOME/Documents/Linux/Scribbles/TODO'
+alias err='$EDITOR $HOME/Documents/Linux/Scribbles/error-log.txt'
 alias fent='$EDITOR $HOME/Documents/FentISS/Notes/fentiss.txt'
-alias asm='$EDITOR $HOME/Documents/Assembly/Notes/asm.txt'
-alias cprog='$EDITOR $HOME/Documents/C-programming/Notes/c.txt'
+# alias asm='$EDITOR $HOME/Documents/Assembly/Notes/asm.txt'
+# alias cprog='$EDITOR $HOME/Documents/C-programming/Notes/c.txt'
 
 # Config files
 alias xprof='$EDITOR $XDG_CONFIG_HOME/X11/xprofile'
@@ -33,6 +62,10 @@ alias ldmconf='sudoedit /etc/lightdm/lightdm-gtk-greeter.conf'
 alias duconf='$EDITOR $XDG_CONFIG_HOME/dunst/dunstrc'
 alias zconf='$EDITOR $XDG_CONFIG_HOME/zsh/.zshrc'
 alias tconf='$EDITOR $XDG_CONFIG_HOME/tmux/tmux.conf'
+
+alias mount='sudo mount'
+alias umount='sudo umount'
+alias fdisk='sudo fdisk'
 
 # Have frequently used commands one keystroke away
 
@@ -47,15 +80,10 @@ alias f='file -b'
 # Cat but with syntax (H)ighlight
 alias h='highlight --out-format=ansi'
 
-# alias k='kitty +kitten icat $1'
-# alias m='man'
-
 # (O)pen file manager in PWD
 alias o='nohup pcmanfm . &> /dev/null & disown'
 
-alias p='sudo pacman'
-alias t='tmux'
-alias v='nvim'
+alias v=$EDITOR
 
 # (B)ack to previous dir
 alias b='$OLDPWD'
@@ -63,7 +91,7 @@ alias b='$OLDPWD'
 # alias z='nohup zathura "$1" &> /dev/null & disown'
 # Regular alias won't do.
 # Need a function truly detach the process form terminal
-z(){nohup zathura "$1" &> /dev/null  & disown}
+z(){nohup zathura "$@" &> /dev/null  & disown}
 
 # Customize xterm
 # alias xt='xterm -fa 'Hack' -fs 11 zsh &> /dev/null &disown'
@@ -77,8 +105,8 @@ alias cp='cp -iv'
 alias rm='rm -i --preserve-root'
 
 # Searching
-alias fp='ps -e | grep $1'    # Find Process
-alias hs='history | grep $1'  # Find command
+alias fp='ps -e | grep'    # Find Process
+alias hs='history | grep'  # Find command
 
 # Git
 alias ga='git add -v'
@@ -87,11 +115,13 @@ alias gp='git push'
 alias gc='git commit -v -m'
 alias gd='git diff'
 alias gr='git rm'
+# Retrieve only the name of the current branch
+alias gb='git rev-parse --abbrev-ref HEAD'
 
 # Mount and switch to other volumes
 alias win='sudo mount /dev/sda2 /mnt/Windows10 && cd /mnt/Windows10'
-# alias arc='sudo mount /dev/sdb2 /mnt/Arch && cd /mnt/Arch'
-alias ubu='sudo mount /dev/sda5 /mnt/Ubuntu && cd /mnt/Ubuntu'
+alias arc='sudo mount /dev/sdb2 /mnt/Arch && cd /mnt/Arch'
+# alias ubu='sudo mount /dev/sda5 /mnt/Ubuntu && cd /mnt/Ubuntu'
 
 alias fort='fortune | cowsay | lolcat'
 
