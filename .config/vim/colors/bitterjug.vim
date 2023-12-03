@@ -5,7 +5,7 @@ if exists("syntax_on")
     syntax reset
 endif
 
-let colors_name = "bitterjug"
+let g:colors_name = "bitterjug"
 hi Normal     cterm=NONE ctermbg=235 ctermfg=246 
 hi Statement  cterm=NONE ctermfg=248
 hi Type       cterm=NONE ctermfg=250 

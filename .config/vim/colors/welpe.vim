@@ -71,7 +71,7 @@ if exists("syntax_on")
   syntax reset
 endif
 
-let colors_name = "welpe"
+let g:colors_name = "welpe"
 if !exists('g:welpe_statusline')
   let g:welpe_statusline = 1
 endif

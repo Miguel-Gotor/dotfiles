@@ -5,7 +5,7 @@
 
 " In order to enamble 256 colors on Ubuntu 
 " install: sudo apt-get install ncurses-term
-set term=xterm-256color
+" set term=xterm-256color
 
 set background=dark
 hi clear

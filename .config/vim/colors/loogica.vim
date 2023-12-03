@@ -1,4 +1,4 @@
-let colors_name = "loogica"
+let g:colors_name = "loogica"
 set background=light
 
 hi clear

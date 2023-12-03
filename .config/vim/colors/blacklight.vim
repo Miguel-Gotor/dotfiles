@@ -6,7 +6,7 @@ hi clear
 if exists("syntax_on")
    syntax reset
 endif
-let colors_name="blacklight"
+let g:colors_name="blacklight"
 
 hi SpecialKey      term=bold ctermfg=2 guifg=yellowgreen
 hi NonText         term=bold ctermfg=84 gui=bold guifg=#5fff87

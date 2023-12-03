@@ -13,7 +13,7 @@ if exists("syntax_on")
 endif
 
 if has("gui_running")
-  let colors_name = "lanzarotta"
+  let g:colors_name = "lanzarotta"
 
   hi Boolean      guifg=LightMagenta
   hi Character    guifg=LightRed

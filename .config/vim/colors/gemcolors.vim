@@ -11,7 +11,7 @@ if exists("syntax_on")
    syntax reset
 endif
 
-let colors_name = "gemcolors"
+let g:colors_name = "gemcolors"
 
 " Normal
 hi Normal       guifg=#F8F8F8 guibg=#141414

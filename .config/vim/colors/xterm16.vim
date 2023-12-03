@@ -13,7 +13,7 @@ hi clear
 if exists('syntax_on')
     syntax reset
 endif
-let colors_name = 'xterm16'
+let g:colors_name = 'xterm16'
 
 " {{{1 Local function definitions
 " {{{2 tohex(n): Convert a number to a 2 digit hex
@@ -770,7 +770,7 @@ try
     " }}}1
 catch /^xterm16 Error:/
     " {{{1 Handle internal exceptions.
-    unlet colors_name
+    unlet g:colors_name
 
     echohl ErrorMsg
     echomsg v:exception

@@ -9,7 +9,7 @@ hi clear
 if exists("syntax_on")
     syntax reset
 endif
-let colors_name = "grape"
+let g:colors_name = "grape"
 
 hi Normal                   guibg=seashell   guifg=black
 

@@ -14,7 +14,7 @@ if exists("syntax_on")
     syntax reset
 endif
 
-let colors_name = "thestars"
+let g:colors_name = "thestars"
 
 "------------------------------------------------------------------------------
 " Highlight Groups

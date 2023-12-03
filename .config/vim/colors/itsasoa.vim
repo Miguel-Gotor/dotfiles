@@ -100,5 +100,5 @@
 
 " Save color scheme name
  let g:colors_name = "itsasoa"
- let colors_name   = "itsasoa"
+ let g:colors_name   = "itsasoa"
 

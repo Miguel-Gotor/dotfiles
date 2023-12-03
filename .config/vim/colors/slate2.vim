@@ -5,7 +5,7 @@ if exists("syntax_on")
     syntax reset
 endif
 
-let colors_name="slate"
+let g:colors_name="slate"
 
 if exists("g:slate_style")
     let s:slate_style = g:slate_style

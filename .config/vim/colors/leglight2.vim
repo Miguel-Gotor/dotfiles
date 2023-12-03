@@ -26,7 +26,7 @@ set background=light
 if exists("syntax_on")
     syntax reset
 endif
-let colors_name = "leglight2"
+let g:colors_name = "leglight2"
 " }}}
 
 " GUI Section {{{1

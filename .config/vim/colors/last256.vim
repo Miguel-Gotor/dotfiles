@@ -71,7 +71,7 @@ if exists("syntax_on")
   syntax reset
 endif
 
-let colors_name = "last256"
+let g:colors_name = "last256"
 
 "}}}
 " GUI And Cterm Palettes:"{{{

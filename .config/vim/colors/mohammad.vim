@@ -2,7 +2,7 @@
 
 hi clear
 
-let colors_name = "mohammad"
+let g:colors_name = "mohammad"
 
 " Normal should come first
 hi Normal     guifg=Black  guibg=White

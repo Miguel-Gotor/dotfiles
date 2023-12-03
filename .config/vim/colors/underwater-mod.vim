@@ -3,7 +3,7 @@
 " Last Change: Dec 28, 2010
 " Version: 0.3
 
-let colors_name = "underwater-mod"
+let g:colors_name = "underwater-mod"
 
 set background=dark
 hi clear

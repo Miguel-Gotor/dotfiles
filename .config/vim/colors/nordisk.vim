@@ -10,7 +10,7 @@
 
 " - preamble ---------------------------------------------------------------------------------- <<< -
 
-let colors_name = "nordisk"
+let g:colors_name = "nordisk"
 set background=dark
 
 if version > 580

@@ -10,7 +10,7 @@ if exists("syntax_on")
    syntax reset
 endif
 
-let colors_name = "breeze"
+let g:colors_name = "breeze"
 
 hi Normal       guifg=#ffffff guibg=#005c70
 

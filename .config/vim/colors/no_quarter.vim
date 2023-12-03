@@ -11,7 +11,7 @@ hi clear
 if exists("syntax_on")
    syntax reset
 endif
-let colors_name = "no_quarter"
+let g:colors_name = "no_quarter"
 
 "
 " Vim Colors (( Default Options ))

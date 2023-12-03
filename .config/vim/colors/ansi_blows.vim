@@ -192,6 +192,6 @@ exe 'hi Ignore       guifg=bg'
 exe 'hi Error        guifg=' . s:boldWhite . ' guibg=' . s:boldRed
 exe 'hi Todo         guifg=bg guibg=' . s:brown
 
-let colors_name = "ansi_blows"
+let g:colors_name = "ansi_blows"
 
 " vim: sw=2

@@ -11,7 +11,7 @@ if version > 580
 endif
 
 set t_Co=256
-let g:colors_name = "spurs-away"
+let g:colors_name = "spurs_away"
 
 "hi CTagsMember -- no settings --
 "hi CTagsGlobalConstant -- no settings --

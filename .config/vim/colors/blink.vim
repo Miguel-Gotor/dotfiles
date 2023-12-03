@@ -9,7 +9,7 @@ if exists("syntax_on")
   syntax reset
 endif
 
-let colors_name = "blink"
+let g:colors_name = "blink"
 
 " Set Default
 hi Normal term=NONE cterm=NONE ctermfg=Gray ctermbg=Black gui=NONE guifg=Gray guibg=Black

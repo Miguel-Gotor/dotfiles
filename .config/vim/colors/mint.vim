@@ -5,7 +5,7 @@ if exists("syntax_on")
   syntax reset
 endif
 
-let colors_name = "mint"
+let g:colors_name = "mint"
 set mouseshape+=i:arrow
 
 " Window elements 

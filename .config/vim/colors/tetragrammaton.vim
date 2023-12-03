@@ -6,7 +6,7 @@ if version > 580
  syntax reset
  endif
 endif
-let colors_name = "tetragrammaton"
+let g:colors_name = "tetragrammaton"
 ":hi Normal guifg=White guibg=#403020
 
 hi Normal guifg=#953434 guibg=#180000

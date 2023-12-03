@@ -15,7 +15,7 @@ if exists("syntax_on")
 	syntax reset
 endif
 
-let colors_name = "paintbox"
+let g:colors_name = "paintbox"
 
 
 " black		19191d

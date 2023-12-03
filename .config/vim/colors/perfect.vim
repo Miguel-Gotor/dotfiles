@@ -11,7 +11,7 @@ if exists("syntax_on")
   syntax reset
 endif
 
-let colors_name = "perfect"
+let g:colors_name = "perfect"
 
 "————————————————+———————————————————————————————————————————————+———+———————————————————————————————————————————————"
 "                | GUI                                           |   | TERMINAL                                      "

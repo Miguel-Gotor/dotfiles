@@ -1,4 +1,4 @@
-" Vim color file by Jörn Horstmann <joern_h@gmx.net>
+" Vim color file by Jï¿½rn Horstmann <joern_h@gmx.net>
 " Light background, works in GUI and cobnsole
 " Last change 08.09.2004
 " TODO
@@ -10,7 +10,7 @@ if exists("syntax_on")
     syntax reset
 endif
 
-let colors_name = "jhlight"
+let g:colors_name = "jhlight"
 
 hi Normal         guifg=#000000 guibg=#ffffff gui=none ctermfg=black    ctermbg=grey     cterm=none
 

@@ -20,7 +20,7 @@ if !exists('g:spacegray_italicize_comments')
 endif
 
 set background=dark
-let colors_name = 'spacegray'
+let g:colors_name = 'spacegray'
 
 " Colorscheme definitions {{{1
 hi Normal          ctermbg=233  ctermfg=250    guibg=#111314  guifg=#B3B8C4  cterm=NONE      gui=NONE

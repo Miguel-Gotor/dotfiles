@@ -28,7 +28,7 @@ if version > 580
     endif
 endif
 
-let colors_name = "winter"
+let g:colors_name = "winter"
 
 " }}}
 

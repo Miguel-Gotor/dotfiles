@@ -13,7 +13,7 @@ hi clear
 if exists("syntax_on")
     syntax reset
 endif
-let colors_name="softlight"
+let g:colors_name="softlight"
 
 hi Normal  gui=NONE guifg=#303030 guibg=#FFFFFF
 hi NonText gui=BOLD guifg=#303030 guibg=#FFFFFF

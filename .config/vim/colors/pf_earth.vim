@@ -7,7 +7,7 @@ if exists("syntax_on")
    syntax reset
 endif
 
-let colors_name = "pf_earth"
+let g:colors_name = "pf_earth"
 
 " map a urxvt cube number to an xterm-256 cube number
 fun! <SID>M(a)

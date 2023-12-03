@@ -44,7 +44,7 @@ if exists("syntax_on")
     syntax reset
 endif
 
-let colors_name = "lanox"
+let g:colors_name = "lanox"
 
 "-------------------------
 "- Editor Settings       -

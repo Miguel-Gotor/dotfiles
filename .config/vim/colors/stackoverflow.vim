@@ -9,7 +9,7 @@ highlight clear
 if exists("syntax_on")
   syntax reset
 endif
-let colors_name = "stackoverflow"
+let g:colors_name = "stackoverflow"
 " =============================================================================
 hi Normal       guifg=#000000           guibg=#e9e9e9           gui=NONE
 hi ColorColumn  guifg=NONE              guibg=#e6e6e6

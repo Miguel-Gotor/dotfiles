@@ -32,7 +32,7 @@ if exists("syntax on")
   syntax reset
 endif
 
-let colors_name = "sweater"
+let g:colors_name = "sweater"
 
 " general highlights
 highlight Normal       ctermfg=236 guifg=#36322c ctermbg=255 guibg=#F8F1E9

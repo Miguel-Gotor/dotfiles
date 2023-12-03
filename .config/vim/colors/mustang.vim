@@ -10,7 +10,7 @@ if exists("syntax_on")
   syntax reset
 endif
 
-let colors_name = "mustang"
+let g:colors_name = "mustang"
 
 " Vim >= 7.0 specific colors
 if version >= 700

@@ -10,7 +10,7 @@ highlight clear
 "	syntax reset
 "endif
 
-let colors_name = "basic"
+let g:colors_name = "basic"
 
 " Remove all highlighting
 highlight clear Constant

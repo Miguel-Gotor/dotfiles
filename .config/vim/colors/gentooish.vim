@@ -161,3 +161,4 @@ else
 endif
 
 
+let g:colors_name = "gentooish"

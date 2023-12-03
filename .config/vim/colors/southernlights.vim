@@ -15,7 +15,7 @@ if exists("syntax_on")
   syntax reset
 endif
 
-let colors_name = "southernlights"
+let g:colors_name = "southernlights"
 
 hi Boolean	ctermfg=209	guifg=#ff875f
 hi Character	ctermfg=223	guifg=#ffd7af

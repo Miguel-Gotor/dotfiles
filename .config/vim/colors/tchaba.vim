@@ -1,5 +1,5 @@
 " Vim color file
-" Maintainer:   Lucas Avanço <avanco89@gmail.com>
+" Maintainer:   Lucas Avanï¿½o <avanco89@gmail.com>
 " Last Change:  Oct, 6 2010
 "
 "
@@ -26,7 +26,7 @@ hi clear
 if exists("syntax_on")
 	  syntax reset
 endif
-let colors_name = "tchaba"
+let g:colors_name = "tchaba"
 
 hi Comment guifg=skyblue ctermfg=23 cterm=none
 hi Constant guifg=#ffff04 ctermfg=98 cterm=none

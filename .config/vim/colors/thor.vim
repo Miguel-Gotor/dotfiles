@@ -217,3 +217,4 @@ hi  link csXmlTag             Keyword
 
 
 " Special for PHP
+let g:colors_name = "thor"

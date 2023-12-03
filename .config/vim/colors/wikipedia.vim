@@ -9,7 +9,7 @@ if version > 580
     endif
 endif
 
-let colors_name = "wikipedia"
+let g:colors_name = "wikipedia"
 
 hi TabLine      NONE
 hi link TabLine TabLinefill

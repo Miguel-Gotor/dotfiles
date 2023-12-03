@@ -18,6 +18,6 @@ if exists("syntax_on")
   syntax reset
 endif
 
-let colors_name = "default"
+let g:colors_name = "default"
 
 " vim: sw=2

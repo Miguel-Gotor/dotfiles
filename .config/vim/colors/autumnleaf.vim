@@ -12,7 +12,7 @@ if exists("syntax_on")
     syntax reset
 endif
 
-let colors_name="AutumnLeaf"
+let g:colors_name="AutumnLeaf"
 
 
 " Colors for the User Interface.

@@ -5,7 +5,7 @@ if exists("syntax_on")
   syntax reset
 endif
 
-let colors_name = "earthburn"
+let g:colors_name = "earthburn"
 
 if version >= 700
   " NERDTree current 

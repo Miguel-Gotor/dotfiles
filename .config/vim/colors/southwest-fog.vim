@@ -9,7 +9,7 @@ hi clear
 if exists("syntax_on")
   syntax reset
 endif
-let colors_name = "southwest-fog"
+let g:colors_name = "southwest-fog"
 
 
 """""""""" General

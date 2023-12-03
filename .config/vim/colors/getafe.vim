@@ -32,7 +32,7 @@ if exists("syntax_on")
   syntax reset
 endif
 
-let colors_name = "getafe"
+let g:colors_name = "getafe"
 
 "————————————————+———————————————————————————————————————————————+———+———————————————————————————————————————————————"
 "                | GUI                                           |   | TERMINAL                                      "

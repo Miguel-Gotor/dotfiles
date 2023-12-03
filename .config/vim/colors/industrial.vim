@@ -6,7 +6,7 @@ if exists("syntax_on")
    syntax reset
 endif
 
-let colors_name = "industrial"
+let g:colors_name = "industrial"
 
 hi Normal          ctermfg=NONE ctermbg=NONE gui=NONE guifg=#aaaaaa guibg=#222222
 

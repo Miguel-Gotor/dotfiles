@@ -17,7 +17,7 @@ if version > 580
     endif
 endif
 
-let colors_name = "github"
+let g:colors_name = "github"
 
 " {{{ General colors
 hi Normal   ctermfg=0   ctermbg=255  guifg=#000000   guibg=#F8F8FF

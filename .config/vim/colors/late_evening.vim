@@ -34,7 +34,7 @@ if exists("syntax_on")
   syntax reset
 endif
 
-let colors_name = "late_evening"
+let g:colors_name = "late_evening"
 
 hi Normal		ctermfg=white ctermbg=black						guifg=white guibg=grey5
 

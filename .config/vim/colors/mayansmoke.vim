@@ -13,7 +13,7 @@ highlight clear
 if exists("syntax_on")
   syntax reset
 endif
-let colors_name = "mayansmoke"
+let g:colors_name = "mayansmoke"
 " }}}
 
 "  Normal Color {{{1

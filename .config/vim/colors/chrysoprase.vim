@@ -6,7 +6,7 @@ if exists("syntax_on")
   syntax reset
 endif
 
-let colors_name = "chrysoprase"
+let g:colors_name = "chrysoprase"
 
 hi CursorLine guibg=#cccccc
 hi CursorColumn guibg=#cccccc

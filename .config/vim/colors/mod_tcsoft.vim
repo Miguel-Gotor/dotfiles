@@ -4,7 +4,7 @@
 "
 "I changed the cursor and the background-colors. Hope you like it.
 
-" Author: André Kelpe <fs111 at web dot de>
+" Author: Andrï¿½ Kelpe <fs111 at web dot de>
 " Last Change:  Jan 13 10:33:46 CET 2005
 "
 
@@ -13,7 +13,7 @@ hi clear
 if exists("syntax_on")
   syntax reset
 endif
-let colors_name = "mod_tcsoft"
+let g:colors_name = "mod_tcsoft"
 
 hi Normal       guifg=#000000   guibg=floralwhite 
 hi Ignore       guifg=bg
@@ -24,7 +24,7 @@ hi Constant     guifg=#666666   gui=NONE    "grau
 hi Special      guifg=#FF0000   gui=NONE    "rot
 hi Identifier   guifg=#993300   gui=NONE    "rostfarbig
 hi Statement    guifg=#FF9900   gui=NONE    "orange
-hi PreProc      guifg=#009900   gui=NONE    "dunkelgrün
+hi PreProc      guifg=#009900   gui=NONE    "dunkelgrï¿½n
 hi Type         guifg=#FF9900   gui=bold    "orange
 hi Cursor       guifg=#FFFFFF   guibg=#000000  "schwarz
 hi LineNr       guifg=#000000   gui=NONE    "schwarz

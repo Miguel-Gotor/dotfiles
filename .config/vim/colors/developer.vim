@@ -7,7 +7,7 @@ if exists("syntax_on")
   syntax reset
 endif
 
-let colors_name = "developer"
+let g:colors_name = "developer"
 
 " Console colors
 " 0 = rgb: 0/0/0       hex: #000000  black    (text)

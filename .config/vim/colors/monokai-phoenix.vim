@@ -13,7 +13,7 @@ if exists("syntax_on")
   syntax reset
 endif
 
-let colors_name="monokai-phoenix"
+let g:colors_name="monokai-phoenix"
 
 " Below are the colours used for this colourscheme with their fullname
 "

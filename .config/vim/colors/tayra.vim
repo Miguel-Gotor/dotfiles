@@ -9,7 +9,7 @@ if exists("syntax_on")
     syntax reset
 endif
 
-let colors_name = "tayra"
+let g:colors_name = "tayra"
 
 hi Cursor       ctermfg=235     ctermbg=228     cterm=none
 hi DiffAdd      ctermfg=40      ctermbg=236     cterm=bold

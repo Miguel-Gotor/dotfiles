@@ -10,7 +10,7 @@ if exists("syntax_on")
 	syntax reset
 endif
 
-let colors_name = "kyle"
+let g:colors_name = "kyle"
 
 if &background == "light"
   hi Normal             cterm=NONE              ctermbg=7       ctermfg=235

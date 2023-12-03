@@ -7,7 +7,7 @@ hi clear
 if exists("syntax_on")
   syntax reset
 endif
-let colors_name = "solarized8_dark_flat"
+let g:colors_name = "solarized8_dark_flat"
 
 if !has('gui_running') && get(g:, 'solarized_termtrans', 0)
   hi! Normal cterm=NONE gui=NONE ctermfg=12 guifg=#839496 ctermbg=NONE guibg=NONE

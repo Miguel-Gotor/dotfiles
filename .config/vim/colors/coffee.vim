@@ -6,7 +6,7 @@ if exists("syntax_on")
   syntax reset
 endif
 
-let colors_name = "coffee"
+let g:colors_name = "coffee"
 
 function! s:translate_color(number)
   let color_number = a:number

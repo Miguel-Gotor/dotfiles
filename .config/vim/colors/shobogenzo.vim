@@ -25,7 +25,7 @@ if version > 580
     endif
 endif
 
-let colors_name = "shobogenzo"
+let g:colors_name = "shobogenzo"
 let g:colors_name = "shobogenzo"
 
 hi Normal         term=none ctermfg=229 ctermbg=0 gui=none guifg=#ffffaf guibg=#000000

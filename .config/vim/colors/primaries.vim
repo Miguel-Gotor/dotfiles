@@ -11,7 +11,7 @@ if exists("syntax_on")
   syntax reset
 endif
 
-let colors_name = "primaries"
+let g:colors_name = "primaries"
 
 let Orange	  = "guifg=#ff9800 guibg=NONE gui=none ctermfg=203 ctermbg=none cterm=none"
 let Lemon	  = "guifg=#ffd787 guibg=NONE gui=none ctermfg=220 ctermbg=none cterm=none"

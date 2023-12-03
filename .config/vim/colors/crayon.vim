@@ -30,7 +30,7 @@ if exists("syntax_on")
 syntax reset
 endif
 
-let colors_name = "crayon"
+let g:colors_name = "crayon"
 
 " highlight groups {{{
 

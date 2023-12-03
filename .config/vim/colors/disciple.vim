@@ -8,7 +8,7 @@ if exists('syntax_on')
 
 endif
 
-let colors_name = 'disciple'
+let g:colors_name = 'disciple'
 
 if &t_Co >= 256 || has('gui_running')
   hi Normal           ctermbg=253  ctermfg=238  guibg=#dadada guifg=#444444 cterm=NONE           gui=NONE

@@ -13,7 +13,7 @@ if version > 500
 	endif
 endif
 
-let colors_name = "vertLaiton"
+let g:colors_name = "vertLaiton"
 
 
 " General colors

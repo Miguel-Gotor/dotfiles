@@ -24,7 +24,7 @@ if exists("syntax_on")
   syntax reset
 endif
 
-let colors_name = "graywh"
+let g:colors_name = "graywh"
 
 " Links {{{1
 hi! link Character String

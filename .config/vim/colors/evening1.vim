@@ -11,7 +11,7 @@ if exists("syntax_on")
   syntax reset
 endif
 
-let colors_name = "evening1"
+let g:colors_name = "evening1"
 
 hi Normal ctermbg=DarkGrey ctermfg=White guifg=gray90 guibg=grey25
 

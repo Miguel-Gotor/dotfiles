@@ -7,7 +7,7 @@ if exists("syntax_on")
   syntax reset
 endif
 
-let colors_name = "strange"
+let g:colors_name = "strange"
 
 if &t_Co != 256 && !has("gui_running")
     " Colorscheme for regular terminals

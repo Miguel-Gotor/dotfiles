@@ -27,7 +27,7 @@ if exists ("syntax_on")
     syntax reset
 endif
 
-let colors_name = "martin_krischik"
+let g:colors_name = "martin_krischik"
 
 if version < 700
    " Section: works only with vim 7.0 use default otherwise {{{1

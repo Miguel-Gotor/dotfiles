@@ -6,7 +6,7 @@ if exists("syntax_on")
   syntax reset
 endif
 
-let colors_name = "macvim-light"
+let g:colors_name = "macvim-light"
 
 hi Directory    guifg=#1600FF
 hi ErrorMsg     guibg=#ee2c2c guifg=White

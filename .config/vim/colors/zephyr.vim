@@ -201,4 +201,4 @@ let php_sql_query = 0
 let php_htmlInStrings = 0
 
 let g:colors_name = "zephyr"
-let colors_name   = "zephyr"
+let g:colors_name   = "zephyr"

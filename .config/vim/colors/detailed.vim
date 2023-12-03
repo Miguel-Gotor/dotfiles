@@ -54,7 +54,7 @@
 "
 "     :colo detailed
 
-let colors_name = 'detailed'
+let g:colors_name = 'detailed'
 
 " Prevent any screwy setting from causing errors:
 let s:save_cpo = &cpo | set cpo&vim

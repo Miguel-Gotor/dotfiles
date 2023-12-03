@@ -16,7 +16,7 @@ hi clear
 if exists("syntax_on")
 	syntax reset
 endif
-let colors_name = "mdark"
+let g:colors_name = "mdark"
 
 " Options
 let mdark_current_line = 1

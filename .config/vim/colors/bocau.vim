@@ -11,7 +11,7 @@ if exists("syntax_on")
    syntax reset
 endif
 
-let colors_name = "bocau"
+let g:colors_name = "bocau"
 
 " First two functions adapted from inkpot.vim
 

@@ -12,7 +12,7 @@ hi clear
 if exists("syntax_on")
     syntax reset
 endif
-let colors_name="obsidian"
+let g:colors_name="obsidian"
 
 " Some other colors to save
 " blue: 3eb8e5

@@ -1,5 +1,5 @@
 " Vim color file
-" Maintainer:	Christian V. J. Brüssow <cvjb@cvjb.de>
+" Maintainer:	Christian V. J. Brï¿½ssow <cvjb@cvjb.de>
 " Last Change: So 27 Apr 2008 18:55:52 CEST
 
 " This color scheme uses a dark grey background.
@@ -14,7 +14,7 @@ if exists("syntax_on")
   syntax reset
 endif
 
-let colors_name = "bensday"
+let g:colors_name = "bensday"
 
 hi Normal ctermbg=DarkGrey ctermfg=White guifg=White guibg=grey15
 

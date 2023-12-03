@@ -10,7 +10,7 @@ if exists("syntax_on")
 	syntax reset
 endif
 set t_Co=256
-let colors_name = "nerv-ous"
+let g:colors_name = "nerv-ous"
 
 hi Normal	    guifg=#b9c6e0        guibg=#1a1a1a        gui=none     
 hi NonText	    guibg=bg        guifg=#2e2733        gui=none     

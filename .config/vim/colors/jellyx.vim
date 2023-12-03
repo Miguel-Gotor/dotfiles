@@ -34,7 +34,7 @@ if exists('syntax_on')
     syntax reset
 endif
 
-let colors_name = 'jellyx'
+let g:colors_name = 'jellyx'
 
 if &t_Co != 256 && ! has('gui_running')
     echoerr 'Not enough colors to display JellyX!'

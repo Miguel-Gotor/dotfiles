@@ -7,7 +7,7 @@ if exists("syntax_on")
   syntax reset
 endif
 
-let colors_name = "phd"
+let g:colors_name = "phd"
 
 " Very aggressive
 "let s:orange = '#f0a000'

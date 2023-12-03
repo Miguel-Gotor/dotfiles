@@ -15,7 +15,7 @@ endif
 " - one for style language (properties) -> property more outstanding than
 "                                          object
 
-let colors_name = "Corn"
+let g:colors_name = "corn"
 " set mouseshape+=i:arrow
 
 " Window elements

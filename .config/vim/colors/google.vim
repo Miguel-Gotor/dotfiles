@@ -18,7 +18,7 @@ if exists("syntax_on")
 	syntax reset
 endif
 
-let colors_name = "google"
+let g:colors_name = "google"
 
 
 " black			000000

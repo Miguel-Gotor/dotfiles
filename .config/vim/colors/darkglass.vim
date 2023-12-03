@@ -24,7 +24,7 @@ if exists("syntax_on")
    syntax reset
 endif
 
-let colors_name = "darkglass"
+let g:colors_name = "darkglass"
 
 " map a urxvt cube number to an xterm-256 cube number
 fun! <SID>M(a)

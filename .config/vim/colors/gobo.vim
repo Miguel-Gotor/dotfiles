@@ -3,18 +3,17 @@
 " Vim color file
 "
 " Created using ColorSchemeCreator
-" by Otávio Corrêa Cordeiro (cordeiro@exatas.unisinos.br) (2004 July)
+" by Otï¿½vio Corrï¿½a Cordeiro (cordeiro@exatas.unisinos.br) (2004 July)
 "
-" Maintainer: Otávio Corrêa Cordeiro
+" Maintainer: Otï¿½vio Corrï¿½a Cordeiro
 " Last Change: 2004 July
-
 
 set background=light
 hi clear
 if exists("syntax_on")
   syntax reset
 endif
-let g:colors_name = "ColorSchemeCreator"  
+let g:colors_name = "gobo"  
 hi Normal		guifg=#111111 guibg=#FFFFFF  
 hi comment		guifg=#33CC99 gui=italic  
 hi constant		guifg=#CC0099 gui=bold  

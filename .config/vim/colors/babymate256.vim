@@ -13,7 +13,7 @@ endif
 
 
 
-let colors_name = "babymate256"
+let g:colors_name = "babymate256"
 
 " General colors
 hi Normal guifg=#e3e3e3 ctermfg=254 guibg=#222429 ctermbg=235 gui=none cterm=none

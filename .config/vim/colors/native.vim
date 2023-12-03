@@ -11,7 +11,7 @@ if exists("syntax_on")
     syntax reset
 endif
 
-let colors_name = "native"
+let g:colors_name = "native"
 
 " Default Colors
 hi Normal       guifg=#f2f2f2 guibg=#222222

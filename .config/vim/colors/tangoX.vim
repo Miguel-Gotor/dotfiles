@@ -13,7 +13,7 @@ if exists("syntax_on")
     syntax reset
 endif
  
-let colors_name = "tangoX"
+let g:colors_name = "tangoX"
  
 " 普通组 
 hi Normal guifg=#2e3436 guibg=#fefefe

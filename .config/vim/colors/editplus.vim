@@ -3,12 +3,13 @@
 " Version: 1.3
 " Date:    24th September 2012
 
+let g:colors_name = "editplus"
+
 set background=light
 hi clear
 if exists("syntax_on")
     syntax reset
 endif
-let colors_name = "EditPlus"
 
 " GUI
 hi Blank                           guibg=white   guifg=white   gui=none

@@ -12,7 +12,7 @@ if exists("syntax_on")
     syntax reset
 endif
 
-let colors_name = "grey2"
+let g:colors_name = "grey2"
 
 if exists( 'g:grey2_text_bg' )
     let s:bg = !!g:grey2_text_bg

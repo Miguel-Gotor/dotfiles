@@ -9,7 +9,7 @@ if exists("syntax_on")
   syntax reset
 endif
 
-let colors_name = "fahrenheit"
+let g:colors_name = "fahrenheit"
 
 if &t_Co >= 256 || has("gui_running")
     hi Normal ctermbg=0 ctermfg=15 cterm=NONE guibg=#000000 guifg=#ffffff gui=NONE

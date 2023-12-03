@@ -1,5 +1,5 @@
 " Vim color file
-" Maintainer: Andrés Suárez <ansuga@gmail.com> 
+" Maintainer: Andrï¿½s Suï¿½rez <ansuga@gmail.com> 
 " Last Change: 2009/02/10 Tue 16:55
 "     version: 1.2
 " This color scheme uses a light background.
@@ -10,7 +10,7 @@ if exists("syntax_on")
    syntax reset
 endif
 
-let colors_name = "fruidle"
+let g:colors_name = "fruidle"
 
 " Normal
 hi Normal       guifg=#404040 guibg=#ffffff

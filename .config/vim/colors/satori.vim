@@ -11,7 +11,7 @@ if exists("syntax_on")
   syntax reset
 endif
 
-let colors_name = "satori"
+let g:colors_name = "satori"
 
 " Vim colors
 highlight Normal     ctermfg=NONE    cterm=NONE

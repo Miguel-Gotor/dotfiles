@@ -22,7 +22,7 @@
 "
 
 hi clear
-let colors_name="rdark-terminal"
+let g:colors_name="rdark-terminal"
 
 hi clear CursorLine
 hi CursorLine ctermbg=8

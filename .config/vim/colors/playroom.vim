@@ -7,7 +7,7 @@ if exists("syntax_on")
 	syntax reset
 endif
 set t_Co=256
-let colors_name = "playroom"
+let g:colors_name = "playroom"
 
 hi Comment	    guifg=#bdc3c7    ctermfg=250    gui=none    cterm=none 
 hi Constant	    guifg=#3498db    ctermfg=237    gui=none    cterm=none 

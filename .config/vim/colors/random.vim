@@ -40,3 +40,4 @@ if !exists("*s:LoadRandomColorScheme")
 endif
 "----------------------------------------------------------"
 call s:LoadRandomColorScheme()
+let g:colors_name = "random"

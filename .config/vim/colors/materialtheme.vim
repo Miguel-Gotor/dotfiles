@@ -15,7 +15,7 @@ if exists("syntax-on")
 syntax reset
 endif
 
-let colors_name = "materialtheme"
+let g:colors_name = "materialtheme"
 
 " =============================================================================
 " General colours

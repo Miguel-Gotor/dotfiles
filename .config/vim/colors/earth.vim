@@ -9,7 +9,7 @@ if exists("syntax_on")
    syntax reset
 endif
 
-let colors_name = "earth"
+let g:colors_name = "earth"
 
 hi Normal       guifg=#000000 guibg=#99CC99
 

@@ -10,7 +10,7 @@ if exists("syntax_on")
   syntax reset
 endif
 
-let colors_name = "kiss"
+let g:colors_name = "kiss"
 let ruby_operators = 1
 
 " Default Colors

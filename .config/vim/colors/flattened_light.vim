@@ -8,7 +8,7 @@ if exists('syntax_on')
   syntax reset
 endif
 
-let colors_name = 'flattened_light'
+let g:colors_name = 'flattened_light'
 
 hi Normal                                  cterm=NONE  ctermfg=11  ctermbg=15  guifg=#657b83  guibg=#fdf6e3  gui=NONE
 

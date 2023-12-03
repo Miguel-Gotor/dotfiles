@@ -10,7 +10,7 @@ if exists("syntax_on")
   syntax reset
 endif
 
-let colors_name = "c16gui"
+let g:colors_name = "c16gui"
 
 if &background == "light"
   hi Normal	guibg=#ffffff	guifg=#000000

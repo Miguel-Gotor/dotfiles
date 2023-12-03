@@ -26,7 +26,7 @@ if exists("syntax_on")
   syntax reset
 end
 
-let colors_name = "happy_hacking"
+let g:colors_name = "happy_hacking"
 
 " ============================================================================
 " GUI Colors

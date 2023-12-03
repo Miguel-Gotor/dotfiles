@@ -28,7 +28,7 @@ if version > 580
     endif
 endif
 
-let colors_name = "spring"
+let g:colors_name = "spring"
 
 " Common
 hi Normal           guifg=#000000   guibg=#cce8cf   gui=NONE

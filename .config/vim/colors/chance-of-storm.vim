@@ -14,7 +14,7 @@ hi clear
 if exists("syntax_on")
   syntax reset
 endif
-let colors_name = "chance-of-storm"
+let g:colors_name = "chance-of-storm"
 
 
 """""""""" General

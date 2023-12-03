@@ -11,7 +11,7 @@ if exists("syntax_on")
   syntax reset
 endif
 
-let colors_name = "rcg_gui"
+let g:colors_name = "rcg_gui"
 
 highlight Normal        guifg=lightgrey         guibg=Black
 highlight Statement     guifg=Yellow

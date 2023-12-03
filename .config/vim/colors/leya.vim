@@ -8,7 +8,7 @@ if exists("syntax_on")
 	syntax reset
 endif
 
-let colors_name="leya"
+let g:colors_name="leya"
 
 " The standard highlighting
 hi Normal guifg=#444444 guibg=#FFFDF7 gui=NONE ctermfg=235 ctermbg=white cterm=NONE

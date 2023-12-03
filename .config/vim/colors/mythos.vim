@@ -8,7 +8,7 @@
 
 " - preamble ---------------------------------------------------------------------------------- {{{ -
 
-let colors_name = "mythos"
+let g:colors_name = "mythos"
 set background=dark
 
 if version > 580

@@ -12,7 +12,7 @@ if exists("syntax_on")
   syntax reset
 endif
 
-let colors_name = "cleanphp"
+let g:colors_name = "cleanphp"
 
 hi Normal guifg=#008000 guibg=#d3e4f8
 

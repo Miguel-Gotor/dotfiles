@@ -12,7 +12,7 @@ if version > 580
    endif
 endif
 
-let colors_name = "cyberpunk"
+let g:colors_name = "cyberpunk"
 
 " Cyberpunk theme colors {{{
 let s:colors = {

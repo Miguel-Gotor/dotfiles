@@ -4,7 +4,7 @@ if exists("syntax_on")
     syntax reset
 endif
 
-let colors_name = "earendel"
+let g:colors_name = "earendel"
 
 execute "command! -nargs=1 Colo set background=<args>"
 

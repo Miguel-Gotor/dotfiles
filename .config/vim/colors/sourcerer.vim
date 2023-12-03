@@ -17,7 +17,7 @@ if exists("syntax_on")
   syntax reset
 endif
 
-let colors_name = "sourcerer"
+let g:colors_name = "sourcerer"
 
 
 "  █▓▒░ GUI colors

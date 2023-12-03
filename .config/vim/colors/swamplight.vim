@@ -18,7 +18,7 @@ if exists("syntax_on")
   syntax reset
 endif
 
-let colors_name = "swamplight"
+let g:colors_name = "swamplight"
 
 " GUI Colors
 " ====================================================================

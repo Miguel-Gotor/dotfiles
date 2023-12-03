@@ -10,7 +10,7 @@ hi clear
 if exists("syntax_on")
   syntax reset
 endif
-let colors_name = "nefertiti"
+let g:colors_name = "nefertiti"
 " }}}1
 
 " Code Setup {{{1

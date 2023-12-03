@@ -39,7 +39,7 @@ if exists("syntax_on")
   syntax reset
 endif
 
-let colors_name = "anderson"
+let g:colors_name = "anderson"
 set background=dark
 
 if &t_Co >= 256 || has("gui_running")

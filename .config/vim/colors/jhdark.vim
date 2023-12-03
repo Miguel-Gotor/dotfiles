@@ -1,4 +1,4 @@
-" Vim color file by Jörn Horstmann <joern_h@gmx.net>
+" Vim color file by Jï¿½rn Horstmann <joern_h@gmx.net>
 " Black background, works in gui and console
 " Last change 30.11.2004
 
@@ -9,7 +9,7 @@ if exists("syntax_on")
     syntax reset
 endif
 
-let colors_name = "jhdark"
+let g:colors_name = "jhdark"
 
 hi Normal         guifg=#999999 guibg=#000000 gui=none ctermfg=gray     ctermbg=black    cterm=none
 

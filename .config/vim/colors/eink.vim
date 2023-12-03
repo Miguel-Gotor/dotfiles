@@ -8,7 +8,7 @@ if exists("syntax_on")
     syntax reset
 endif
 
-let colors_name = "eink"
+let g:colors_name = "eink"
 
 if !has('gui_running')
   if &background == "light"

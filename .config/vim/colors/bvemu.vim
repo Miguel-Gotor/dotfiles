@@ -8,7 +8,7 @@ hi clear
 if exists("syntax_on")
     syntax reset
 endif
-let colors_name="bvemu"
+let g:colors_name="bvemu"
 
 " Base color
 " ----------

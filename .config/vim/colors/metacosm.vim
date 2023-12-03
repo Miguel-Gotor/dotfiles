@@ -16,7 +16,7 @@ if exists("syntax_on")
     syntax reset
 endif
 
-let colors_name = "metacosm"
+let g:colors_name = "metacosm"
 
 " -----------------------------------------------------------------------------
 " Primary (hyper/selected/colored background)

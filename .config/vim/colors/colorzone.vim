@@ -14,7 +14,7 @@ if version > 580
  syntax reset
  endif
 endif
-let colors_name = "colorzone"
+let g:colors_name = "colorzone"
 
 "High Light For Normal
 hi Normal  ctermfg=black ctermfg=yellow guifg=#2e3436 guibg=#eeeeec

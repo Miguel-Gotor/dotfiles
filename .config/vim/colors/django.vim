@@ -15,7 +15,7 @@ if exists("syntax_on")
     syntax reset
 endif
 
-let colors_name = "django"
+let g:colors_name = "django"
 
 " Default Colors
 hi Normal       guifg=#f8f8f8   guibg=#0b2f20

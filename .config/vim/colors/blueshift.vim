@@ -12,7 +12,7 @@ if exists("syntax_on")
   syntax reset
 endif
 
-let colors_name = "blueshift"
+let g:colors_name = "blueshift"
 
 " Taglist colors
 hi MyTagListFileName    guifg=black   guibg=#c0d0e0

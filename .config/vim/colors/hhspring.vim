@@ -10,7 +10,7 @@ hi clear
 if exists("syntax_on")
    syntax reset
 endif
-let colors_name       = expand("<sfile>:t:r")
+let g:colors_name       = expand("<sfile>:t:r")
 let html_my_rendering = 1
 
 

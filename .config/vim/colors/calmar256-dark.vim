@@ -18,7 +18,7 @@ if &t_Co != 256 && ! has("gui_running")
     finish
 endif
 " }}}
-" {{{ reset colors and set colors_name and store cpo setting
+" {{{ reset colors and set g:colors_name and store cpo setting
 set background=dark
 hi clear
 if exists("syntax_on")

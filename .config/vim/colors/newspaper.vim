@@ -11,7 +11,7 @@ highlight clear
 if exists("syntax_on")
   syntax reset
 endif
-let colors_name = "newspaper"
+let g:colors_name = "newspaper"
 
 " =============================================================================
 hi Normal       gui=NONE                guifg=#000000           guibg=#dbdbd2

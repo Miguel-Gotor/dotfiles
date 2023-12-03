@@ -10,7 +10,7 @@ if exists("syntax_on")
 endif
 
 set background=dark
-let colors_name = "meta5"
+let g:colors_name = "meta5"
 
 " Vim >= 7.0 specific colors
 if version >= 700

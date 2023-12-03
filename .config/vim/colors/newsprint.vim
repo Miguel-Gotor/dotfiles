@@ -8,7 +8,7 @@ highlight clear
 if exists("syntax_on")
   syntax reset
 endif
-let colors_name = "newsprint"
+let g:colors_name = "newsprint"
 
 hi Normal       guifg=#333333          guibg=#EEEEEE   gui=NONE
 hi CursorLine   guifg=NONE             guibg=#DDDDDD   gui=NONE

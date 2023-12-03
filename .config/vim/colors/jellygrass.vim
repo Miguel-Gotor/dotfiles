@@ -53,7 +53,7 @@ if exists("syntax_on")
   syntax reset
 endif
 
-let colors_name = "jellygrass"
+let g:colors_name = "jellygrass"
 
 " Use shell background
 let s:background_color = "NONE"

@@ -6,7 +6,7 @@ if exists("syntax_on")
   syntax reset
 endif
 
-let colors_name = "lightcolors"
+let g:colors_name = "lightcolors"
 
 " blue #2A3F82
 " light blue #5555ff

@@ -75,7 +75,7 @@ if exists("syntax_on")
 endif
 
 set t_Co=256
-let colors_name = "lucid"
+let g:colors_name = "lucid"
 let colorgroup = {}
 
 

@@ -7,7 +7,7 @@ if exists("syntax_on")
    syntax reset
 endif
 
-let colors_name = "greyblue"
+let g:colors_name = "greyblue"
 
 hi Normal          ctermfg=NONE ctermbg=NONE gui=NONE guifg=#b7af9f guibg=#090909
 

@@ -7,7 +7,7 @@ if version > 580
 	endif
 endif
 
-let colors_name = "diokai"
+let g:colors_name = "diokai"
 
 
 hi Normal		ctermfg=252		ctermbg=none	cterm=none		guifg=#d0d0d0	guibg=#272822	gui=none

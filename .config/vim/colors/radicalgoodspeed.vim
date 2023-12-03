@@ -58,7 +58,7 @@ if exists("syntax_on")
 	syntax reset
 endif
 
-let colors_name = "radicalgoodspeed"
+let g:colors_name = "radicalgoodspeed"
 
 " Current Line
 set cursorline

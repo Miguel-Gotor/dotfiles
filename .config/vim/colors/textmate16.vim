@@ -13,7 +13,7 @@ if exists("syntax_on")
    syntax reset
 endif
 
-let colors_name = "textmate16"
+let g:colors_name = "textmate16"
 
 
 if ! has("gui_running")
