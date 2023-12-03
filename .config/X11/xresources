@@ -1,29 +1,26 @@
 *.foreground:   #ffffff
 *.background:   #000000
+!! *.background:   #04121B
 *.cursorColor:  #00ffff
-*.alpha:        0.80
+!! *.alpha:        1
+*.alpha:        0.85
 
 !! st
-!! Fonts
-!! st.font: Hack:size=11:antialias=true:autohint=true
-
-!! st.font: JetBrainsMono:pixelsize=14:antialias=true:autohint=true:style=Medium
-!! st.font: JetBrainsMono:size=11:antialias=true:autohint=true:style=Bold
-
-!! st.font: Source Code Pro:size=11.5:antialias:true:autohint=true:style=Semibold
-!! st.font: Source Code Pro:size=11:antialias:true:autohint=true:style=Medium
-
-!! st.font: Iosevka Comfy:size=12.5:antialias=true:autohint=true:style=Regular
-!! st.font: Iosevka Comfy:size=11:antialias=true:autohint=true:style=Bold
+!! Medium
 !! st.font: Iosevka Comfy:size=13:antialias=true:autohint=true:style=Medium
-!! st.font: Iosevka Comfy:size=12:antialias=true:autohint=true:style=Medium
+!! st.font: Iosevka Comfy:size=12.5:antialias=true:autohint=true:style=Medium
+st.font: Iosevka Comfy:size=12:antialias=true:autohint=true:style=Medium
 
-st.font: Iosevka Comfy Wide:size=11:antialias=true:autohint=true:style=Bold
+!! Wrong color with this specific combinarion of size/style?? 
+!! st.font: Iosevka Comfy:size=12:antialias=true:autohint=true:style=SemiBold
+!! Bold
+!! st.font: Iosevka Comfy:size=12:antialias=true:autohint=true:style=Bold
+!! st.font: Iosevka Comfy:size=11:antialias=true:autohint=true:style=Bold
 
+!! Wide
+!! st.font: Iosevka Comfy Wide:size=11:antialias=true:autohint=true:style=Bold
 !! st.font: Iosevka Comfy Wide:size=11:antialias=true:autohint=true:style=Medium
 !! st.font: Iosevka Comfy Wide:size=12:antialias=true:autohint=true:style=Medium
-
-*.cursorstyle:beam
 
 st.color0:       #000000
 st.color1:       #FF0000
@@ -43,20 +40,20 @@ st.color13:      #FF00FF
 !!st.termname: st-256color
 st.borderpx: 10
 st.borderpy: 10
-st.cursorBlink: true
+!! st.cursorBlink: true
 
 !! urxvt
 !! 16 ms (~ 60 Hz)
-URxvt.buffered: false
-URxvt.refreshPeriod: 16
-URxvt.font: xft:Monospace:style=Regular:size=11
-URxvt.scrollBar: false
+!! URxvt.buffered: false
+!! URxvt.refreshPeriod: 16
+!! URxvt.font: xft:Monospace:style=Regular:size=11
+!! URxvt.scrollBar: false
 
-URxvt.background: [80]#000000
-*.cursorBlink: true
-URxvt.iso14755: false
-URxvt.internalBorder: 12
-URxvt.urgentOnBell: true
+!! URxvt.background: [80]#000000
+!! *.cursorBlink: true
+!! URxvt.iso14755: false
+!! URxvt.internalBorder: 12
+!! URxvt.urgentOnBell: true
 
 // vim: set ft=xdefaults :
 
