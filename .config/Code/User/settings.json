@@ -1,19 +1,52 @@
 {
     "workbench.startupEditor": "none",
-    "workbench.iconTheme": "material-icon-theme",
-    // "window.zoomLevel": 1,
+    "explorer.confirmDelete": false,
+    "editor.wordWrap": "on",
+    "editor.minimap.enabled": false,
+    "C_Cpp.default.systemIncludePath": [
+        "/opt/"
+    ],
+    "[python]": {
+        "editor.formatOnType": true
+    },
+    "latex-workshop.latex.tools": [
+        {
+            "name": "latexmk",
+            "command": "latexmk",
+            "args": [
+                "--shell-escape", // added arg to default
+                "-synctex=1",
+                "-interaction=nonstopmode",
+                "-file-line-error",
+                "-pdf",
+                "%DOC%"
+            ]
+        },
+        {
+            "name": "pdflatex",
+            "command": "pdflatex",
+            "args": [
+                "--shell-escape", // added arg to default
+                "-synctex=1",
+                "-interaction=nonstopmode",
+                "-file-line-error",
+                "%DOC%"
+            ]
+        },
+        {
+            "name": "bibtex",
+            "command": "bibtex",
+            "args": [
+                "%DOCFILE%"
+            ]
+        }
+    ],
     "explorer.confirmDragAndDrop": false,
     "debug.terminal.clearBeforeReusing": true,
+    "files.autoSave": "afterDelay",
     "files.autoSaveDelay": 1000,
-    "window.restoreWindows": "none",
-    "terminal.integrated.enablePersistentSessions": false,
     "terminal.integrated.persistentSessionReviveProcess": "never",
-    "explorer.confirmDelete": false,
-    // "editor.fontFamily": "'Iosevka Comfy Wide', 'Source Code Pro', 'JetBrains Mono', 'FontAwesome', monospace",
-    "editor.fontSize": 15,
-    // editor.fortmatOnSave": true
-    // "editor.fontWeight": "bold",
-    "explorer.sortOrder": "type",
-    "editor.fontLigatures": true,
-    "workbench.colorTheme": "Default Dark+",
+    "workbench.iconTheme": "material-icon-theme",
+    "git.openRepositoryInParentFolders": "never",
+    "editor.defaultColorDecorators": true
 }
