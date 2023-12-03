@@ -9,16 +9,20 @@ dotfiles_dir="./dotfiles"
 # Use relative paths to prevent the "--parents" option from copying unnecesary
 # parent directories (/home/user/...) while preserving directory structure:
 
-cp --parents -u "./.config/Code/User/settings.json" $dotfiles_dir
+cp --parents -ruv "./.config/Code/User/settings.json" $dotfiles_dir
 cp --parents -ruv "./.config/cava" $dotfiles_dir
 cp --parents -ruv "./.config/dunst" $dotfiles_dir
+# Some of those are automatically updated and overwritten each time pcmanfm is
+# launched, and contain irrelevant and fleeting info like icon size or window 
+# geometry used by the last instance of the file manager.
 # cp --parents -ruv "./.config/gtk-2.0" $dotfiles_dir
 # cp --parents -ruv "./.config/gtk-3.0" $dotfiles_dir
 # cp --parents -ruv "./.config/gtk-4.0" $dotfiles_dir
 cp --parents -ruv "./.config/i3" $dotfiles_dir
 cp --parents -ruv "./.config/i3blocks" $dotfiles_dir
 cp --parents -ruv "./.config/i3status" $dotfiles_dir
-cp --parents -ruv "./.config/kitty" $dotfiles_dir
+# No longer use this terminal. Leave it untracked.
+# cp --parents -ruv "./.config/kitty" $dotfiles_dir
 cp --parents -ruv "./.config/mpv" $dotfiles_dir
 cp --parents -ruv "./.config/picom" $dotfiles_dir
 cp --parents -ruv "./.config/ranger" $dotfiles_dir
@@ -28,7 +32,7 @@ cp --parents -ruv "./.config/zsh" $dotfiles_dir
 cp --parents -ruv "./.config/wgetrc" $dotfiles_dir
 cp --parents -ruv "./.config/lf" $dotfiles_dir
 cp --parents -ruv "./.config/tmux" $dotfiles_dir
-cp --parents -ruv "./.config/emacs" $dotfiles_dir
+# cp --parents -ruv "./.config/emacs" $dotfiles_dir
 
 # exclude subdirectories in ~/.bin without cp complaining about ommited "-r"
 find ./bin -maxdepth 1 -type f -exec cp --parents -u {} $dotfiles_dir \;
@@ -40,17 +44,20 @@ cp --parents -ruv "./Pictures/Screenshots/Ricing" $dotfiles_dir
 cp --parents -ruv "./.profile" $dotfiles_dir
 cp --parents -ruv "./.mozilla/firefox/kylras/chrome/userChrome.css" $dotfiles_dir
 cp --parents -ruv "./.mozilla/firefox/kylras/persdict.dat" $dotfiles_dir
-
 cp --parents -ruv "./.local/share/applications" $dotfiles_dir
 # cp --parents -ruv "./.local/share/fonts" $dotfiles_dir
 cp --parents -ruv "./.local/share/oh-my-zsh/custom/themes" $dotfiles_dir
+cp --parents -ruv "./.local/share/oh-my-zsh/lib/directories.zsh" $dotfiles_dir
 
 # System-wide config files worth tracking.
 # Not dotfiles per se, but modified to make LightDM XDG-BDS compliant
-cp --parents -ruv "/etc/lightdm/Xsession" $dotfiles_dir
+# XDG User directories
 cp --parents -ruv "/etc/security/pam_env.conf" $dotfiles_dir
 
+# LightDM Xsession wrapper
+# For Arch
+[ $(lsb_release -si) = "Arch" ] && cp --parents -ruv "/etc/lightdm/Xsession" $dotfiles_dir
+# For Ubuntu
+[ $(lsb_release -si) = "Ubuntu" ] &&  cp --parents -ruv "/usr/sbin/lightdm-session" $dotfiles_dir
+
 echo "dotfiles updated!"
-# cd $dotfiles_dir
-# set +e
-# return
