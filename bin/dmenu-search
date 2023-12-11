@@ -1,9 +1,9 @@
 #!/bin/sh -e
 # dmenu-search.sh
 # Browse the internet using dmenu
-pgrep -x dmenu  && exit
+# pgrep -x dmenu  && exit
 
-choice=$(echo "DDG\nGoogle\nWikipedia\nRAE" | dmenu -i -p "Search with:" -i -b -fn 'Dejavu Sans Book:size=11' -nb '#000000' -nf '#FFFFFF' -sb '#FFFFFF' -sf '#000000') || exit 1
+choice=$(echo "DDG\nGoogle\nWikipedia\nRAE" | dmenu -i -p "Search with? ➔ " -i  -fn 'Iosevka Comfy:size=12:antialias=true:autohint=true:style=SemiBold' -nb '#312C20' -nf '#999999' -sb '#524E37' -sf '#FFFFFF') || exit 1
 # TODO: fix google error: "grep: warning: stray \ before /"
 if [ "$choice" = "DDG" ]; then
     search_engine="https://duckduckgo.com/?q="
@@ -17,7 +17,7 @@ else
     exit 1
 fi
 
-search_term=$(echo "" | dmenu -p "Enter search term:" -i -b -fn 'Dejavu Sans Book:size=11' -nb '#000000' -nf '#FFFFFF' -sb '#FFFFFF' -sf '#000000') || exit 1
+search_term=$(echo "" | dmenu -p "Enter search term:" -i -fn 'Iosevka Comfy:size=12:antialias=true:autohint=true:style=SemiBold' -nb '#312C20' -nf '#FFFFFF' -sb '#524E37' -sf '#FFFFFF') || exit 1
 search_term=$(echo "$search_term" | sed -e 's/^[[:space:]]*//' -e 's/[[:space:]]*$//')
 
 if [ -z "$search_term" ]; then

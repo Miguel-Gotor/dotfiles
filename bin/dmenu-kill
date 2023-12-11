@@ -2,7 +2,11 @@
 
 # List processes
 processes=$(pgrep -l '' | cut -d ' ' -f 2- | sort | uniq)
-selected_process=$(echo "$processes" | dmenu -i -b -p "Kill which program?" -fn 'Dejavu Sans Book:size=11' -nb '#550000' -nf '#FFFFFF' -sb '#FFFFFF' -sf '#000000' | awk '{print $1}')
+
+# selected_process=$(echo "$processes" | dmenu -i -b -p "Kill which program?" -fn 'Dejavu Sans Book:size=11' -nb '#550000' -nf '#FFFFFF' -sb '#FFFFFF' -sf '#000000' | awk '{print $1}')
+# selected_process=$(echo "$processes" | dmenu -i -p "Kill which program?" -fn 'Iosevka Comfy:size=12:style=SemiBold' -nb '#550000' -nf '#AAAAAA' -sb '#000000' -sf '#FFFFFF' | awk '{print $1}')
+# selected_process=$(echo "$processes" | dmenu -i -p "Kill which program? ✖ " -fn 'Iosevka Comfy:size=12:style=SemiBold' -nb '#2F0000' -nf '#999999' -sb '#550000' -sf '#FFFFFF' | awk '{print $1}')
+selected_process=$(echo "$processes" | dmenu -i -p "Kill which program? ✘ " -fn 'Iosevka Comfy:size=12:style=SemiBold' -nb '#2F0000' -nf '#999999' -sb '#550000' -sf '#FFFFFF' | awk '{print $1}')
 
 [ -n "$selected_process" ] && pkill -9 -x "$selected_process"
 
