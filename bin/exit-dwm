@@ -1,0 +1,4 @@
+#!/bin/sh -e
+
+response=$(echo "Yes\nNo" | dmenu -i -p "Kill DWM? ✘ " -fn 'Iosevka Comfy:size=12:style=SemiBold' -nb '#2F0000' -nf '#999999' -sb '#550000' -sf '#FFFFFF')
+[ "$response" = "Yes" ] && pkill -9 dwm
