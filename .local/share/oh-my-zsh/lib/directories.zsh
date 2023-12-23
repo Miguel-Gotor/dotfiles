@@ -9,7 +9,12 @@ alias -g ....='../../..'
 alias -g .....='../../../..'
 alias -g ......='../../../../..'
 
-# alias -- -='cd -'
+# https://superuser.com/a/1647630
+# "If you don't use --, you will get an error message that -= is a bad option.
+# This is because - normally introduces a flag. To tell alias not to treat - as
+# the prefix to a flag but as an argument, you use -- before -. -- tells 
+# commands that what follows should be treated as arguments, not as options."
+alias -- -='cd -'
 alias 1='cd -1'
 alias 2='cd -2'
 alias 3='cd -3'
