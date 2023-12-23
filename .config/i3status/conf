@@ -29,7 +29,7 @@ order += "tztime local"
 
 cpu_temperature 0 {
     format = "GPU: %degrees °C"
-    path = "/sys/class/hwmon/hwmon0/temp1_input"
+    path = "/sys/class/hwmon/hwmon2/temp1_input"
 }
 
 # CPU | k10temp (Not the REAL cpu temp, but the best we can get https://bbs.archlinux.org/viewtopic.php?id=160006)
