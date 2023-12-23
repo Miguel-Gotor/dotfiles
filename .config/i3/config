@@ -194,7 +194,7 @@ bindsym $mod+Shift+c reload
 bindsym $mod+Shift+r restart
 # Exit i3
 bindsym $mod+Shift+e exec --no-startup-id  "(pgrep nagbar && pkill nagbar) || i3-nagbar -f 'pango:Iosevka Comfy Wide Bold 11, FontAwesome' -t warning -m ' Exit request detected  Do you really want to exit i3  This will end your X session.' -B 'Yes,  i3' 'i3-msg exit'"
-bindsym $mod+Shift+Return exec --no-startup-id pgrep nagbar && i3-msg exit
+# bindsym $mod+Shift+Return exec --no-startup-id pgrep nagbar && i3-msg exit
 # Scripts & Commands for Audio/Media control ----------------------------------
 
 # AUDIO
@@ -230,8 +230,9 @@ bindsym $mod+comma --release exec --no-startup-id playerctl previous
 bindsym $mod+minus --release exec --no-startup-id notify-metadata
 # Focus current player
 bindsym $mod+p --release exec --no-startup-id dbus-focus-player
-# Config PulseAudio
-bindsym $mod+Shift+p --release exec --no-startup-id pavucontrol
+# Config PulseAudio. This bindsym conflicts with nvim shortcut for ClipPaste.
+# Gotta thing of a different one >:(
+# bindsym $mod+Shift+p --release exec --no-startup-id pavucontrol
 
 # OTHER
 # WIP. Also conflicts with browser shortcuts for yt and soundcloud
@@ -312,8 +313,8 @@ client.focused          #0000FF #0000FF #0000FF #0000FF   #0000FF88
 # i3status generates status bar to use with i3bar
 bar {
     # 3 options:
-    # status_command i3status --config "$XDG_CONFIG_HOME/i3status/conf"
-    status_command i3blocks
+    status_command i3status --config "$XDG_CONFIG_HOME/i3status/conf"
+    # status_command i3blocks
     # status_command prepend-i3status
 
     # font pango: Iosevka Comfy Wide Bold 11
