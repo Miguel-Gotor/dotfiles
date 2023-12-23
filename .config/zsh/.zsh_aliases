@@ -9,28 +9,26 @@ bak() {
 # Functions -------------------------------------------------------------------
 # Remove the last X pages of the given PDF file
 # Example: pop-pdf c-style-guide.pdf 20
-pop-pdf() { qpdf "$1" --pages "$1" 1-$(( $(qpdf --show-npages "$1") - $2 )) -- "${1%.pdf}-popped.pdf"; }
-
-# Create a tar.gz archive
-gzip() { tar -czvf "$1.tar.gz" $1 }
-
-# Create a tar.bz2 archive
-bzip2() { tar -cjvf "$1.tar.bz2" $1 }
-
-alias untar='tar -xvf'
-
-# Extract tar.gz archive
-alias ungzip='tar -xzvf'
-alias unbzip2='tar -xjvf'
+# pop-pdf() { qpdf "$1" --pages "$1" 1-$(( $(qpdf --show-npages "$1") - $2 )) -- "${1%.pdf}-popped.pdf"; }
 
 # Device tree compiler. From source to blob and back
 # dtb_to_dts() { dtc -I dtb -O dts -o ${1%.dtb}.dts "$1" }
 # dts_to_dtb() { dtc -I dts -O dtb -o ${1%.dts}.dtb "$1" }
 
-alias qalc='qalc -i -f $XDG_CONFIG_HOME/qalculate/units'
+# Create a tar.gz archive
+gzip() { tar -czvf "$1.tar.gz" $1 }
+# Create a tar.bz2 archive
+bzip2() { tar -cjvf "$1.tar.bz2" $1 }
+
+# alias untar='tar -xvf'
+# Extract tar.gz archive
+alias ungzip='tar -xzvf'
+alias unbzip2='tar -xjvf'
+
+# alias qalc='qalc -i -f $XDG_CONFIG_HOME/qalculate/units'
 alias dots='update-dotfiles && ~/dotfiles'
 alias open='xdg-open'
-alias install='install -Dv /dev/null'
+# alias install='install -Dv /dev/null'
 alias du='du -h --max-depth=1'
 # alias du='du -sh'
 
@@ -45,7 +43,7 @@ alias ffcss='$EDITOR $HOME/.mozilla/firefox/kylras/chrome/userChrome.css'
 # My much beloved notes
 alias log='$EDITOR $HOME/Documents/Linux/Scribbles/arch.txt'
 alias til='$EDITOR $HOME/Documents/Linux/Scribbles/TIL.txt'
-alias todo='$EDITOR $HOME/Documents/Linux/Scribbles/TODO'
+alias todo='$EDITOR $HOME/Documents/Linux/Scribbles/to-do.txt'
 alias err='$EDITOR $HOME/Documents/Linux/Scribbles/error-log.txt'
 alias fent='$EDITOR $HOME/Documents/FentISS/Notes/fentiss.txt'
 # alias asm='$EDITOR $HOME/Documents/Assembly/Notes/asm.txt'
@@ -84,9 +82,6 @@ alias h='highlight --out-format=ansi'
 alias o='nohup pcmanfm . &> /dev/null & disown'
 
 alias v=$EDITOR
-
-# (B)ack to previous dir
-alias b='$OLDPWD'
 
 # alias z='nohup zathura "$1" &> /dev/null & disown'
 # Regular alias won't do.
