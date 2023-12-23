@@ -48,5 +48,22 @@
     "terminal.integrated.persistentSessionReviveProcess": "never",
     "workbench.iconTheme": "material-icon-theme",
     "git.openRepositoryInParentFolders": "never",
-    "editor.defaultColorDecorators": true
+    "editor.defaultColorDecorators": true,
+    "terminal.integrated.showExitAlert": false,
+    "editor.fontFamily": "monospace, FontAwesome",
+    "window.menuBarVisibility": "toggle",
+    // The number of spaces a tab is equal to.
+    "editor.tabSize": 4,
+
+    // Insert spaces when pressing Tab.
+    "editor.insertSpaces": true,
+
+    // When opening a file, `editor.tabSize` and `editor.insertSpaces` will be detected based on the file contents.
+    "editor.detectIndentation": true
+
+    // "editor.fontFamily": "'Iosevka Comfy', 'Source Code Pro', 'JetBrains Mono', 'FontAwesome', monospace",
+    // "editor.fontSize": 15.8,
+    // "editor.fontWeight": 500
+    // "editor.fontSize": 15.9,
+    // "editor.fontWeight": 450
 }
