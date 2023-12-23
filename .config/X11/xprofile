@@ -7,7 +7,7 @@
 xset r rate 200 60
 
 # Merge xresources
-xrdb -merge ~/.config/X11/xresources 
+# xrdb -merge ~/.config/X11/xresources 
 
 # Start compositor
 picom &
@@ -28,7 +28,8 @@ xwallpaper --zoom $HOME/Pictures/current-wallpaper
 unclutter &
 
 # Time/date embedded into the bare DWM status bar
-while true; do
-   xsetroot -name "$(date) "
-   sleep 1
-done &
+# while true; do
+   # xsetroot -name "$(date '+  %d/%m/%Y  %H:%M:%S ')"
+   # sleep 1
+# done &
+dwmstatus 2>&1 >/dev/null &
