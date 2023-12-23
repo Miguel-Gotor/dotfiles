@@ -32,6 +32,7 @@ cp --parents -ruv "./.config/zsh" $dotfiles_dir
 cp --parents -ruv "./.config/wgetrc" $dotfiles_dir
 cp --parents -ruv "./.config/lf" $dotfiles_dir
 cp --parents -ruv "./.config/tmux" $dotfiles_dir
+cp --parents -ruv "./.config/python" $dotfiles_dir
 # cp --parents -ruv "./.config/emacs" $dotfiles_dir
 
 # exclude subdirectories in ~/.bin without cp complaining about ommited "-r"
