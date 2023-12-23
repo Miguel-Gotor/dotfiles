@@ -1,17 +1,13 @@
 " .config/vim/vimrc
 
-" map q <Nop>
-
 " Disable timeout on esc key
 " TODO: Find out how is st related to this issue (doesn't happen in kitty)
-" set timeoutlen=0
+set timeoutlen=0
 " ^^^^^^^^^^^^ Disables the "gx" macro but not "gf"
-" let g:netrw_browser_viewer='open'
 
 " vim / neovim specific settings
 if !has('nvim')
     " Change cursor from block (normal mode) to line (insert mode)
-    set timeoutlen=0
     let &t_SI = "\e[6 q"
     let &t_EI = "\e[2 q"
 else
@@ -189,22 +185,23 @@ set wildignore +=.DS_Store  " macOS folder metadata
 " a visual continuation on the next line.
 " Note: a space is the last character in the string.
 
+" Looks good with Jetbrains, but with Iosevka it overlaps with the next char
 " set showbreak =↪\
-set showbreak =↪
+" set showbreak =↪
 
 " Show whitespace characters with the following characters instead.
 
-set listchars +=tab:⇥\
+" set listchars +=tab:⇥\
 
 " set listchars +=extends:→
 " set listchars +=precedes:←
-set listchars +=extends:⇒
-set listchars +=precedes:⇐
-set listchars +=nbsp:␣
+" set listchars +=extends:⇒
+" set listchars +=precedes:⇐
+" set listchars +=nbsp:␣
 set listchars +=trail:•
 set listchars +=lead:•
 " set listchars +=eoL:↲
-set listchars +=eol:↩
+" set listchars +=eol:↩
 
 " *****************************************************************************
 
@@ -231,15 +228,19 @@ if !has('nvim') | set viminfofile=$XDG_STATE_HOME/vim/viminfo | endif
 
 " Switch to the next / previous buffer in queue when opening multiple files
 " using Alt + Arrows
+" nvim
 nnoremap <M-Left> :N<CR>
 nnoremap <M-Right> :n<CR>
 
-" Mouse wheel moves cursor Up/Down like arrow keys
-inoremap  <Up>
-nnoremap  <Up>
+" vim
+nnoremap [1;3C :N<CR>
+nnoremap [1;3D :n<CR>
 
-inoremap  <Down>
-nnoremap  <Down>
+" Mouse wheel moves cursor Up/Down like arrow keys
+" inoremap  <Up>
+" nnoremap  <Up>
+" inoremap  <Down>
+" nnoremap  <Down>
 
 " Select all
 map <C-a> <esc>ggVG<CR>
@@ -270,13 +271,12 @@ inoremap <silent> <F2> <C-o>:call CycleColorSchemes(1)<CR>
 
 " Reload current file
 nnoremap <silent> <F4> :w<CR>:e<CR>:echo "File reloaded"<CR>
-" nnoremap <silent> <F4> :w<CR>
 inoremap <silent> <F4> <C-o>:w<CR><C-o>:e<CR>
 
 " Reminder: <F5> and <F6> are used to run/compile/execute based on filetype
 
 " Reload vimrc
-nnoremap <silent> <F7> :source $MYVIMRC<CR>:echo "Vimrc reloaded"<CR>
+" nnoremap <silent> <F7> :source $MYVIMRC<CR>:echo "Vimrc reloaded"<CR>
 
 " Open vimrc
 nnoremap <silent> <F8> :w <CR> :e $MYVIMRC<CR>
@@ -311,9 +311,12 @@ inoremap <silent> <F12> <C-o>:setlocal number! relativenumber!<CR>
 nnoremap <silent> <F35> :setlocal wrap!<CR>:set wrap?<CR>
 inoremap <silent> <F35> <C-o>:setlocal wrap!<CR>
 
+nnoremap <silent> <F36> :setlocal list!<CR>:set list?<CR>
+inoremap <silent> <F36> <C-o>:setlocal list!<CR>
+
 " simple terminal (vim)
-nnoremap <silent> [23;5~ :setlocal wrap!<CR>:set wrap?<CR>
-inoremap <silent> [23;5~ <C-o>:setlocal wrap!<CR>
+" nnoremap <silent> [23;5~ :setlocal wrap!<CR>:set wrap?<CR>
+" inoremap <silent> [23;5~ <C-o>:setlocal wrap!<CR>
 
 " Toggle the display of special characters for formatting
 " nnoremap <silent> <C-F12> :setlocal list!<CR>:set list?<CR>
@@ -322,15 +325,11 @@ inoremap <silent> [23;5~ <C-o>:setlocal wrap!<CR>
 " Visual line separator
 inoremap ;- <C-o>:call InsertLine()<CR>
 
-" Filesave hooks
 " Automatically merge changes in xresources
 autocmd BufWritePost $XDG_CONFIG_HOME/X11/xresources silent! execute '!xrdb -merge %' | redraw!
 
-" Automatically reload i3wm after modifying config files
+" Automatically reload i3wm after modifying config file
 autocmd BufWritePost $XDG_CONFIG_HOME/i3/config silent! execute '!i3-msg reload' | redraw!
-autocmd BufWritePost $XDG_CONFIG_HOME/i3blocks/config silent! execute '!i3-msg restart' | redraw!
-
-
 
 " Functions -------------------------------------------------------------------
 
@@ -368,14 +367,21 @@ augroup commenting_code
     autocmd!
     " Fallback: empty string for unspecified file types
     let b:comment_leader = ''
-    autocmd FileType sh,python,asm,zsh,conf,fstab,i3config,make,cfg
+    autocmd FileType sh,python,asm,zsh,conf,fstab,i3config,make,cfg,readline,desktop
                                     \   let b:comment_leader = '#'
     autocmd FileType c,cpp              let b:comment_leader = '\/\/'
     autocmd FileType tex                let b:comment_leader = '%'
     autocmd FileType mail               let b:comment_leader = '>'
     autocmd FileType vim                let b:comment_leader = '"'
     autocmd FileType xdefaults          let b:comment_leader = '!!'
-	autocmd FileType xml				let b:comment_leader = '<!--'
+    autocmd FileType xml
+                \ let b:comment_leader = '<!--'|
+                \ let b:comment_ender = '-->'
+
+    autocmd FileType css
+                \ let b:comment_leader = '\/\*'|
+                \ let b:comment_ender = '\*\/'
+
 	autocmd FileType lua				let b:comment_leader = '--'
 	autocmd FileType lisp				let b:comment_leader = ';'
 augroup END
@@ -387,15 +393,15 @@ function! ToggleComment()
     " Careful with special characters
 	let length = len(substitute(b:comment_leader, '\\', '', 'g')) + 1
 
-    " XML comments also need a specific ending sequence
-    if &filetype == "xml"
-        let comment_leader = b:comment_leader
-        if line =~ '^\s*' . comment_leader . '.*-->$'
+    if &filetype ==# "xml" || &filetype ==# "css"
+        let comment_pattern = '^\s*' . b:comment_leader . '.*' . b:comment_ender . '\s*$'
+        " let comment_pattern = '^\s*' . b:comment_leader . '.*' . b:comment_ender . '$'
+        if line =~# comment_pattern
             " Uncomment
-            execute 's/^\(\s*\)' . comment_leader . '\(.*\)-->/\1\2/'
+            execute 's/^\(\s*\)' . b:comment_leader . '\(.*\)' . b:comment_ender . '/\1\2/'
         else
             " Comment
-            execute 's/^\(\s*\)\(.*\)/\1' . comment_leader . '\2-->/'
+            execute 's/^\(\s*\)\(.*\)/\1' . b:comment_leader . '\2' . b:comment_ender . '/'
         endif
 
     " The rest of filetypes only need a comment leader
@@ -422,6 +428,9 @@ endfunction
 " colorscheme ekinivim
 " colorscheme evolution
 colorscheme eva01-LCL
+" colorscheme wolfpack
+" colorscheme elrodeo
+" colorscheme codedark
 " colorscheme darkglass
 " colorscheme zmrok
 " colorscheme enzyme
